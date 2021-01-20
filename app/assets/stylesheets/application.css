@@ -1,15 +1,366 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+    font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  /*height: 80px;*/
+  margin: 0 150px;
+  height: 76px;
+}
+header img {
+  padding: -36px 0;
+  height: 76px;
+  width: 135px;
+}
+.header-right {
+  display: inline-block;
+  float: right;
+}
+.header-right ul {
+  list-style: none;
+}
+.post_course {
+  display: inline-block;
+  margin-right: -5px;
+  padding: 6px 12px;
+  width: 100px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+}
+.mypage {
+  display: inline-block;
+  padding: 6px 12px;
+  width: 100px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.login {
+  display: inline-block;
+  padding: 6px 12px;
+  width: 100px;
+  font-size: 14px;
+  text-align: center;
+  float: right;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+  float: right;
+}
+
+.header-right-down {
+  border: 1px solid #053ace;
+  border-radius: 4px;
+}
+.form-text {
+  display: inline-block;
+  width: 315px;
+  height: 35px;
+  padding-left: 15px;
+}
+.fa-search{
+  display: inline-block;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+.top-wrapper {
+    width: 100%;
+    height: 500px;
+    background-image: url("https://search.find47.jp/ja/i/WcMzR/image_file?type=detail_thumb");
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    display: block;
+    word-break: break-all;
+    font-size: 16px;
+    line-height: 1.46;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.top-wrapper span{
+  background: hsla(0,0%,100%,.8);
+  font-size: 48px;
+  line-height: 1;
+  display: inline-block;
+  padding: 4px 10px;
+  margin-bottom: 11px;
+  font-weight: bold;
+  word-break: break-all;
+  margin-left: 150px;
+}
+
+/*共通の設定*/
+.main {
+  margin: 0 150px;
+}
+ul {
+  list-style: none;
+}
+
+/*snsicon画像*/
+.sns-icon {
+  line-height: 1;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  float: right;
+  margin-top: -30px;
+}
+.fa-facebook-f {
+  color: #4267B2 ;
+}
+.fa-twitter {
+  color: rgba(0, 172, 237, 1) ;
+  padding-left: 10px;
+}
+.fa-instagram {
+  color: rgb(225,48,108) ;
+  padding-left: 10px;
+}
+
+
+
+/*おすすめのコース*/
+.recommend {
+  display: block;
+  margin-top: 60px;
+  /*作業しやすいように高さを設定*/
+  height: 800px;
+}
+.fa-shoe-prints {
+  font-size: 25px;
+  padding-right: 15px;
+  padding-left: 10px;
+}
+.recommend h2 {
+  display: inline-block;
+}
+/*.parent-table {*/
+/*  display: table;*/
+/*  width: 100%;*/
+/*  height: 310px;*/
+/*  border-collapse: separate;*/
+/*  border-spacing: 10px 0;*/
+/*}*/
+.recommend-course {
+  display: table-cell;
+  width: 33%;
+  border: 1px solid #CCCCCC;
+}
+
+.btn-show {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  width: 200px;
+  height: 25px;
+  margin: 30px auto 0;
+  padding: 14px 32px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+  color: #000;
+  background-color: rgb(242, 239, 236);
+}
+.btn:hover {
+    color: #4d4d4d;
+    background-color: #f6f4f2;
+}
+
+
+
+/*map別の検索*/
+.map_bar-search {
+  width: 100%;
+  margin-top: 80px;
+}
+.parent-table {
+  display: table;
+  width: 100%;
+}
+.map {
+  display: table-cell;
+  width: 70%;
+  height: 440px;
+  background-color: #fff462;
+}
+
+/*maptitle*/
+.fa-globe {
+  font-size: 25px;
+  padding-right: 15px;
+  padding-left: 10px;
+}
+.map_bar-search h2 {
+  display: inline-block;
+}
+/*地図部分の画像*/
+/*.map img {*/
+/*  display: block;*/
+/*  width: 70%;*/
+/*  border: 1px solid #EEEEEE;*/
+/*  padding: 50px 100px;*/
+/*  background-color: #fff462;*/
+/*}*/
+
+/*ボタン部分*/
+/*.btn-region {*/
+/*  display: block;*/
+/*  padding: 10px 35px;*/
+/*  background: #A4C6FF;*/
+/*  font-size: 14px;*/
+/*  font-weight: 700;*/
+/*  border: none;*/
+/*  outline: none;*/
+/*  text-decoration: none;*/
+/*  color: #000;*/
+/*  cursor: pointer;*/
+/*  width: 42px;*/
+/*  height: 20px;*/
+/*}*/
+/*.btn-region:hover {*/
+/*  background-color: #D9E5FF;*/
+/*}*/
+
+/*各ボタンの設定*/
+/*.btn-hokkaidou {*/
+/*  position: relative; top: -450px; left: 220px; z-index: 10; */
+/*}*/
+/*.btn-touhoku {*/
+/*  position: relative; top: -440px; left: 190px; z-index: 10; */
+/*}*/
+/*.btn-kantou {*/
+/*  position: relative; top: -430px; left: 160px; z-index: 10; */
+/*}*/
+/*.btn-koushinestu {*/
+/*  position: relative; top: -600px; right: 15px; z-index: 10; */
+/*} */
+/*.btn-hokuriku {*/
+/*  position: relative; top: -610px; right: 90px; z-index: 10; */
+/*}*/
+/*.btn-toukai {*/
+/*  position: relative; top: -630px; left: 20px; z-index: 10; */
+/*}*/
+/*.btn-kansai {*/
+/*  position: relative; top: -630px; left: 50px; z-index: 10; */
+/*}*/
+/*.btn-tyuugoku {*/
+/*  position: relative; top: -750px; right: 190px; z-index: 10; */
+/*}*/
+/*.btn-shikoku {*/
+/*  position: relative; top: -720px; right: 95px; z-index: 10; */
+/*}*/
+/*.btn-kyuusyuu {*/
+/*  position: relative; top: -770px; right: 270px; z-index: 10; */
+/*}*/
+/*.btn-okinawa {*/
+/*  position: relative; top: -820px; left: 65px; z-index: 10; */
+/*}*/
+
+
+
+.special-menu {
+  display: table-cell;
+  width: 30%;
+  border: 1px solid #CCCCCC;
+  border-top: 3px solid #A4C6FF;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14);
+  /*margin-bottom: 40px;*/
+}
+.special-menu li {
+  color: #000;
+  padding-bottom: -50px;
+}
+.special-menu input {
+  /*チェックボックスを隠す*/
+  display: none;
+}
+.menu-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  /*position: relative; top: -400px ; left: 20px;*/
+}
+.menu-border {
+  height: 85px;
+  border: 1px solid #CCCCCC;
+  padding: 12px 0px 12px 70px;
+  line-height: 84px;
+  text-align: left;
+}
+.arrow-right {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin: 0 10px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: rotate(45deg);
+  float: right;
+  vertical-align: middle;
+  position: relative;
+  top: 40px;
+}
+
+
+
+
+/*新着コース*/
+.newpost {
+  display: block;
+  margin-top: 60px;
+  /*作業しやすいように高さを設定*/
+  height: 800px;
+}
+.fa-bell {
+  font-size: 25px;
+  padding-right: 15px;
+  padding-left: 10px;
+}
+.newpost h2 {
+  display: inline-block;
+}
+.parent-table {
+  display: table;
+  width: 100%;
+  height: 310px;
+  border-collapse: separate;
+  border-spacing: 10px 0;
+  margin-bottom: 20px;
+}
+.new-course {
+  display: table-cell;
+  width: 33%;
+  border: 1px solid #CCCCCC;
+}
+
+footer {
+  background-color: #4d4945;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0 30px 100px;
+  margin-top: 100px;
+  text-align: left;
+}
