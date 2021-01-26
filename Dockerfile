@@ -4,7 +4,7 @@ RUN mkdir /sanpomiti_app
 WORKDIR /sanpomiti_app
 COPY Gemfile /sanpomiti_app/Gemfile
 COPY Gemfile.lock /sanpomiti_app/Gemfile.lock
-RUN gem install bundler && bundle install 
+RUN gem install bundler && bundle install
 COPY . /sanpomiti_app
 
 # Add a script to be executed every time the container starts.
