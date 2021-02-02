@@ -1,144 +1,164 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>散歩道　街ブラ</title>
-  <link rel="stylesheet" href="stylesheet.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-</head>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>散歩道　街ブラ</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<body>
-    <header>
-        <img class="site-logo" src="https://export-download.canva.com/abdNQ/DAEQwZabdNQ/6/0/0001-14607112051.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20201218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201218T235452Z&X-Amz-Expires=41915&X-Amz-Signature=4102787990eeb389c03fe37aa3bea2cb5e53ff8de5c55d1c73e3f774ae2c9016&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E3%2581%258B%25E3%2581%25BC%25E3%2581%25A1%25E3%2582%2583%25E3%2581%25AE%25E3%2582%25B9%25E3%2582%25A4%25E3%2583%25BC%25E3%2583%2584%25E3%2581%259F%25E3%2581%25B9%25E3%2581%25BB%25E3%2581%2586%25E3%2581%25A0%25E3%2581%2584%25E3%2581%25AE%25E3%2582%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2581%25AE%25E3%2582%25B3%25E3%2583%2594%25E3%2583%25BC.png&response-expires=Sat%2C%2019%20Dec%202020%2011%3A33%3A27%20GMT">
-        <div class="header-right">
-            <div class="header-right-up">
-                <ul class="btn btn-default btn-block post_course" href="">コースを投稿</ul>
-                <ul class="btn btn-default btn-block mypage" href=""> マイページ</ul>
-                <ul class="btn btn-default btn-block login" href="">ログイン</ul>
-            </div>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
-            <div class="header-right-down">
-                <form action="#" method="GET">
-                   <input class="form-text" type="seach" placeholder="検索ワードを入力してください">
-                   <i class="fas fa-search"></i>
-                </form>
-            </div>
-        </div>
-    </header>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+  </head>
 
-    <div class="top-wrapper">
-        <div class="service-phrase">
-            <h1>
-                <span>さんぽを通して</span>
-                <br>
-                <span>生活をたのしく、ゆたかに。</span>
-                <br>
-            </h1>
-        </div>
-    </div>
-    <div class="main">
-        <div class="sns-icon">
-            <i class="fab fa-facebook-f footer-icon"></i>
-            <i class="fab fa-twitter footer-icon"></i>
-            <i class="fab fa-instagram footer-icon"></i>
-        </div>
+  <body>
+      <%= render 'layouts/navbar' %>
+      <div class="container">
+        <%= render 'layouts/flash_messages' %>
 
-        <!--おすすめコースの表示-->
-        <div class="recommend">
-            <i class="fas fa-shoe-prints"></i>
-            <h2>おすすめのコース</h2>
-            <div class="parent-table">
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-            </div>
-            <div class="parent-table">
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-            </div>
-            <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
-        </div>
+        <%= yield %>
+      </div>
+      
+      <header>
+          <img class="site-logo" src="https://export-download.canva.com/abdNQ/DAEQwZabdNQ/6/0/0001-14607112051.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJHKNGJLC2J7OGJ6Q%2F20201218%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20201218T235452Z&X-Amz-Expires=41915&X-Amz-Signature=4102787990eeb389c03fe37aa3bea2cb5e53ff8de5c55d1c73e3f774ae2c9016&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27%25E3%2581%258B%25E3%2581%25BC%25E3%2581%25A1%25E3%2582%2583%25E3%2581%25AE%25E3%2582%25B9%25E3%2582%25A4%25E3%2583%25BC%25E3%2583%2584%25E3%2581%259F%25E3%2581%25B9%25E3%2581%25BB%25E3%2581%2586%25E3%2581%25A0%25E3%2581%2584%25E3%2581%25AE%25E3%2582%25B3%25E3%2583%2594%25E3%2583%25BC%25E3%2581%25AE%25E3%2582%25B3%25E3%2583%2594%25E3%2583%25BC.png&response-expires=Sat%2C%2019%20Dec%202020%2011%3A33%3A27%20GMT">
+          <div class="header-right">
+              <div class="header-right-up">
+                  <ul class="btn btn-default btn-block post_course" href="">コースを投稿</ul>
+                  <ul class="btn btn-default btn-block mypage" href=""> マイページ</ul>
+                  <ul class="btn btn-default btn-block login" href="">ログイン</ul>
+              </div>
 
-        <div class="newpost">
-            <i class="fas fa-bell"></i>
-            <h2>新着コース</h2>
-            <div class="parent-table">
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-            </div>
-            <div class="parent-table">
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-                <div class="recommend-course">
-                    <h3>画像</h3>
-                    <p>記事説明</p>
-                </div>
-            </div>
-            <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
-        </div>
+              <div class="header-right-down">
+                  <form action="#" method="GET">
+                     <input class="form-text" type="seach" placeholder="検索ワードを入力してください">
+                     <i class="fas fa-search"></i>
+                  </form>
+              </div>
+          </div>
+      </header>
 
-        <div class="special-menu">
-            <div class="menu-border">
-                <input type="checkbox" id="menu_spot" />
-                <label class="menu-title" for="menu_spot">名所・観光スポット</label>
-                <a class="arrow-right"></a>
-            </div>
+      <div class="top-wrapper">
+          <div class="service-phrase">
+              <h1>
+                  <span>さんぽを通して</span>
+                  <br>
+                  <span>生活をたのしく、ゆたかに。</span>
+                  <br>
+              </h1>
+          </div>
+      </div>
+      <div class="main">
+          <div class="sns-icon">
+              <i class="fab fa-facebook-f footer-icon"></i>
+              <i class="fab fa-twitter footer-icon"></i>
+              <i class="fab fa-instagram footer-icon"></i>
+          </div>
 
-            <div class="menu-border">
-                <input type="checkbox" id="menu_event" />
-                <label class="menu-title" for="menu_event">イベント</label>
-                <a class="arrow-right"></a>
-            </div>
+          <!--おすすめコースの表示-->
+          <div class="recommend">
+              <i class="fas fa-shoe-prints"></i>
+              <h2>おすすめのコース</h2>
+              <div class="parent-table">
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+              </div>
+              <div class="parent-table">
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+              </div>
+              <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
+          </div>
 
-            <div class="menu-border">
-                <input type="checkbox" id="menu_shop" />
-                <label class="menu-title" for="menu_shop">ショップ</label>
-                <a class="arrow-right"></a>
-            </div>
+          <div class="newpost">
+              <i class="fas fa-bell"></i>
+              <h2>新着コース</h2>
+              <div class="parent-table">
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+              </div>
+              <div class="parent-table">
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+                  <div class="recommend-course">
+                      <h3>画像</h3>
+                      <p>記事説明</p>
+                  </div>
+              </div>
+              <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
+          </div>
 
-            <div class="menu-border">
-                <input type="checkbox" id="menu_location" />
-                <label class="menu-title" for="menu_location">話題のロケ地</label>
-                <a class="arrow-right"></a>
-            </div>
-        </div>
+          <div class="special-menu">
+              <div class="menu-border">
+                  <input type="checkbox" id="menu_spot" />
+                  <label class="menu-title" for="menu_spot">名所・観光スポット</label>
+                  <a class="arrow-right"></a>
+              </div>
 
-    <footer>
-        <small>copyright © 2020 Sanpomiti All rights reserved</small>
-    </footer>
-</body>
+              <div class="menu-border">
+                  <input type="checkbox" id="menu_event" />
+                  <label class="menu-title" for="menu_event">イベント</label>
+                  <a class="arrow-right"></a>
+              </div>
+
+              <div class="menu-border">
+                  <input type="checkbox" id="menu_shop" />
+                  <label class="menu-title" for="menu_shop">ショップ</label>
+                  <a class="arrow-right"></a>
+              </div>
+
+              <div class="menu-border">
+                  <input type="checkbox" id="menu_location" />
+                  <label class="menu-title" for="menu_location">話題のロケ地</label>
+                  <a class="arrow-right"></a>
+              </div>
+          </div>
+
+      <footer>
+          <small>copyright © 2020 Sanpomiti All rights reserved</small>
+      </footer>
+  </body>
+</html>
