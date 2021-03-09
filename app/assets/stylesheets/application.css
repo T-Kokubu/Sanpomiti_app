@@ -6,19 +6,33 @@ a {
   text-decoration: none;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
 header {
-  /*height: 80px;*/
-  margin: 0 150px;
+  margin: 5px 75px;
   height: 76px;
 }
+
 header img {
-  padding: -36px 0;
+  margin-top: 7px;
+  margin-left: 4px;
   height: 76px;
   width: 135px;
 }
+
+/* headerの右部分 上下全体*/
 .header-right {
   display: inline-block;
   float: right;
+}
+
+/* headerの右上　投稿　マイページ　ログイン部分 */
+.header-right-up {
+  height: 38px;
 }
 .header-right ul {
   list-style: none;
@@ -26,8 +40,9 @@ header img {
 .post_course {
   display: inline-block;
   margin-right: -5px;
-  padding: 6px 12px;
-  width: 100px;
+  margin-top: 7px;
+  padding: 3px 12px;
+  width: 126px;
   font-size: 14px;
   text-align: center;
   border: 1px solid #053ace;
@@ -36,19 +51,18 @@ header img {
 }
 .mypage {
   display: inline-block;
-  padding: 6px 12px;
-  width: 100px;
+  padding: 3px 12px;
+  width: 126px;
   font-size: 14px;
   text-align: center;
   border: 1px solid #053ace;
   border-radius: 4px;
   text-align: center;
 }
-
 .login {
   display: inline-block;
-  padding: 6px 12px;
-  width: 100px;
+  padding: 3px 12px;
+  width: 120px;
   font-size: 14px;
   text-align: center;
   float: right;
@@ -58,20 +72,33 @@ header img {
   float: right;
 }
 
+/* header右下 　検索フォーム */
 .header-right-down {
   border: 1px solid #053ace;
   border-radius: 4px;
+  padding: 0 10px;
+  height: 40px;
+  float: right;
+  margin-top: -16px;
 }
 .form-text {
   display: inline-block;
   width: 315px;
-  height: 35px;
-  padding-left: 15px;
+  height: 30px;
+  padding-left: 10px;
 }
 .fa-search{
   display: inline-block;
   padding-left: 15px;
-  padding-top: 10px;
+  padding-top: 15px;
+  font-size: 30px;
+}
+
+
+
+/* main画像部分 */
+.container {
+
 }
 .top-wrapper {
     width: 100%;
@@ -88,27 +115,23 @@ header img {
     padding-top: 20px;
     margin: 0 auto;
 }
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .top-wrapper span{
-  background: hsla(0,0%,100%,.8);
-  font-size: 48px;
-  line-height: 1;
-  display: inline-block;
-  padding: 4px 10px;
-  margin-bottom: 11px;
-  font-weight: bold;
-  word-break: break-all;
-  margin-left: 150px;
+    background: hsla(0,0%,100%,.8);
+    font-size: 48px;
+    line-height: 1;
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 11px;
+    font-weight: bold;
+    word-break: break-all;
+    margin-left: 150px;
 }
+
+
 
 /*共通の設定*/
 .main {
-  margin: 0 150px;
+  /* margin: 0 150px; */
 }
 ul {
   list-style: none;
@@ -119,46 +142,47 @@ ul {
   line-height: 1;
   font-weight: 400;
   font-style: normal;
-  font-size: 25px;
   float: right;
-  margin-top: -30px;
+  margin-top: 30px;
 }
 .fa-facebook-f {
+  display: inline-block;
   color: #4267B2 ;
+  font-size: 28px;
+  padding-bottom: 5px;
 }
 .fa-twitter {
+  display: inline-block;
   color: rgba(0, 172, 237, 1) ;
   padding-left: 10px;
+  font-size: 35px;
 }
 .fa-instagram {
+  display: inline-block;
   color: rgb(225,48,108) ;
   padding-left: 10px;
+  font-size: 35px;
+  margin-right: 20px;
 }
-
-
 
 /*おすすめのコース*/
 .recommend {
   display: block;
   margin-top: 60px;
-  /*作業しやすいように高さを設定*/
   height: 800px;
 }
+.recommend-title {
+  position: relative;
+  top: 20px;
+}
 .fa-shoe-prints {
-  font-size: 25px;
+  font-size: 40px;
   padding-right: 15px;
   padding-left: 10px;
 }
 .recommend h2 {
   display: inline-block;
 }
-/*.parent-table {*/
-/*  display: table;*/
-/*  width: 100%;*/
-/*  height: 310px;*/
-/*  border-collapse: separate;*/
-/*  border-spacing: 10px 0;*/
-/*}*/
 .recommend-course {
   display: table-cell;
   width: 33%;
@@ -182,6 +206,7 @@ ul {
   box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
   color: #000;
   background-color: rgb(242, 239, 236);
+  padding-bottom: 30px;
 }
 .btn:hover {
     color: #4d4d4d;
@@ -189,96 +214,10 @@ ul {
 }
 
 
-
-/*map別の検索*/
-.map_bar-search {
-  width: 100%;
-  margin-top: 80px;
-}
 .parent-table {
   display: table;
   width: 100%;
 }
-.map {
-  display: table-cell;
-  width: 70%;
-  height: 440px;
-  background-color: #fff462;
-}
-
-/*maptitle*/
-.fa-globe {
-  font-size: 25px;
-  padding-right: 15px;
-  padding-left: 10px;
-}
-.map_bar-search h2 {
-  display: inline-block;
-}
-/*地図部分の画像*/
-/*.map img {*/
-/*  display: block;*/
-/*  width: 70%;*/
-/*  border: 1px solid #EEEEEE;*/
-/*  padding: 50px 100px;*/
-/*  background-color: #fff462;*/
-/*}*/
-
-/*ボタン部分*/
-/*.btn-region {*/
-/*  display: block;*/
-/*  padding: 10px 35px;*/
-/*  background: #A4C6FF;*/
-/*  font-size: 14px;*/
-/*  font-weight: 700;*/
-/*  border: none;*/
-/*  outline: none;*/
-/*  text-decoration: none;*/
-/*  color: #000;*/
-/*  cursor: pointer;*/
-/*  width: 42px;*/
-/*  height: 20px;*/
-/*}*/
-/*.btn-region:hover {*/
-/*  background-color: #D9E5FF;*/
-/*}*/
-
-/*各ボタンの設定*/
-/*.btn-hokkaidou {*/
-/*  position: relative; top: -450px; left: 220px; z-index: 10; */
-/*}*/
-/*.btn-touhoku {*/
-/*  position: relative; top: -440px; left: 190px; z-index: 10; */
-/*}*/
-/*.btn-kantou {*/
-/*  position: relative; top: -430px; left: 160px; z-index: 10; */
-/*}*/
-/*.btn-koushinestu {*/
-/*  position: relative; top: -600px; right: 15px; z-index: 10; */
-/*} */
-/*.btn-hokuriku {*/
-/*  position: relative; top: -610px; right: 90px; z-index: 10; */
-/*}*/
-/*.btn-toukai {*/
-/*  position: relative; top: -630px; left: 20px; z-index: 10; */
-/*}*/
-/*.btn-kansai {*/
-/*  position: relative; top: -630px; left: 50px; z-index: 10; */
-/*}*/
-/*.btn-tyuugoku {*/
-/*  position: relative; top: -750px; right: 190px; z-index: 10; */
-/*}*/
-/*.btn-shikoku {*/
-/*  position: relative; top: -720px; right: 95px; z-index: 10; */
-/*}*/
-/*.btn-kyuusyuu {*/
-/*  position: relative; top: -770px; right: 270px; z-index: 10; */
-/*}*/
-/*.btn-okinawa {*/
-/*  position: relative; top: -820px; left: 65px; z-index: 10; */
-/*}*/
-
-
 
 .special-menu {
   display: table-cell;
@@ -334,9 +273,14 @@ ul {
   height: 800px;
 }
 .fa-bell {
-  font-size: 25px;
+  /* font-size: 25px;
+  padding-right: 15px;
+  padding-left: 10px; */
+  font-size: 55px;
   padding-right: 15px;
   padding-left: 10px;
+  position: relative;
+  top: 8px;
 }
 .newpost h2 {
   display: inline-block;
