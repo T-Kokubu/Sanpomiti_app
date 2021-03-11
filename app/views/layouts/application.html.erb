@@ -7,8 +7,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <link rel="stylesheet" href="stylesheet.css">
-    <link rel="stylesheet" href="/assets/stylesheets/users.scss">
+    <!-- <link rel="stylesheet" href="stylesheet.css"> -->
+    <link rel="stylesheet" href="users.scss">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
@@ -21,6 +21,7 @@
   </head>
 
   <body>
+    <div class="wrapper">
       <%= render 'layouts/navbar' %>
       <div class="container">
         <%= render 'layouts/flash_messages' %>
@@ -31,5 +32,6 @@
       <footer>
           <small>copyright © 2020 Sanpomiti All rights reserved</small>
       </footer>
+    </div>
   </body>
 </html>
