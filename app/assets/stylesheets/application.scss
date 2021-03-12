@@ -1,0 +1,322 @@
+@import './users.scss' ;
+
+body {
+    font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+header {
+  margin: 5px 75px;
+  height: 76px;
+}
+
+header img {
+  margin-top: -10px;
+  margin-left: 4px;
+  height: 110px;
+  width: 130px;
+}
+
+/* headerの右部分 上下全体*/
+.header-right {
+  display: inline-block;
+  float: right;
+}
+
+/* headerの右上　投稿　マイページ　ログイン部分 */
+.header-right-up {
+  height: 38px;
+}
+.header-right ul {
+  list-style: none;
+}
+.post_course {
+  display: inline-block;
+  margin-right: -5px;
+  margin-top: 7px;
+  padding: 3px 12px;
+  width: 126px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+}
+.mypage {
+  display: inline-block;
+  padding: 3px 12px;
+  width: 126px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+}
+.login {
+  display: inline-block;
+  padding: 3px 12px;
+  width: 120px;
+  font-size: 14px;
+  text-align: center;
+  float: right;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+  float: right;
+}
+
+/* header右下 　検索フォーム */
+.header-right-down {
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  padding: 0 10px;
+  height: 40px;
+  float: right;
+  margin-top: -16px;
+}
+.form-text {
+  display: inline-block;
+  width: 315px;
+  height: 30px;
+  padding-left: 10px;
+}
+.fa-search{
+  display: inline-block;
+  padding-left: 15px;
+  padding-top: 15px;
+  font-size: 30px;
+}
+
+
+
+/* main画像部分 */
+.container {
+
+}
+.top-wrapper {
+    width: 100%;
+    height: 500px;
+    background-image: url("https://search.find47.jp/ja/i/WcMzR/image_file?type=detail_thumb");
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    display: block;
+    word-break: break-all;
+    font-size: 16px;
+    line-height: 1.46;
+    padding-top: 20px;
+    margin: 0 auto;
+}
+.top-wrapper span{
+    background: hsla(0,0%,100%,.8);
+    font-size: 48px;
+    line-height: 1;
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 11px;
+    font-weight: bold;
+    word-break: break-all;
+    margin-left: 150px;
+}
+
+
+
+/*共通の設定*/
+.main {
+  /* margin: 0 150px; */
+}
+ul {
+  list-style: none;
+}
+
+/*snsicon画像*/
+.sns-icon {
+  line-height: 1;
+  font-weight: 400;
+  font-style: normal;
+  float: right;
+  margin-top: 30px;
+}
+.fa-facebook-f {
+  display: inline-block;
+  color: #4267B2 ;
+  font-size: 28px;
+  padding-bottom: 5px;
+}
+.fa-twitter {
+  display: inline-block;
+  color: rgba(0, 172, 237, 1) ;
+  padding-left: 10px;
+  font-size: 35px;
+}
+.fa-instagram {
+  display: inline-block;
+  color: rgb(225,48,108) ;
+  padding-left: 10px;
+  font-size: 35px;
+  margin-right: 20px;
+}
+
+/*おすすめのコース*/
+.recommend {
+  display: block;
+  margin-top: 60px;
+  height: 800px;
+}
+.recommend-title {
+  position: relative;
+  top: 20px;
+}
+.fa-shoe-prints {
+  font-size: 40px;
+  padding-right: 15px;
+  padding-left: 10px;
+}
+.recommend h2 {
+  display: inline-block;
+}
+.recommend-course {
+  display: table-cell;
+  width: 33%;
+  border: 1px solid #CCCCCC;
+}
+
+.btn-show {
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  width: 200px;
+  height: 25px;
+  margin: 30px auto 0;
+  padding: 14px 32px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+  color: #000;
+  background-color: rgb(242, 239, 236);
+  padding-bottom: 30px;
+}
+.btn:hover {
+    color: #4d4d4d;
+    background-color: #f6f4f2;
+}
+
+
+.parent-table {
+  display: table;
+  width: 100%;
+}
+
+.special-menu {
+  display: table-cell;
+  width: 30%;
+  border: 1px solid #CCCCCC;
+  border-top: 3px solid #A4C6FF;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14);
+  /*margin-bottom: 40px;*/
+}
+.special-menu li {
+  color: #000;
+  padding-bottom: -50px;
+}
+.special-menu input {
+  /*チェックボックスを隠す*/
+  display: none;
+}
+.menu-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  /*position: relative; top: -400px ; left: 20px;*/
+}
+.menu-border {
+  height: 85px;
+  border: 1px solid #CCCCCC;
+  padding: 12px 0px 12px 70px;
+  line-height: 84px;
+  text-align: left;
+}
+.arrow-right {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin: 0 10px;
+  border-top: 2px solid #000;
+  border-right: 2px solid #000;
+  transform: rotate(45deg);
+  float: right;
+  vertical-align: middle;
+  position: relative;
+  top: 40px;
+}
+
+
+
+
+/*新着コース*/
+.newpost {
+  display: block;
+  margin-top: 60px;
+  /*作業しやすいように高さを設定*/
+  height: 800px;
+}
+.fa-bell {
+  /* font-size: 25px;
+  padding-right: 15px;
+  padding-left: 10px; */
+  font-size: 55px;
+  padding-right: 15px;
+  padding-left: 10px;
+  position: relative;
+  top: 8px;
+}
+.newpost h2 {
+  display: inline-block;
+}
+.parent-table {
+  display: table;
+  width: 100%;
+  height: 310px;
+  border-collapse: separate;
+  border-spacing: 10px 0;
+  margin-bottom: 20px;
+}
+.new-course {
+  display: table-cell;
+  width: 33%;
+  border: 1px solid #CCCCCC;
+}
+
+footer {
+  background-color: #4d4945;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0 30px 100px;
+  margin-top: 100px;
+  text-align: left;
+  width: 100%;
+
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
