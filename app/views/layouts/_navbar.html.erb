@@ -1,11 +1,17 @@
 <header>
     <%= link_to image_tag('/assets/toppage_logo.png'), '/' %>
     <div class="header-right">
-        <div class="header-right-up">
-            <ul class="btn btn-default btn-block post_course" href="">コースを投稿</ul>
-            <ul class="btn btn-default btn-block mypage"><%= link_to 'マイページ', signup_path %></ul>
-            <ul class="btn btn-default btn-block login"><%= link_to 'ログイン', login_path %></ul>
-        </div>
+        <ul class="header-right-up">
+            <% if logged_in? %>
+                <li class="btn btn-default btn-block post_course">コースを投稿</li>
+                <li class="btn btn-default btn-block mypage">マイページ</li>
+                <li class="btn btn-default btn-block login"><%= link_to 'ログアウト', logout_path, method: :delete  %></li>
+            <% else %>
+                <li class="btn btn-default btn-block post_course"><%= link_to 'コースを投稿', signup_path %></li>
+                <li class="btn btn-default btn-block mypage"><%= link_to '新規登録', signup_path %></li>
+                <li class="btn btn-default btn-block login"><%= link_to 'ログイン', login_path %></li>
+            <% end %>
+        </ul>
 
         <div class="header-right-down">
             <form action="#" method="GET">
