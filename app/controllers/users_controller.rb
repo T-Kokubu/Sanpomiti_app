@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       # 更新に成功したときの処理
-      flash[:success] = 'ユーザー情報の更新に成功しました'
+      flash[:success] = 'ユーザー情報の更新に成功しました。'
       redirect_to @user
     else
       flash.now[:danger] = 'ユーザー情報の更新に失敗しました。'
