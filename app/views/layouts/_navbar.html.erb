@@ -4,11 +4,10 @@
         <ul class="header-right-up">
             <% if logged_in? %>
                 <li class="btn btn-default btn-block post_course">コースを投稿</li>
-                <li class="btn btn-default btn-block mypage">マイページ</li>
-                <li class="btn btn-default btn-block login"><%= link_to 'ログアウト', logout_path, method: :delete  %></li>
+                <li class="btn btn-default btn-block mypage"><%= link_to 'マイページ', user_path(current_user) %></li>
+                <li class="btn btn-default btn-block logout"><%= link_to 'ログアウト', logout_path, method: :delete  %></li>
             <% else %>
-                <li class="btn btn-default btn-block post_course"><%= link_to 'コースを投稿', signup_path %></li>
-                <li class="btn btn-default btn-block mypage"><%= link_to '新規登録', signup_path %></li>
+                <li class="btn btn-default btn-block signup"><%= link_to '新規登録', signup_path %></li>
                 <li class="btn btn-default btn-block login"><%= link_to 'ログイン', login_path %></li>
             <% end %>
         </ul>

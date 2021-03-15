@@ -1,3 +1,33 @@
+// users_new_page
 .text-center {
   margin-top: 80px;
 }
+
+// users_show_page
+.users_showpage {
+  margin-top: 60px;
+}
+
+.user_setting {
+  display: inline-block;
+  border: solid 1px #000000;
+  border-radius: 4px;
+  padding: 10px 15px 0 15px ;
+  margin-left: 20px;
+}
+.users_name {
+  height: 10px;
+  font-size: 20px;
+}
+.users_info {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.cog_button {
+    border: solid 1px #000000;
+    text-align: center;
+    margin: 10px 38px 0 38px;
+}
+
+// 右部分
+// 右部分全体
