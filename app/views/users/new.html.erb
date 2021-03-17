@@ -24,6 +24,11 @@
         <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "パスワード(確認)" %>
       </div>
 
+      <div class="form-group">
+        <%= f.select :prefecture, [["東京", "東京"], ["埼玉", "埼玉"], ["神奈川", "神奈川"], ["千葉", "千葉"], ["茨城", " 茨城"]],
+         { include_blank: "選択して下さい" }, { class: 'form-control' , required: true } %>
+      </div>
+
       <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
     <% end %>
   </div>
