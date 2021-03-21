@@ -86,3 +86,11 @@ Style/SymbolArray:
 
 Documentation:
   Enabled: false
+
+# 日本語でのコメントをokにする
+Style/AsciiComments:
+  Enabled: false
+
+# 1つのブロックあたりの行数の制限
+Metrics/BlockLength:
+  Enabled: false
