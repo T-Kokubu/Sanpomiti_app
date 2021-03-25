@@ -23,6 +23,7 @@ require 'rspec/rails'
 #
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
+
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 # begin
@@ -40,8 +41,16 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  # コントローラスペックで Devise のテストヘルパーを使用する
+  # config.include Devise::Test::ControllerHelpers, type: :controller
+
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
+
+
+  # テストケース共通の事前処理
+  # テストケース共通の事前処理
+
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
@@ -65,5 +74,20 @@ RSpec.configure do |config|
 
   RSpec.configure do |configure|
     configure.include FactoryBot::Syntax::Methods
+  end
+end
+
+require 'support/controller_helpers'
+
+RSpec.configure do |config|
+  config.include ControllerHelpers, :type => :controller
+  [:controller, :view, :request].each do |type|
+    config.include ::Rails::Controller::Testing::TestProcess, type: type
+    config.include ::Rails::Controller::Testing::TemplateAssertions, type: type
+    config.include ::Rails::Controller::Testing::Integration, type: type
+  end
+  # An expectation of `:authenticate!` was set on `nil`エラーに対して
+  config.mock_with :rspec do |mocks|
+    mocks.allow_message_expectations_on_nil = true
   end
 end
