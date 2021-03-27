@@ -6,5 +6,5 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6, maximum: 16 }
-  has_one :prefecture
+  belongs_to :prefecture
 end

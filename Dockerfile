@@ -3,7 +3,7 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update &&
 RUN mkdir /sanpomiti_app
 WORKDIR /sanpomiti_app
 COPY Gemfile /sanpomiti_app/Gemfile
-COPY Gemfile.lock /sanpomiti_app/Gemfile.lock
+# COPY Gemfile.lock /sanpomiti_app/Gemfile.lock
 RUN gem install bundler && bundle install
 COPY . /sanpomiti_app
 
