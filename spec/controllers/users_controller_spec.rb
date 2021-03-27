@@ -33,7 +33,6 @@ RSpec.describe UsersController, type: :controller do
     # describe "update" do
     #
     # end
-
   end
 
   # ログインユーザーの挙動
@@ -78,8 +77,6 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-
-
     describe "edit" do
       before do
         get :edit, params: {id: @user.id}
@@ -96,17 +93,22 @@ RSpec.describe UsersController, type: :controller do
     end
 
     describe "create" do
-      before do
-        @user = attributes_for(:user)
-      end
+      let!(:prefecture) { create(:prefecture) }
+
       it "正しく反応すること" do
-        expect(response.status).to eq 200
+        # `post :create`と書くことで「UsersControllerのcreateアクションに対してpostする。」が発生します。
+        # attributes_forでは関連先のprefectureまで生成してくれないので、mergeする必要がある。
+        post :create, params: { user: attributes_for(:user).merge(prefecture_id: prefecture.id) }
+
+        expect(response.status).to eq 302
       end
+
       it 'データベースに新しいユーザーが登録されること' do
         expect{
           post :create, user: @user
         }.to change(User, :count).by(1)
       end
+
       it 'rootにリダイレクトすること' do
         expect(response).to redirect_to user_path(@user)
       end
