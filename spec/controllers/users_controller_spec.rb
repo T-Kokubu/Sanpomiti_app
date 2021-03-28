@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :controller do
           expect(response.status).to eq 302
         end
       end
-      ########################################
+
       context '要求されたユーザーが存在しない場合' do
         it 'リクエストはRecordNotFoundとなること' do
           expect{
@@ -31,24 +31,11 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    # describe "create" do
-    # end
-    #
-
-    describe "edit" do
-
-    end
-
-
     describe "update" do
       context '要求されたユーザーが存在しない場合' do
-        before do
-          @invalid_user = create(:invalid_user)
-        end
-        #######################################
         it 'リクエストはRecordNotFoundとなること' do
           expect{
-            patch :update, params: { }
+            patch :update, params: { id: 99999, user: attributes_for(:user, name: 'hogehoge') }
           }.to raise_exception(ActiveRecord::RecordNotFound)
         end
       end
@@ -131,6 +118,22 @@ RSpec.describe UsersController, type: :controller do
         post :create, params: { user: attributes_for(:user).merge(prefecture_id: @user.prefecture.id) }
         # user_show_pageへリダイレクトする
         expect(response).to redirect_to user_path(User.last)
+      end
+      ###############################
+      context '無効なパラメータの場合' do
+        it 'リクエストは200 OKとなること' do
+          post :create, params: { id: 99999, user: attributes_for(:user)}
+          expect(response.status).to eq 200
+        end
+        it 'データベースに新しいユーザーが登録されないこと' do
+          expect{
+            post :create, params: { id: 99999, user: attributes_for(:user)}
+          }.not_to change(User, :count)
+        end
+        it ':newテンプレートを再表示すること' do
+          post :create, params: { id: 99999, user: attributes_for(:user)}
+          expect(response).to render_template :new
+        end
       end
     end
 
