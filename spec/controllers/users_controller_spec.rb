@@ -78,8 +78,6 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-
-
     describe "edit" do
       before do
         get :edit, params: {id: @user.id}
@@ -102,16 +100,55 @@ RSpec.describe UsersController, type: :controller do
        # `post :create`と書くことで「UsersControllerのcreateアクションに対してpostする。」が発生します。
        # attributes_forでは関連先のprefectureまで生成してくれないので、mergeする必要がある。
        post :create, params: { user: attributes_for(:user).merge(prefecture_id: prefecture.id) }
-
        expect(response.status).to eq 302
       end
       it 'データベースに新しいユーザーが登録されること' do
         expect{
-          post :create, user: @user
+          post :create, params: { user: attributes_for(:user).merge(prefecture_id: prefecture.id) }
         }.to change(User, :count).by(1)
       end
-      it 'rootにリダイレクトすること' do
-        expect(response).to redirect_to user_path(@user)
+      it 'show_pageにリダイレクトすること' do
+        # 新しくuserを作成する　post create
+        post :create, params: { user: attributes_for(:user).merge(prefecture_id: @user.prefecture.id) }
+        # user_show_pageへリダイレクトする
+        expect(response).to redirect_to user_path(User.last)
+      end
+    end
+
+    describe 'Patch #update' do
+      context '存在するユーザーの場合' do
+        context '有効なパラメータを送信したとき' do
+          before do
+            patch :update, params: { user: attributes_for(:user, name: 'hogehoge') }
+          end
+          it 'リダイレクトすること' do
+            expect(response.status).to eq 302
+          end
+        end
+      end
+    end
+
+    context '無効なパラメータの場合' do
+      before do
+        patch :update, permalink: @user.permalink, user: attributes_for(:user, name: '  ')
+      end
+      it 'リクエストは200 OKとなること' do
+        expect(response.status).to eq 200
+      end
+      it 'データベースのユーザーは更新されないこと' do
+        @user.reload
+        expect(@user.name).to eq @originalname
+      end
+      it ':editテンプレートを再表示すること' do
+        expect(response).to render_template :edit
+      end
+    end
+
+    context '要求されたユーザーが存在しない場合' do
+      it 'リクエストはRecordNotFoundとなること' do
+        expect{
+          patch :update, permalink: 'hogehoge' , user: attributes_for(:user)
+        }.to raise_exception(ActiveRecord::RecordNotFound)
       end
     end
   end
