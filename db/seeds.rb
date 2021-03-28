@@ -1,3 +1,28 @@
+Prefecture.create! (
+  [
+    {
+      id: 1,
+      name: "茨城"
+    },
+    {
+      id: 2,
+      name: "埼玉"
+    },
+    {
+      id: 3,
+      name: "千葉"
+    },
+    {
+      id: 4,
+      name: "東京"
+    },
+    {
+      id: 5,
+      name: "神奈川"
+    }
+  ]
+)
+
 User.create!(
   [
     {
@@ -34,31 +59,6 @@ User.create!(
       password: "123456",
       password_confirmation: "123456",
       prefecture_id: 5
-    }
-  ]
-)
-
-Prefecture.create! (
-  [
-    {
-      id: 1,
-      name: "茨城"
-    },
-    {
-      id: 2,
-      name: "埼玉"
-    },
-    {
-      id: 3,
-      name: "千葉"
-    },
-    {
-      id: 4,
-      name: "東京"
-    },
-    {
-      id: 5,
-      name: "神奈川"
     }
   ]
 )

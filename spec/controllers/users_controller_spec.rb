@@ -6,19 +6,27 @@ RSpec.describe UsersController, type: :controller do
   describe 'not_logged_in user' do
     # showページ
     describe "#show" do
-      context 'refers to show_page' do
+      context 'show_pageを参照しようとする場合' do
         before do
           @user = create(:user)
         end
-        it "redirects to sign_in page" do
+        it "リダイレクトすること" do
           get :show, params: {id: @user.id}
           expect(response.status).to eq 302
+        end
+      end
+      ########################################
+      context '要求されたユーザーが存在しない場合' do
+        it 'リクエストはRecordNotFoundとなること' do
+          expect{
+            get 'show', permalink: 'hogehoge'
+          }.to raise_exception(ActiveRecord::RecordNotFound)
         end
       end
     end
 
     describe "new" do
-      it 'responds successfully' do
+      it '正しく反応すること' do
         expect(response.status).to eq 200
       end
     end
@@ -26,14 +34,25 @@ RSpec.describe UsersController, type: :controller do
     # describe "create" do
     # end
     #
-    # describe "edit" do
-    #
-    # end
-    #
-    # describe "update" do
-    #
-    # end
 
+    describe "edit" do
+
+    end
+
+
+    describe "update" do
+      context '要求されたユーザーが存在しない場合' do
+        before do
+          @invalid_user = create(:invalid_user)
+        end
+        #######################################
+        it 'リクエストはRecordNotFoundとなること' do
+          expect{
+            patch :update, params: { }
+          }.to raise_exception(ActiveRecord::RecordNotFound)
+        end
+      end
+    end
   end
 
   # ログインユーザーの挙動
@@ -119,10 +138,17 @@ RSpec.describe UsersController, type: :controller do
       context '存在するユーザーの場合' do
         context '有効なパラメータを送信したとき' do
           before do
-            patch :update, params: { user: attributes_for(:user, name: 'hogehoge') }
+            patch :update, params: { id: @user.id, user: attributes_for(:user, name: 'hogehoge') }
           end
           it 'リダイレクトすること' do
             expect(response.status).to eq 302
+          end
+          it 'データベースのユーザーが更新されること' do
+            @user.reload
+            expect(@user.name).to eq 'hogehoge'
+          end
+          it 'users#showにリダイレクトすること' do
+            expect(response).to redirect_to user_path(@user)
           end
         end
       end
@@ -130,25 +156,18 @@ RSpec.describe UsersController, type: :controller do
 
     context '無効なパラメータの場合' do
       before do
-        patch :update, permalink: @user.permalink, user: attributes_for(:user, name: '  ')
+        patch :update, params: { id: @user.id, user: attributes_for(:user, name: ' ') }
+        @original_name = @user.name
       end
-      it 'リクエストは200 OKとなること' do
+      it '正しく反応すること' do
         expect(response.status).to eq 200
       end
       it 'データベースのユーザーは更新されないこと' do
         @user.reload
-        expect(@user.name).to eq @originalname
+        expect(@user.name).to eq @original_name
       end
-      it ':editテンプレートを再表示すること' do
+      it 'editテンプレートを再表示すること' do
         expect(response).to render_template :edit
-      end
-    end
-
-    context '要求されたユーザーが存在しない場合' do
-      it 'リクエストはRecordNotFoundとなること' do
-        expect{
-          patch :update, permalink: 'hogehoge' , user: attributes_for(:user)
-        }.to raise_exception(ActiveRecord::RecordNotFound)
       end
     end
   end
