@@ -94,3 +94,6 @@ Style/AsciiComments:
 # 1つのブロックあたりの行数の制限
 Metrics/BlockLength:
   Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
