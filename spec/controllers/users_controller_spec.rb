@@ -16,9 +16,9 @@ RSpec.describe UsersController, type: :controller do
 
       context '要求されたユーザーが存在しない場合' do
         it 'リクエストはRecordNotFoundとなること' do
-          expect do
-            get 'show', permalink: 'hogehoge'
-          end.to raise_exception(ActiveRecord::RecordNotFound)
+          expect{
+            get :show, params: { id: 99_999 }
+          }.to raise_exception(ActiveRecord::RecordNotFound)
         end
       end
     end
