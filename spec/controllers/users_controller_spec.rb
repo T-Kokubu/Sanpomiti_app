@@ -15,10 +15,12 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context '要求されたユーザーが存在しない場合' do
+        before do
+          @user = create(:user)
+        end
         it 'リクエストはRecordNotFoundとなること' do
-          expect{
-            get :show, params: { id: 99_999 }
-          }.to raise_exception(ActiveRecord::RecordNotFound)
+          get :show, params: { id: @user.id}
+          expect(response).to redirect_to login_path
         end
       end
     end
