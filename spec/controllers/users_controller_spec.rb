@@ -8,18 +8,9 @@ RSpec.describe UsersController, type: :controller do
         before do
           @user = create(:user)
         end
-        it 'リダイレクトすること' do
+        it 'ログインページにリダイレクトすること' do
           get :show, params: { id: @user.id }
           expect(response.status).to eq 302
-        end
-      end
-
-      context '要求されたユーザーが存在しない場合' do
-        before do
-          @user = create(:user)
-        end
-        it 'リクエストはRecordNotFoundとなること' do
-          get :show, params: { id: @user.id }
           expect(response).to redirect_to login_path
         end
       end
@@ -45,7 +36,7 @@ RSpec.describe UsersController, type: :controller do
   # ログインユーザーの挙動
   describe 'ログインユーザーの挙動について' do
     before :each do
-      @user = create(:user)
+      @user = create(:user, name: '鈴木一郎')
       sign_in @user
     end
 
@@ -158,14 +149,13 @@ RSpec.describe UsersController, type: :controller do
     context '無効なパラメータの場合' do
       before do
         patch :update, params: { id: @user.id, user: attributes_for(:user, name: ' ') }
-        @original_name = @user.name
       end
       it '正しく反応すること' do
         expect(response.status).to eq 200
       end
       it 'データベースのユーザーは更新されないこと' do
         @user.reload
-        expect(@user.name).to eq @original_name
+        expect(@user.name).to eq '鈴木一郎'
       end
       it 'editテンプレートを再表示すること' do
         expect(response).to render_template :edit

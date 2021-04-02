@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-    describe '一部入力がない状態でデータの送信が行われた場合' do
+    context '一部入力がない状態でデータの送信が行われた場合' do
       it 'usernameの入力がないとエラー表示' do
         user = build(:user, name: '')
         user.valid?
