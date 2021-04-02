@@ -19,7 +19,7 @@ RSpec.describe UsersController, type: :controller do
           @user = create(:user)
         end
         it 'リクエストはRecordNotFoundとなること' do
-          get :show, params: { id: @user.id}
+          get :show, params: { id: @user.id }
           expect(response).to redirect_to login_path
         end
       end

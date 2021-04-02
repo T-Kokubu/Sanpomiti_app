@@ -34,9 +34,9 @@ RSpec.describe User, type: :model do
       end
 
       it 'prefectureの入力がないとエラー表示' do
-        user = build(:user, prefecture: '')
+        user = build(:user, prefecture_id: '')
         user.valid?
-        expect(user.errors[:prefecture]).to include("can't be blank")
+        expect(user.errors[:prefecture]).to include('must exist')
       end
     end
 
