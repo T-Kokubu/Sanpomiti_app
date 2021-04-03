@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   rubocop:
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers-legacy
+      - image: circleci/ruby:2.5.8-node-browsers-legacy
         environment:
           RAILS_ENV: test
           POSTGRES_HOST: 127.0.0.1
@@ -15,12 +15,16 @@ jobs:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+      - run: rm -rf Gemfile.lock
+      - run: rm -rf vendor/bundle
+      - run: gem install bundler -v '2.2.15'
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
       - save_cache:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
       # Rubocop
       - run:
           name: Rubocop
@@ -28,10 +32,11 @@ jobs:
 
   rspec:
     docker:
-      - image: circleci/ruby:2.5.3-node-browsers-legacy
+      - image: circleci/ruby:2.5.8-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          POSTGRES_HOST: 127.0.0.1
+          PGHOST: 127.0.0.1
+          PGUSER: root
       - image: circleci/postgres:9.4
         environment:
           POSTGRES_USER: postgres
@@ -45,6 +50,9 @@ jobs:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+      - run: rm -rf Gemfile.lock
+      - run: rm -rf vendor/bundle
+      - run: gem install bundler -v '2.2.15'
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
       - save_cache:

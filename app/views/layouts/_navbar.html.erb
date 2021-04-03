@@ -1,0 +1,22 @@
+<header>
+    <%= link_to image_tag('/assets/toppage_logo.png'), '/' %>
+    <div class="header-right">
+        <ul class="header-right-up">
+            <% if logged_in? %>
+                <li class="btn btn-default btn-block post_course">コースを投稿</li>
+                <li class="btn btn-default btn-block mypage"><%= link_to 'マイページ', user_path(current_user) %></li>
+                <li class="btn btn-default btn-block logout"><%= link_to 'ログアウト', logout_path, method: :delete  %></li>
+            <% else %>
+                <li class="btn btn-default btn-block signup"><%= link_to '新規登録', signup_path %></li>
+                <li class="btn btn-default btn-block login"><%= link_to 'ログイン', login_path %></li>
+            <% end %>
+        </ul>
+
+        <div class="header-right-down">
+            <form action="#" method="GET">
+               <input class="form-text" type="seach" placeholder="検索ワードを入力してください">
+               <i class="fas fa-search"></i>
+            </form>
+        </div>
+    </div>
+</header>

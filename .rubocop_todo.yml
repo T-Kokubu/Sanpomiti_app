@@ -83,3 +83,17 @@ Style/StringLiterals:
 # SupportedStyles: percent, brackets
 Style/SymbolArray:
   EnforcedStyle: brackets
+
+Documentation:
+  Enabled: false
+
+# 日本語でのコメントをokにする
+Style/AsciiComments:
+  Enabled: false
+
+# 1つのブロックあたりの行数の制限
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false

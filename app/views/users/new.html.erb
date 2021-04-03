@@ -1,0 +1,34 @@
+<div class="text-center">
+  <h1>メールアドレスで新規登録</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+
+      <div class="form-group">
+        <%= f.text_field :name, class: 'form-control', placeholder: "名前" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.email_field :email, class: 'form-control', placeholder: "メールアドレス" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.password_field :password, class: 'form-control', placeholder: "パスワード(6〜16文字)" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "パスワード(確認)" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "選択してください" %>
+      </div>
+
+      <%= f.submit '登録', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </div>
+</div>

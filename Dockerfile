@@ -1,10 +1,10 @@
-FROM ruby:2.5.3
+FROM ruby:2.5.8
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN mkdir /sanpomiti_app
 WORKDIR /sanpomiti_app
 COPY Gemfile /sanpomiti_app/Gemfile
-COPY Gemfile.lock /sanpomiti_app/Gemfile.lock
-RUN bundle install
+# COPY Gemfile.lock /sanpomiti_app/Gemfile.lock
+RUN gem install bundler && bundle install
 COPY . /sanpomiti_app
 
 # Add a script to be executed every time the container starts.

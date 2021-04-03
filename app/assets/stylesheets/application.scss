@@ -1,0 +1,146 @@
+@import './toppages.scss' ;
+@import './users.scss' ;
+
+body {
+    font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+
+header {
+  margin: 5px 75px;
+  height: 76px;
+}
+
+header img {
+  margin-top: -10px;
+  margin-left: 4px;
+  height: 130px;
+  width: 130px;
+}
+
+/* headerの右部分 上下全体*/
+.header-right {
+  display: inline-block;
+  float: right;
+  margin-top: 10px
+}
+
+/* headerの右上　投稿　マイページ　ログイン部分 */
+.header-right-up {
+  height: 38px;
+}
+.header-right ul {
+  list-style: none;
+}
+.post_course {
+  display: inline-block;
+  margin-right: -5px;
+  margin-top: 7px;
+  padding: 3px 12px;
+  width: 126px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+}
+.mypage {
+  display: inline-block;
+  padding: 3px 12px;
+  width: 126px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+}
+.logout {
+  display: inline-block;
+  padding: 3px 12px;
+  width: 120px;
+  font-size: 14px;
+  text-align: center;
+  float: right;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+  float: right;
+  text-decoration: none;
+}
+
+// login前navbar
+.signup {
+  margin-top: 8px;
+  display: inline-block;
+  padding: 3px 12px;
+  width: 186px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.login {
+  display: inline-block;
+  padding: 3px 24px;
+  width: 186px;
+  font-size: 14px;
+  text-align: center;
+  float: right;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+  float: right;
+}
+
+/* header右下 　検索フォーム */
+.header-right-down {
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  padding: 0 10px;
+  height: 40px;
+  float: right;
+  margin-top: -16px;
+}
+.form-text {
+  display: inline-block;
+  width: 315px;
+  height: 30px;
+  padding-left: 10px;
+}
+.fa-search{
+  display: inline-block;
+  padding-left: 15px;
+  padding-top: 15px;
+  font-size: 30px;
+}
+
+footer {
+  background-color: #4d4945;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  padding: 30px 0 30px 100px;
+  margin-top: 100px;
+  text-align: left;
+  width: 100%;
+
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
