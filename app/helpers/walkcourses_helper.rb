@@ -1,0 +1,2 @@
+module WalkcoursesHelper
+end
