@@ -12,6 +12,8 @@ services:
 
   web:
     build: .
+    tty: true
+    stdin_open: true
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/sanpomiti_app

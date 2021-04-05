@@ -53,6 +53,11 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
+
+  # pry
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
 end
 
 group :development do
@@ -62,6 +67,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # debug
+  gem 'better_errors' # エラー画面をわかりやすく整形してくれる
+  gem 'binding_of_caller' # better_errorsの画面上にirb/pry(PERL)を表示する
 end
 
 group :test do
