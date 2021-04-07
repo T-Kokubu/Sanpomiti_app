@@ -49,9 +49,9 @@ class CoursepicUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   #画像をリサイズ
-  
+  version :thumb do
     process resize_to_fit: [400, 400]
-
+  end
   version :thumb50 do
     process resize_to_fit: [100, 100]
   end
