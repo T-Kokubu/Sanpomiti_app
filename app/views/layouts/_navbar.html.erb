@@ -3,7 +3,7 @@
     <div class="header-right">
         <ul class="header-right-up">
             <% if logged_in? %>
-                <li class="btn btn-default btn-block post_course">コースを投稿</li>
+                <li class="btn btn-default btn-block post_course"><%= link_to 'コースを投稿', new_walkcourse_path %></li>
                 <li class="btn btn-default btn-block mypage"><%= link_to 'マイページ', user_path(current_user) %></li>
                 <li class="btn btn-default btn-block logout"><%= link_to 'ログアウト', logout_path, method: :delete  %></li>
             <% else %>
