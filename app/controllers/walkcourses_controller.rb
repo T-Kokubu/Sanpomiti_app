@@ -7,7 +7,7 @@ class WalkcoursesController < ApplicationController
   end
 
   def create
-    @walkcourse = Walkcourse.new(walkcourse_params)
+    @walkcourse = current_user.walkcourses.build(course_params)
 
     if @walkcourse.save
       flash[:success] = 'コースが登録されました。'
@@ -30,4 +30,9 @@ class WalkcoursesController < ApplicationController
   def destroy
   end
 
+  private
+
+  def course_params
+    params.require(:walkcourse).permit(:title, :description, :coursepic)
+  end
 end

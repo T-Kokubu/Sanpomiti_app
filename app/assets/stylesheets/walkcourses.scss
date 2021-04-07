@@ -25,6 +25,7 @@
 .course_image {
   border: 1px solid #808080;
   height: 300px;
+  position: relative;
 }
 .course_image_explanation {
   display: inline-block;
@@ -35,7 +36,10 @@
 }
 .course_image_button {
   display: inline-block;
-  border: 1px solid #808080;
+  float: right;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 // コースの説明部分
