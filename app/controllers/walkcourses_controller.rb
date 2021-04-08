@@ -26,6 +26,15 @@ class WalkcoursesController < ApplicationController
   end
 
   def update
+    @walkcourse = Walkcourse.find(params[:id])
+    if @walkcourse.update_attributes(course_params)
+      # 更新に成功したときの処理
+      flash[:success] = 'コース情報の更新に成功しました。'
+      redirect_to edit_walkcourse_path(@walkcourse)
+    else
+      flash.now[:danger] = 'コース情報の更新に失敗しました。'
+      render 'edit'
+    end
   end
 
   def destroy

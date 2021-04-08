@@ -15,12 +15,6 @@
   width: 300px;
   padding: 10px 10px;
 }
-.submitted_courseimage {
-  display: inline-block;
-  float: right;
-  padding-top: 20px;
-  padding-right: 20px;
-}
 .title_transmit_form {
   display: inline-block;
   padding: 2px 10px;
@@ -30,7 +24,7 @@
 // コースイメージ部分
 .course_image {
   border: 1px solid #808080;
-  height: 300px;
+  height: 350px;
   position: relative;
 }
 .course_image_explanation {
@@ -40,12 +34,19 @@
   font-size: 20px;
   width: 300px;
 }
+.submitted_courseimage {
+  display: inline-block;
+  float: right;
+  padding-top: 20px;
+  padding-right: 40px;
+}
 .course_image_button {
   display: inline-block;
   float: right;
   position: absolute;
   right: 0;
   bottom: 0;
+  padding-right: 20px;
 }
 
 // コースの説明部分
