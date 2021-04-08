@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'carrierwave', '~> 2.0'
-#画像のリサイズ
+# 画像のリサイズ
 gem 'mini_magick'
 
 # Use Capistrano for deployment

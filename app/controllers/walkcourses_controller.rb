@@ -1,6 +1,5 @@
 class WalkcoursesController < ApplicationController
-  def index
-  end
+  def index; end
 
   def new
     @walkcourse = Walkcourse.new
@@ -18,8 +17,7 @@ class WalkcoursesController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     @walkcourse = Walkcourse.find(params[:id])
@@ -37,8 +35,7 @@ class WalkcoursesController < ApplicationController
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 
   private
 
