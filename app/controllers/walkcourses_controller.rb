@@ -3,6 +3,7 @@ class WalkcoursesController < ApplicationController
 
   def new
     @walkcourse = Walkcourse.new
+    @walkcourse.spots.build
   end
 
   def create
@@ -40,6 +41,6 @@ class WalkcoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:walkcourse).permit(:title, :description, :coursepic)
+    params.require(:walkcourse).permit(:title, :description, :coursepic, spots_attributes: [:id, :name, :transit_time, :time_required, :address, :description])
   end
 end

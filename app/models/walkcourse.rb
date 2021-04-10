@@ -4,4 +4,6 @@ class Walkcourse < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 255 }
   mount_uploader :coursepic, CoursepicUploader
+
+  accepts_nested_attributes_for :spots
 end

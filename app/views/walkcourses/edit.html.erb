@@ -40,3 +40,21 @@
     </div>
   <% end %>
 </div>
+
+<div class="spot_form">
+  <%= form_with(model: @spot, local: true) do |f| %>
+    <div class="first_spot">
+      <div class="start_station">
+        <%= f.text_field :name %>　駅
+      </div>
+      <!-- 移動時間 -->
+      <div class="first_transittime">
+        <%= f.text_field :transit_time %>　分
+      </div>
+
+      <div class="save_button">
+        <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+      </div>
+    </div>
+  <% end %>
+</div>
