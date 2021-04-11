@@ -15,7 +15,7 @@ class SpotsController < ApplicationController
     if @spot.update_attributes(spot_params)
       # 更新に成功したときの処理
       flash[:success] = 'スポットの更新に成功しました。'
-      redirect_to edit_walkcourse_path(@spot)
+      redirect_to edit_walkcourse_path(@walkcourse)
     else
       flash.now[:danger] = 'スポットの更新に失敗しました。'
       render 'edit'

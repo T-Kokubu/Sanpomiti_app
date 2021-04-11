@@ -44,17 +44,25 @@
 <div class="spot_form">
   <%= form_with(model: @spot, local: true) do |f| %>
     <div class="first_spot">
+      <div class="start_station_explanation">
+        <a>スタート地点の駅名を<br>入力する</a>
+      </div>
       <div class="start_station">
-        <%= f.text_field :name %>　駅
+        <%= f.text_field :name, size: "40" %>　駅
       </div>
-      <!-- 移動時間 -->
-      <div class="first_transittime">
-        <%= f.text_field :transit_time %>　分
+    </div>
+    <!-- 移動時間 -->
+    <div class="first_transittime">
+      <div class="first_transittime_explanation">
+        <a>次のスポットまでの<br>移動時間を入力する</a>
       </div>
+      <div class="next_to_transititme">
+        <%= f.text_field :transit_time, size: "40" %>　分
+      </div>
+    </div>
 
-      <div class="save_button">
-        <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
-      </div>
+    <div class="save_button">
+      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
     </div>
   <% end %>
 </div>

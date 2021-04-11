@@ -78,3 +78,56 @@
   line-height: 20px;
   padding: 10px 0;
 }
+
+// １つ目のスポット登録画面
+.spot_form {
+  margin: 90px 75px 60px 75px;
+}
+// スタート地点の駅名登録画面
+.first_spot {
+  height: 60px;
+  font-size: 20px;
+  position: relative;
+}
+.start_station_explanation {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 300px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+.start_station {
+  display: inline-block;
+  border: 1px solid #808080;
+  text-align: center;
+  padding: 13px 84px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+.first_transittime {
+  height: 60px;
+  font-size: 20px;
+  position: relative;
+}
+.first_transittime_explanation {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 300px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+}
+.next_to_transititme {
+  display: inline-block;
+  border: 1px solid #808080;
+  text-align: center;
+  padding: 13px 84px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
