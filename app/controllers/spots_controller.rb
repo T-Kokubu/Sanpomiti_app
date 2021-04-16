@@ -5,15 +5,16 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @walkcourse = Walkcourse.find(params[:walkcourse_id])
+    @walkcourse = Walkcourse.find(params[:id])
     @spot = @walkcourse.spots.build
 
     if @spot.save
+      binding.pry
       flash[:success] = 'スポットが登録されました。'
       redirect_to edit_walkcourse_spot_path(@walkcourse, @spot)
     else
       flash.now[:danger] = 'スポットの登録に失敗しました。'
-      render 'new'
+      redirect_to new_walkcourse_path
     end
   end
 

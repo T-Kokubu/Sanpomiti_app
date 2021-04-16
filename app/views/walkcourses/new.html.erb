@@ -38,7 +38,7 @@
 
 
 <div class="spot_form">
-  <%= form_with(url: walkcourse_spots_path(@walkcourse, @spot), model: @spot, local: true) do |f| %>
+  <%= form_with(url: walkcourse_spots_path(:walkcourse_id), model: @spot, local: true) do |f| %>
     <div class="first_spot">
       <div class="start_station_explanation">
         <a>スタート地点の駅名を<br>入力する</a>
