@@ -3,7 +3,7 @@ class Spot < ApplicationRecord
   validates :name, length: { maximum: 50 }
   validates :address, length: { maximum: 50 }
   validates :description, length: { maximum: 250 }
-
+  mount_uploader :spotpic, SpotpicUploader
   # before_save do
   #   # ここでbinding.pryで止めてselfとはなんなのか確認してみましょう！
   #
