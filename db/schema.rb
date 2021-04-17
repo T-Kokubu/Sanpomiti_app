@@ -10,48 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_407_034_630) do
+ActiveRecord::Schema.define(version: 2021_04_07_034630) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'prefectures', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "prefectures", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'spots', force: :cascade do |t|
-    t.bigint 'walkcourse_id'
-    t.string 'name'
-    t.time 'transit_time'
-    t.time 'time_required'
-    t.string 'address'
-    t.text 'description'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['walkcourse_id'], name: 'index_spots_on_walkcourse_id'
+  create_table "spots", force: :cascade do |t|
+    t.bigint "walkcourse_id"
+    t.string "name"
+    t.integer "transit_time"
+    t.integer "time_required"
+    t.string "address"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["walkcourse_id"], name: "index_spots_on_walkcourse_id"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'name'
-    t.string 'email'
-    t.string 'password_digest'
-    t.integer 'prefecture_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.index ['prefecture_id'], name: 'index_users_on_prefecture_id'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "prefecture_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_users_on_prefecture_id"
   end
 
-  create_table 'walkcourses', force: :cascade do |t|
-    t.bigint 'user_id'
-    t.string 'title'
-    t.text 'description'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'coursepic'
-    t.index ['user_id'], name: 'index_walkcourses_on_user_id'
+  create_table "walkcourses", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "coursepic"
+    t.index ["user_id"], name: "index_walkcourses_on_user_id"
   end
 
-  add_foreign_key 'spots', 'walkcourses'
-  add_foreign_key 'walkcourses', 'users'
+  add_foreign_key "spots", "walkcourses"
+  add_foreign_key "walkcourses", "users"
 end
