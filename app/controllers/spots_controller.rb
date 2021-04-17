@@ -7,7 +7,6 @@ class SpotsController < ApplicationController
   def create
     @walkcourse = Walkcourse.find(params[:walkcourse_id])
     @spot = @walkcourse.spots.build(spot_params)
-    
 
     if @spot.save
       flash[:success] = 'スポットが登録されました。'
