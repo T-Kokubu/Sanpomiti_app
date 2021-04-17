@@ -6,8 +6,8 @@ class SpotsController < ApplicationController
 
   def create
     @walkcourse = Walkcourse.find(params[:walkcourse_id])
-    @spot = @walkcourse.spots.build
-    binding.pry
+    @spot = @walkcourse.spots.build(spot_params)
+    
 
     if @spot.save
       flash[:success] = 'スポットが登録されました。'
@@ -46,6 +46,6 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:name, :transit_time, :time_required, :address, :description)
+    params.permit(:name, :transit_time, :time_required, :address, :description)
   end
 end
