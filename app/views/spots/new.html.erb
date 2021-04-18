@@ -85,5 +85,25 @@
         <%= f.text_field :transit_time, size: "40" %>　分
       </div>
     </div>
+    <!-- 二番目の画像登録 -->
+    <div class="spot_image">
+      <div class="spot_image_explanation">
+        <a>一覧表示で使用される<br>メイン画像を選択する</a>
+      </div>
+      <div class="spot_image_button">
+        <button type="button" class="btn btn-outline-secondary rounded-pill">
+          <%= f.file_field :spotpic %>
+       </button>
+      </div>
+    </div>
+    <!-- 地図の入力フォーム -->
+    <div id="map" style='width: 100%; height: 500px;'></div>
+    <div class="field">
+      <%= f.text_field :address %>
+    </div>
+
+    <div class="save_button">
+      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+    </div>
   <% end %>
 </div>
