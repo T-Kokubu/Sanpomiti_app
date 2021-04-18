@@ -92,6 +92,10 @@ GEM
     crass (1.0.6)
     debug_inspector (1.1.0)
     diff-lcs (1.4.4)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
     factory_bot (6.1.0)
@@ -146,6 +150,8 @@ GEM
     msgpack (1.4.2)
     nio4r (2.5.7)
     nokogiri (1.11.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.11.3-x86_64-linux)
       racc (~> 1.4)
     parallel (1.20.1)
     parser (3.0.1.0)
@@ -302,6 +308,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
@@ -313,6 +320,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 2.0)
   coffee-rails (~> 4.2)
+  dotenv-rails
   factory_bot_rails
   geocoder (~> 1.6.7)
   gmaps4rails
@@ -350,4 +358,4 @@ RUBY VERSION
    ruby 2.5.8p224
 
 BUNDLED WITH
-   2.2.6
+   2.2.16

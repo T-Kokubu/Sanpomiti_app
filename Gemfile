@@ -46,6 +46,8 @@ gem 'kaminari'
 gem 'gmaps4rails'
 gem 'geocoder', '~> 1.6.7'
 gem 'nokogiri', '~> 1.8'
+# 環境変数
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -11,7 +11,6 @@ class SpotsController < ApplicationController
     if @spot.save
       flash[:success] = 'スポットが登録されました。'
       redirect_to edit_walkcourse_spot_path(@walkcourse, @spot)
-
     else
       flash.now[:danger] = 'スポットの登録に失敗しました。'
       redirect_to new_walkcourse_path
@@ -45,6 +44,6 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.permit(:name, :transit_time, :time_required, :address, :description, :spotpic)
+    params.permit(:name, :transit_time, :time_required, :address, :description, :spotpic, :latitude, :longitude)
   end
 end

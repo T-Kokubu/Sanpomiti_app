@@ -33,3 +33,4 @@
 /vendor
 
 /public/uploads
+.env

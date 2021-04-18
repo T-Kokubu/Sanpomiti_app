@@ -4,6 +4,8 @@ class Spot < ApplicationRecord
   validates :address, length: { maximum: 50 }
   validates :description, length: { maximum: 250 }
   mount_uploader :spotpic, SpotpicUploader
+  geocoded_by :address
+  after_validation :geocode
   # before_save do
   #   # ここでbinding.pryで止めてselfとはなんなのか確認してみましょう！
   #
