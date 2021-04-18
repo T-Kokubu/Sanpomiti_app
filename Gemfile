@@ -42,7 +42,6 @@ gem 'jquery-ui-rails'
 
 # paginate
 gem 'kaminari'
-
 # 地図表示
 gem 'gmaps4rails'
 gem 'geocoder', '~> 1.6.7'
