@@ -1,5 +1,5 @@
-<div class="course_form">
-  <%= form_with(model: @walkcourse, local: true) do |f| %>
+<%= form_with(model: @walkcourse, local: true) do |f| %>
+  <div class="course_form">
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="course_title_form">
       <div class="course_explanation">
@@ -30,9 +30,37 @@
     </div>
     <div class="save_button">
       <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+
     </div>
-  <% end %>
-</div>
+
+    <%= f.fields_for :spots do |spot_form| %>
+      <div class="zero_spot">
+        <div class="start_station_explanation">
+          <a>スタート地点の駅名を<br>入力する</a>
+        </div>
+        <div class="start_station">
+          <%= spot_form.text_field :name, size: "40" %>　駅
+        </div>
+      </div>
+      <!-- 移動時間 -->
+      <div class="first_transittime">
+        <div class="first_transittime_explanation">
+          <a>次のスポットまでの<br>移動時間を入力する</a>
+        </div>
+        <div class="next_to_transititme">
+          <%= spot_form.text_field :transit_time, size: "40" %>　分
+        </div>
+      </div>
+      <!-- 保存ボタン -->
+      <div class="save_button">
+        <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 
 
 <div class="spot_form">

@@ -22,13 +22,12 @@ class SpotsController < ApplicationController
   def edit
     @walkcourse = Walkcourse.find(params[:walkcourse_id])
     @spot = @walkcourse.spots.find(params[:id])
-
   end
 
   def update
     @walkcourse = Walkcourse.find(params[:walkcourse_id])
     @spot = @walkcourse.spots.find(params[:id])
-    
+
 
     if @spot.update_attributes(spot_params)
       # 更新に成功したときの処理

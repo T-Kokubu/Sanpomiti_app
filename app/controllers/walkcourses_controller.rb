@@ -8,7 +8,6 @@ class WalkcoursesController < ApplicationController
 
   def create
     @walkcourse = current_user.walkcourses.build(course_params)
-
     if @walkcourse.save
       flash[:success] = 'コースが登録されました。'
       redirect_to edit_walkcourse_path(@walkcourse)
@@ -29,7 +28,7 @@ class WalkcoursesController < ApplicationController
     if @walkcourse.update_attributes(course_params)
       # 更新に成功したときの処理
       flash[:success] = 'コース情報の更新に成功しました。'
-      redirect_to edit_walkcourse_spot_path(@walkcourse, @spot)
+      redirect_to edit_walkcourse_path(@walkcourse)
     else
       flash.now[:danger] = 'コース情報の更新に失敗しました。'
       render 'edit'
@@ -41,6 +40,6 @@ class WalkcoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:walkcourse).permit(:title, :description, :coursepic, spots_attributes: [:id, :name, :transit_time, :time_required, :address, :description])
+    params.require(:walkcourse).permit(:title, :description, :coursepic, spots_attributes: [:id, :name, :transit_time, :time_required, :address, :description, :spotpic, :longitude, :latitude])
   end
 end
