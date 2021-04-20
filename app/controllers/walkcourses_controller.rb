@@ -21,6 +21,9 @@ class WalkcoursesController < ApplicationController
 
   def edit
     @walkcourse = Walkcourse.find(params[:id])
+    @walkcourse.spots.build
+    @walkcourse.spots.build
+    @walkcourse.spots.build
   end
 
   def update
@@ -28,7 +31,6 @@ class WalkcoursesController < ApplicationController
     if @walkcourse.update_attributes(course_params)
       # 更新に成功したときの処理
       flash[:success] = 'コース情報の更新に成功しました。'
-      binding.pry
       redirect_to edit_walkcourse_path(@walkcourse)
     else
       flash.now[:danger] = 'コース情報の更新に失敗しました。'
