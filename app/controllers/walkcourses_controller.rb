@@ -10,6 +10,7 @@ class WalkcoursesController < ApplicationController
     @walkcourse = current_user.walkcourses.build(course_params)
     if @walkcourse.save
       flash[:success] = 'コースが登録されました。'
+      binding.pry
       redirect_to edit_walkcourse_path(@walkcourse)
     else
       flash.now[:danger] = 'コースの登録に失敗しました。'
