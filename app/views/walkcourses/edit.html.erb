@@ -30,9 +30,6 @@
         <%= f.text_area :description, size: "5x10", class: 'form-control' %>
       </div>
     </div>
-    <div class="save_button">
-      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
-    </div>
   </div>
 
   <div class="spot_form">
@@ -55,12 +52,7 @@
           <%= spot_form.text_field :transit_time, size: "40" %>　分
         </div>
       </div>
-      <!-- 保存ボタン -->
-      <div class="save_button">
-        <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
-      </div>
-    <% end %>
-    <%= f.fields_for :spots do |spot_form| %>
+
       <!-- 二番目のスポットの入力 -->
       <div class="second_spot">
         <div class="second_spot_explanation">
@@ -98,14 +90,11 @@
       <div class="field">
         <%# <%= f.text_field :address %> %>
       </div> -->
-
-      <div class="save_button">
-        <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
-      </div>
-
     <% end %>
+    <div class="save_button">
+      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+    </div>
   </div>
-
 <% end %>
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
