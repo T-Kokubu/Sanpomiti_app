@@ -49,7 +49,9 @@
       <%= f.text_field :time_to_first_spot, size: "40" %>　分
     </div>
   </div>
-
+  <div class="save_button">
+    <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+  </div>
   <!-- spotの登録 -->
   <%= f.fields_for :spots do |spot_form| %>
     <div class="zero_spot">
@@ -82,6 +84,9 @@
           <%= spot_form.file_field :spotpic %>
        </button>
       </div>
+    </div>
+    <div class="save_button">
+      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
     </div>
   <% end %>
 
