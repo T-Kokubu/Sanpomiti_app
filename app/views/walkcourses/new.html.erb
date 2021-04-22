@@ -50,7 +50,7 @@
       <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
     </div>
     <!-- spotの登録 -->
-    <%= f.fields_for :spots,@walkcourse.spots.sort_by(&:id) do |spot_form| do |spot_form| %>
+    <%= f.fields_for :spots,@walkcourse.spots.sort_by(&:id) do |spot_form| %>
       <div class="zero_spot">
         <div class="spot_name">
           <a>スポットの名称を入力する</a>
@@ -109,6 +109,28 @@
       <div class="actions">
         <%= f.submit %>
       </div>
+
+      <div id="map"></div>
+      <style>
+           #map {
+           height: 500px;
+           width: 70%;
+          }
+      </style>
+      <script>
+        function initMap() {
+          var uluru = {lat: <%= spot_form.object.latitude %>, lng: <%= spot_form.object.longitude %>};
+          var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 16,
+          enter: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+             }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GMAP_API_KEY'] %>&callback=initMap"async defer></script>
     <% end %>
 
     <div class="zero_spot">

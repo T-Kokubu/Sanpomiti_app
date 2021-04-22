@@ -5,5 +5,5 @@ class Spot < ApplicationRecord
   validates :description, length: { maximum: 250 }
   mount_uploader :spotpic, SpotpicUploader
   geocoded_by :address
-  after_validation :geocode
+  after_validation :geocode, if: :address_changed?
 end
