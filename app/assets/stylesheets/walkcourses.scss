@@ -121,7 +121,7 @@
   position: absolute;
   bottom: 0;
 }
-.next_to_transititme {
+.next_to_transittime {
   display: inline-block;
   border: 1px solid #808080;
   text-align: center;
@@ -180,6 +180,8 @@
   bottom: 0;
 }
 
+
+
 .zero_spot {
   height: 60px;
   font-size: 20px;
@@ -205,4 +207,49 @@
   position: absolute;
   bottom: 0;
   padding: 15px 0;
+}
+
+.image_map {
+  border: 1px solid #808080;
+  padding-bottom: 5px;
+}
+.spot_image_visual {
+  display: inline-block;
+  border: 1px solid #808080;
+  height: 300px;
+  width: 50%;
+  text-align: center;
+  padding-top: 300px;
+  margin-top: 10px;
+  position: relative;
+}
+.submitted_spotimage {
+  position: absolute;
+  top: 15px;
+  left: 40px;
+}
+.map_visual {
+  display: inline-block;
+  border: 1px solid #808080;
+  text-align: center;
+  padding-right: 40px;
+}
+.map_button {
+  text-align: center;
+  padding-left: 40px;
+}
+.map_address {
+  display: inline-block;
+}
+.map_submit_button {
+  display: inline-block;
+}
+.start_place {
+  display: inline-block;
+  border: 1px solid #808080;
+  text-align: center;
+  padding: 13px 84px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
