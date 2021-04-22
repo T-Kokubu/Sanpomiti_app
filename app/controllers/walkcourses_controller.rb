@@ -23,7 +23,6 @@ class WalkcoursesController < ApplicationController
 
   def edit
     @walkcourse = Walkcourse.find(params[:id])
-
   end
 
   def update

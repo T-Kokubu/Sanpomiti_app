@@ -50,7 +50,7 @@
       <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
     </div>
     <!-- spotの登録 -->
-    <%= f.fields_for :spots do |spot_form| %>
+    <%= f.fields_for :spots,@walkcourse.spots.sort_by(&:id) do |spot_form| do |spot_form| %>
       <div class="zero_spot">
         <div class="spot_name">
           <a>スポットの名称を入力する</a>
@@ -82,6 +82,32 @@
       </div>
       <div class="save_button">
         <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+      </div>
+
+      <!-- 地図入力フォーム -->
+      <div id="map" style='width: 50%; height: 300px;'></div>
+      <script type="text/javascript">
+        handler = Gmaps.build('Google');
+        handler.buildMap({ provider: { scrollwheel: false }, internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers([
+            {
+              "lat": <%= spot_form.object.latitude %>,
+              "lng": <%= spot_form.object.longitude %>,
+    		  "infowindow": '<p><%= spot_form.object.address %></p><p><%= link_to "Googleマップで見る" ,"https://maps.google.co.jp/maps?q=loc:#{spot_form.object.latitude},#{spot_form.object.longitude}&iwloc=J",target: "_blank" %></p>'
+            }
+          ]);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          handler.getMap().setZoom(17);
+        });
+      </script>
+
+      <div class="field">
+        <%= spot_form.label :address %>
+        <%= spot_form.text_field :address %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
       </div>
     <% end %>
 
