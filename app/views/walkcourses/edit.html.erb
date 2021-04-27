@@ -92,20 +92,20 @@
         <div class="map_visual">
           <div id="map-<%= spot_form.object.id %>" style='width: 109%; height: 330px;'></div>
           <script type="text/javascript">
-            handler = Gmaps.build('Google');
-            handler.buildMap({
+            handler<%= spot_form.object.id %> = Gmaps.build('Google');
+            handler<%= spot_form.object.id %>.buildMap({
               provider: { scrollwheel: false },
               internal: { id: "map-<%= spot_form.object.id %>" }
             }, function() {
-              markers = handler.addMarkers([
+              markers = handler<%= spot_form.object.id %>.addMarkers([
                 {
                   "lat": <%= spot_form.object.latitude %>,
                   "lng": <%= spot_form.object.longitude %>,
                 }
               ]);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              handler.getMap().setZoom(17);
+              handler<%= spot_form.object.id %>.bounds.extendWith(markers);
+              handler<%= spot_form.object.id %>.fitMapToBounds();
+              handler<%= spot_form.object.id %>.getMap().setZoom(17);
             });
           </script>
 
