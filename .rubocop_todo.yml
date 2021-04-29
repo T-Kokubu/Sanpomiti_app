@@ -100,3 +100,7 @@ Metrics/AbcSize:
 
 Layout/LineLength:
   Enabled: false
+
+# 空ファイル不可
+Lint/EmptyFile:
+  Enabled: false
