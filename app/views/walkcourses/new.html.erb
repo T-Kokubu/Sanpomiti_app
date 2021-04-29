@@ -39,83 +39,106 @@
     </div>
   </div>
   <!-- 移動時間 -->
-  <div class="first_transittime">
-    <div class="first_transittime_explanation">
+  <div class="first_time_required">
+    <div class="start_station_explanation">
       <a>次のスポットまでの<br>移動時間を入力する</a>
     </div>
-    <div class="next_to_transittime">
+    <div class="start_station">
       <%= f.text_field :time_to_first_spot, size: "40" %>　分
     </div>
+  </div>
+  <!-- saveボタン -->
+  <div class="save_button">
+    <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
   </div>
 
   <!-- spotの登録 -->
   <%= f.fields_for :spots ,@walkcourse.spots.sort_by(&:id) do |spot_form| %>
-
-    <div class="zero_spot">
-      <div class="spot_name">
-        <a>スポットの名称を入力する</a>
-      </div>
-      <div class="start_place">
-        <%= spot_form.text_field :name, size: "40" %>　　
-      </div>
-    </div>
-    <!-- 移動時間 -->
-    <div class="first_transittime">
-      <div class="spot_timerequired_explanation">
-        <a>この場所で所要する時間</a>
-      </div>
-      <div class="next_to_transittime">
-        <%= spot_form.text_field :time_required, size: "40" %>　分
-      </div>
-    </div>
-    <!-- spotイメージ -->
-    <div class="image_map">
-      <div class="spot_image_visual">
-        <div class="spot_image_explanation">
-          <a>登録するスポットの画像を選択する</a>
+    <div class="spot_entry_form">
+      <div class="zero_spot">
+        <div class="spot_name">
+          <a>スポットの名称を入力する</a>
         </div>
-        <div class="spot_image_button">
-          <button type="button" class="btn btn-outline-secondary rounded-pill">
-            <%= spot_form.file_field :spotpic %>
-         </button>
+        <div class="start_place">
+          <%= spot_form.text_field :name, size: "40" %>　　
         </div>
       </div>
-      <!-- 地図入力フォーム -->
-      <div class="map_visual">
-        <div id="map-<%= spot_form.object.id %>" style='width: 109%; height: 330px;'></div>
-        <script type="text/javascript">
-          handler<%= spot_form.object.id %> = Gmaps.build('Google');
-          handler<%= spot_form.object.id %>.buildMap({
-            provider: { scrollwheel: false },
-            internal: { id: "map-<%= spot_form.object.id %>" }
-          }, function() {
-            markers = handler<%= spot_form.object.id %>.addMarkers([
-              {
-                "lat": <%= spot_form.object.latitude %>,
-                "lng": <%= spot_form.object.longitude %>,
-              }
-            ]);
-            handler<%= spot_form.object.id %>.bounds.extendWith(markers);
-            handler<%= spot_form.object.id %>.fitMapToBounds();
-            handler<%= spot_form.object.id %>.getMap().setZoom(17);
-          });
-        </script>
-
-        <div class="map_button">
-          <div class="map_address">
-            <%= spot_form.label :"住所" %>
-            <%= spot_form.text_field :address %>
+      <!-- 所要時間の入力 -->
+      <div class="first_time_required">
+        <div class="spot_time_required_explanation">
+          <a>この場所で所要する時間</a>
+        </div>
+        <div class="spot_time_required">
+          <%= spot_form.text_field :time_required, size: "40" %>　分
+        </div>
+      </div>
+      <!-- spotイメージ -->
+      <div class="image_map">
+        <div class="spot_image_visual">
+          <div class="spot_image_explanation">
+            <a>登録するスポットの画像を選択する</a>
           </div>
-          <div class="map_submit_button">
-            <%= f.submit %>
+          <div class="spot_image_button">
+            <button type="button" class="btn btn-outline-secondary rounded-pill">
+              <%= spot_form.file_field :spotpic %>
+           </button>
           </div>
         </div>
+        <!-- 地図入力フォーム -->
+        <div class="map_visual">
+          <div id="map-<%= spot_form.object.id %>" style='width: 109%; height: 330px;'></div>
+          <script type="text/javascript">
+            handler<%= spot_form.object.id %> = Gmaps.build('Google');
+            handler<%= spot_form.object.id %>.buildMap({
+              provider: { scrollwheel: false },
+              internal: { id: "map-<%= spot_form.object.id %>" }
+            }, function() {
+              markers = handler<%= spot_form.object.id %>.addMarkers([
+                {
+                  "lat": <%= spot_form.object.latitude %>,
+                  "lng": <%= spot_form.object.longitude %>,
+                }
+              ]);
+              handler<%= spot_form.object.id %>.bounds.extendWith(markers);
+              handler<%= spot_form.object.id %>.fitMapToBounds();
+              handler<%= spot_form.object.id %>.getMap().setZoom(17);
+            });
+          </script>
+
+          <div class="map_button">
+            <div class="map_address">
+              <%= spot_form.label :"住所" %>
+              <%= spot_form.text_field :address %>
+            </div>
+            <div class="map_submit_button">
+              <%= f.submit %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- spotの説明 -->
+      <div class="spot_description">
+        <div class="description_title">
+          <a>スポットの<br>説明を入力する</a>
+        </div>
+        <div class="description_form">
+          <%= spot_form.text_area :description, size: "62", class: 'form-control' %>
+        </div>
+      </div>
+      <!-- 移動時間の入力 -->
+      <div class="transittime">
+        <div class="spot_transittime_explanation">
+          <a>次のスポットまでの<br>移動時間を入力する</a>
+        </div>
+        <div class="next_to_transittime">
+          <%= spot_form.text_field :transit_time, size: "40" %>　分
+        </div>
+      </div>
+      <div class="save_button">
+        <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
       </div>
     </div>
-    <div class="save_button">
-      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
-    </div>
-    <% end %>
+  <% end %>
 
     <div class="zero_spot">
       <div class="start_station_explanation">

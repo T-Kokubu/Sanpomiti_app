@@ -1,15 +1,15 @@
 <%= form_with(model: @walkcourse, local: true) do |f| %>
-  <div class="course_form">
-    <%= render 'layouts/error_messages', model: f.object %>
-    <div class="course_title_form">
-      <div class="course_explanation">
-        <a>コースタイトル</a>
-      </div>
-      <div class="title_transmit_form">
-        <%= f.text_field :title, size: "62", class: 'form-control' %>
-      </div>
+<div class="course_form">
+  <%= render 'layouts/error_messages', model: f.object %>
+  <div class="course_title_form">
+    <div class="course_explanation">
+      <a>コースタイトル</a>
     </div>
-    <div class="course_image">
+    <div class="title_transmit_form">
+      <%= f.text_field :title, size: "62", class: 'form-control' %>
+    </div>
+  </div>
+  <div class="course_image">
       <div class="course_image_explanation">
         <a>一覧表示で使用される<br>メイン画像を選択する</a>
       </div>
@@ -23,37 +23,41 @@
       </div>
     </div>
 
-    <div class="course_description">
-      <div class="course_description_explanation">
-        <a>コースの説明を入力する</a>
-      </div>
-      <div class="description_transmit_form">
-        <%= f.text_area :description, size: "5x10", class: 'form-control' %>
-      </div>
+  <div class="course_description">
+    <div class="course_description_explanation">
+      <a>コースの説明を入力する</a>
     </div>
-
-    <!-- 1つ目のスポットの登録 -->
-    <div class="first_spot">
-      <div class="start_station_explanation">
-        <a>スタート地点の駅名を<br>入力する</a>
-      </div>
-      <div class="start_station">
-        <%= f.text_field :start_station, size: "40" %>　駅
-      </div>
+    <div class="description_transmit_form">
+      <%= f.text_area :description, size: "5x10", class: 'form-control' %>
     </div>
-    <!-- 移動時間 -->
-    <div class="first_transittime">
-      <div class="first_transittime_explanation">
-        <a>次のスポットまでの<br>移動時間を入力する</a>
-      </div>
-      <div class="next_to_transittime">
-        <%= f.text_field :time_to_first_spot, size: "40" %>　分
-      </div>
+  </div>
+
+  <!-- 1つ目のスポットの登録 -->
+  <div class="first_spot">
+    <div class="start_station_explanation">
+      <a>スタート地点の駅名を<br>入力する</a>
     </div>
+    <div class="start_station">
+      <%= f.text_field :start_station, size: "40" %>　駅
+    </div>
+  </div>
+  <!-- 移動時間 -->
+  <div class="first_time_required">
+    <div class="start_station_explanation">
+      <a>次のスポットまでの<br>移動時間を入力する</a>
+    </div>
+    <div class="start_station">
+      <%= f.text_field :time_to_first_spot, size: "40" %>　分
+    </div>
+  </div>
+  <!-- saveボタン -->
+  <div class="first_save_button">
+    <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+  </div>
 
-    <!-- spotの登録 -->
-    <%= f.fields_for :spots, @walkcourse.spots.sort_by(&:id) do |spot_form| %>
-
+  <!-- spotの登録 -->
+  <%= f.fields_for :spots ,@walkcourse.spots.sort_by(&:id) do |spot_form| %>
+    <div class="spot_entry_form">
       <div class="zero_spot">
         <div class="spot_name">
           <a>スポットの名称を入力する</a>
@@ -62,12 +66,12 @@
           <%= spot_form.text_field :name, size: "40" %>　　
         </div>
       </div>
-      <!-- 移動時間 -->
-      <div class="first_transittime">
-        <div class="spot_timerequired_explanation">
+      <!-- 所要時間の入力 -->
+      <div class="first_time_required">
+        <div class="spot_time_required_explanation">
           <a>この場所で所要する時間</a>
         </div>
-        <div class="next_to_transittime">
+        <div class="spot_time_required">
           <%= spot_form.text_field :time_required, size: "40" %>　分
         </div>
       </div>
@@ -120,14 +124,33 @@
           </div>
         </div>
       </div>
+      <!-- spotの説明 -->
+      <div class="spot_description">
+        <div class="description_title">
+          <a>スポットの<br>説明を入力する</a>
+        </div>
+        <div class="description_form">
+          <%= spot_form.text_area :description, size: "62", class: 'form-control' %>
+        </div>
+      </div>
+      <!-- 移動時間の入力 -->
+      <div class="transittime">
+        <div class="spot_transittime_explanation">
+          <a>次のスポットまでの<br>移動時間を入力する</a>
+        </div>
+        <div class="next_to_transittime">
+          <%= spot_form.text_field :transit_time, size: "40" %>　分
+        </div>
+      </div>
       <div class="save_button">
         <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 
     <div class="zero_spot">
       <div class="start_station_explanation">
-        <a> ゴール地点の駅名を<br>入力する</a>
+        <a> ゴール地点の駅名を<br>入力する</a>
       </div>
       <div class="start_station">
         <%= f.text_field :goal_station, size: "40" %>　駅
@@ -135,7 +158,7 @@
     </div>
 
     <!-- 保存ボタン -->
-    <div class="save_button">
+    <div class="first_save_button">
       <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
     </div>
   </div>
