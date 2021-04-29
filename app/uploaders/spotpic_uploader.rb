@@ -49,7 +49,7 @@ class SpotpicUploader < CarrierWave::Uploader::Base
 
   # 画像をリサイズ
   version :thumb do
-    process resize_to_fit: [300, 300]
+    process resize_to_fit: [400, 400]
   end
   version :thumb50 do
     process resize_to_fit: [100, 100]
