@@ -42,6 +42,7 @@ class WalkcoursesController < ApplicationController
   private
 
   def course_params
-    params.require(:walkcourse).permit(:title, :description, :coursepic, :start_station, :time_to_first_spot,:goal_station, spots_attributes: [:id, :name, :transit_time, :time_required, :address, :description, :spotpic, :longitude, :latitude])
+    params.require(:walkcourse).permit(:title, :description, :coursepic, :start_station, :time_to_first_spot,
+                                       :goal_station, spots_attributes: [:id, :name, :transit_time, :time_required, :address, :description, :spotpic, :longitude, :latitude])
   end
 end

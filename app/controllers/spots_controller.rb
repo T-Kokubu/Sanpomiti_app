@@ -28,7 +28,6 @@ class SpotsController < ApplicationController
     @walkcourse = Walkcourse.find(params[:walkcourse_id])
     @spot = @walkcourse.spots.find(params[:id])
 
-
     if @spot.update_attributes(spot_params)
       # 更新に成功したときの処理
       flash[:success] = 'スポットの更新に成功しました。'

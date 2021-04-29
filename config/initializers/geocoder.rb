@@ -6,6 +6,6 @@ Geocoder.configure(
     Geocoder::InvalidRequest,
     Geocoder::InvalidApiKey
   ],
-  api_key:  ENV['GMAP_API_KEY'] ,
+  api_key: ENV['GMAP_API_KEY'],
   use_https: true
 )
