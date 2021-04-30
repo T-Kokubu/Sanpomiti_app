@@ -97,3 +97,10 @@ Metrics/BlockLength:
 
 Metrics/AbcSize:
   Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+# 空ファイル不可
+Lint/EmptyFile:
+  Enabled: false

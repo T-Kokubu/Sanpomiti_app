@@ -27,8 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '~> 2.0'
+# 画像のリサイズ
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,6 +42,12 @@ gem 'jquery-ui-rails'
 
 # paginate
 gem 'kaminari'
+# 地図表示
+gem 'gmaps4rails'
+gem 'geocoder', '~> 1.6.7'
+gem 'nokogiri', '~> 1.8'
+# 環境変数
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,6 +60,11 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
+
+  # pry
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  gem 'pry-stack_explorer'
 end
 
 group :development do
@@ -62,6 +74,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # debug
+  gem 'better_errors' # エラー画面をわかりやすく整形してくれる
+  gem 'binding_of_caller' # better_errorsの画面上にirb/pry(PERL)を表示する
 end
 
 group :test do
