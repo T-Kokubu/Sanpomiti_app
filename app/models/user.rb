@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6, maximum: 16 }
   # prefectureに属する
   belongs_to :prefecture
+  has_many :walkcourses, dependent: :destroy
 end

@@ -11,8 +11,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    puts @user.inspect
-    puts user_params
 
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
