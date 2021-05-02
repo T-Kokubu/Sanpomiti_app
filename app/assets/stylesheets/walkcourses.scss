@@ -266,3 +266,52 @@
   padding: 10px 0;
   margin-top: 70px;
 }
+
+// walkcourse_partial部分
+.walkcourse_partial {
+  border: 1px solid #808080;
+  margin-top: -18px;
+  padding-bottom: 50px;
+}
+.media-body {
+  position: relative;
+  border: 1px solid #808080;
+  margin: 10px 10px;
+}
+.usershow_course_image {
+  display: inline-block;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.usershow_course_part {
+  display: inline-block;
+  width: 48%;
+  position: absolute;
+  top: 0;
+  margin: 10px 10px 0 10px;
+}
+.usershow_title {
+  border: 1px solid #808080;
+  height: 50px;
+  font-size: 30px;
+}
+.usershow_description {
+  border: 1px solid #808080;
+  height: 200px;
+  font-size: 20px;
+}
+.user_show_button {
+}
+.user_edit_button {
+  padding: 5px 70px;
+  margin-left: 75px;
+}
+.user_destroy_button {
+  padding: 5px 70px;
+  margin-left: 150px;
+}
+.paginate_button {
+  float: right;
+  margin-right: 10px;
+}

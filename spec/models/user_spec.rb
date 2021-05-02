@@ -12,31 +12,31 @@ RSpec.describe User, type: :model do
       it 'usernameの入力がないとエラー表示' do
         user = build(:user, name: '')
         user.valid?
-        expect(user.errors[:name]).to include("can't be blank")
+        expect(user.errors[:name]).to include('を入力してください')
       end
 
       it 'emailの入力がないとエラー表示' do
         user = build(:user, email: '')
         user.valid?
-        expect(user.errors[:email]).to include("can't be blank")
+        expect(user.errors[:email]).to include('を入力してください')
       end
 
       it 'passwordの入力がないとエラー表示' do
         user = build(:user, password: '')
         user.valid?
-        expect(user.errors[:password]).to include("can't be blank")
+        expect(user.errors[:password]).to include('を入力してください')
       end
 
       it 'password_confirmationの入力がないとエラー表示' do
         user = build(:user, password_confirmation: '')
         user.valid?
-        expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
       end
 
       it 'prefectureの入力がないとエラー表示' do
         user = build(:user, prefecture_id: '')
         user.valid?
-        expect(user.errors[:prefecture]).to include('must exist')
+        expect(user.errors[:prefecture]).to include('を入力してください')
       end
     end
 
@@ -44,13 +44,13 @@ RSpec.describe User, type: :model do
       it 'usernameが規定文字数を超えた場合はエラー表示' do
         user = build(:user, name: 'a' * 51)
         user.valid?
-        expect(user.errors[:name]).to include('is too long (maximum is 50 characters)')
+        expect(user.errors[:name]).to include('は50文字以内で入力してください')
       end
 
       it 'emailが規定文字数を超えた場合はエラー表示' do
         user = build(:user, email: 'a' * 256)
         user.valid?
-        expect(user.errors[:email]).to include('is too long (maximum is 255 characters)')
+        expect(user.errors[:email]).to include('は255文字以内で入力してください', 'は不正な値です')
       end
     end
 
@@ -58,25 +58,25 @@ RSpec.describe User, type: :model do
       it 'passwordが規定文字数を超えた場合はエラー表示' do
         user = build(:user, password: 'a' * 17)
         user.valid?
-        expect(user.errors[:password]).to include('is too long (maximum is 16 characters)')
+        expect(user.errors[:password]).to include('は16文字以内で入力してください')
       end
 
       it 'password_confirmationが規定文字数を超えた場合はエラー表示' do
         user = build(:user, password_confirmation: 'a' * 17)
         user.valid?
-        expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
       end
 
       it 'passwordが規定文字数以下の場合はエラー表示' do
         user = build(:user, password: 'a' * 5)
         user.valid?
-        expect(user.errors[:password]).to include('is too short (minimum is 6 characters)')
+        expect(user.errors[:password]).to include('は6文字以上で入力してください')
       end
 
       it 'password_confirmationが規定文字数以下の場合はエラー表示' do
         user = build(:user, password_confirmation: 'a' * 5)
         user.valid?
-        expect(user.errors[:password_confirmation]).to include("doesn't match Password")
+        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
       end
     end
 

@@ -53,6 +53,6 @@ class CoursepicUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [400, 400]
   end
   version :thumb50 do
-    process resize_to_fit: [100, 100]
+    process resize_to_fit: [200, 200]
   end
 end
