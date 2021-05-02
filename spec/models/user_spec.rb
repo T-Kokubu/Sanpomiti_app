@@ -12,25 +12,25 @@ RSpec.describe User, type: :model do
       it 'usernameの入力がないとエラー表示' do
         user = build(:user, name: '')
         user.valid?
-        expect(user.errors[:name]).to include("を入力してください")
+        expect(user.errors[:name]).to include('を入力してください')
       end
 
       it 'emailの入力がないとエラー表示' do
         user = build(:user, email: '')
         user.valid?
-        expect(user.errors[:email]).to include("を入力してください")
+        expect(user.errors[:email]).to include('を入力してください')
       end
 
       it 'passwordの入力がないとエラー表示' do
         user = build(:user, password: '')
         user.valid?
-        expect(user.errors[:password]).to include("を入力してください")
+        expect(user.errors[:password]).to include('を入力してください')
       end
 
       it 'password_confirmationの入力がないとエラー表示' do
         user = build(:user, password_confirmation: '')
         user.valid?
-        expect(user.errors[:password_confirmation]).to include("とPasswordの入力が一致しません")
+        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
       end
 
       it 'prefectureの入力がないとエラー表示' do
@@ -50,7 +50,7 @@ RSpec.describe User, type: :model do
       it 'emailが規定文字数を超えた場合はエラー表示' do
         user = build(:user, email: 'a' * 256)
         user.valid?
-        expect(user.errors[:email]).to include("は255文字以内で入力してください", "は不正な値です")
+        expect(user.errors[:email]).to include('は255文字以内で入力してください', 'は不正な値です')
       end
     end
 
@@ -64,7 +64,7 @@ RSpec.describe User, type: :model do
       it 'password_confirmationが規定文字数を超えた場合はエラー表示' do
         user = build(:user, password_confirmation: 'a' * 17)
         user.valid?
-        expect(user.errors[:password_confirmation]).to include("とPasswordの入力が一致しません")
+        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
       end
 
       it 'passwordが規定文字数以下の場合はエラー表示' do
@@ -76,7 +76,7 @@ RSpec.describe User, type: :model do
       it 'password_confirmationが規定文字数以下の場合はエラー表示' do
         user = build(:user, password_confirmation: 'a' * 5)
         user.valid?
-        expect(user.errors[:password_confirmation]).to include("とPasswordの入力が一致しません")
+        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
       end
     end
 
