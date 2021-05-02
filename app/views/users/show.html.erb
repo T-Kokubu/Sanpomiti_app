@@ -6,7 +6,7 @@
       </div>
       <div class="card-body">
         <ul class="users_info">
-          <li>作成したコース○件</li>
+          <li>作成したコース<%= @count_walkcourses %>件</li>
           <li>お気に入り登録○件</li>
           <li class="cog_button"><i class="fas fa-cog"></i><%= link_to '設定', edit_user_path(@user) %></li>
         </ul>
