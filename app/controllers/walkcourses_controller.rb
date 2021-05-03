@@ -19,7 +19,10 @@ class WalkcoursesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @walkcourse = Walkcourse.find(params[:id])
+    @spots = @walkcourse.spots
+  end
 
   def edit
     @walkcourse = Walkcourse.find(params[:id])
@@ -30,7 +33,7 @@ class WalkcoursesController < ApplicationController
     if @walkcourse.update_attributes(course_params)
       # 更新に成功したときの処理
       flash[:success] = 'コース情報の更新に成功しました。'
-      redirect_to edit_walkcourse_path(@walkcourse)
+      redirect_to walkcourse_path(@walkcourse)
     else
       flash.now[:danger] = 'コース情報の更新に失敗しました。'
       render 'edit'

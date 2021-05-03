@@ -315,3 +315,102 @@
   float: right;
   margin-right: 10px;
 }
+
+// walkcourse_show_page
+.walkcourse_show {
+  margin-top: 50px;
+  font-size: 20px;
+}
+.course_title {
+  border: 1px solid #808080;
+  width: 30%;
+  text-align: center;
+}
+.walkcourse_show_contents {
+  border: 1px solid #808080;
+  height: 400px;
+  width: 100%;
+  position: relative;
+}
+.walkcourse_show_image {
+  display: inline-block;
+  width: 50%;
+  margin: 25px 0 25px 25px;
+}
+.walkcourse_show_description {
+  display: inline-block;
+  border: 1px solid #808080;
+  height: 350px;
+  width: 47%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 25px;
+  margin-right: 25px;
+  padding-left: 20px;
+  padding-top: 15px;
+}
+
+// spot表示部分
+.spot_fields {
+  margin-top: 150px;
+  font-size: 20px;
+}
+.spots_contents {
+  margin-bottom: 100px;
+}
+.show_nametime {
+  position: relative;
+  height: 50px;
+}
+.courseshow_spotname {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 30%;
+  height: 50px;
+  text-align: center;
+  line-height: 250%;
+}
+.courseshow_requiretime {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 20%;
+  height: 50px;
+  text-align: center;
+  line-height: 250%;
+  margin-left: -7px;
+  padding-left: 15px;
+}
+.station_name {
+  display: inline-block;
+  float: right;
+  line-height: 250%;
+  margin-right: 25px;
+}
+
+.spot_images {
+  height: 400px;
+  width: 100%;
+  border: 1px solid #808080;
+  position: relative;
+}
+.spot_spotpic_image {
+  display: inline-block;
+  width: 45%;
+  border: 1px solid #808080;
+  margin: 25px 25px 25px 25px;
+  height: 350px;
+}
+.spot_map_info {
+  height: 350px;
+  width: 45%;
+  border: 1px solid #808080;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 25px 25px 25px 25px;
+}
+.spot_map_address {
+  border: 1px solid #808080;
+  padding: 8px 0 8px 5px;
+}
