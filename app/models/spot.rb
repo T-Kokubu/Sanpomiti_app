@@ -6,4 +6,6 @@ class Spot < ApplicationRecord
   mount_uploader :spotpic, SpotpicUploader
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  validates :time_required,format: { with: /\A[0-9]+\z/ }
+  validates :transit_time,format: { with: /\A[0-9]+\z/ }
 end
