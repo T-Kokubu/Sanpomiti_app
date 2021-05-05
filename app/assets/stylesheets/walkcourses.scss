@@ -294,7 +294,7 @@
 .usershow_title {
   border: 1px solid #808080;
   height: 50px;
-  font-size: 30px;
+  font-size: 20px;
 }
 .usershow_description {
   border: 1px solid #808080;
@@ -417,4 +417,9 @@
   border: 1px solid #808080;
   padding: 10px 25px 10px 25px;
   height: 80px;
+}
+
+.back_button {
+  width: 30%;
+  margin: 0 auto;
 }
