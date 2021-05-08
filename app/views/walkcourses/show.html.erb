@@ -12,6 +12,50 @@
   </div>
 </div>
 
+<div class="overall_view">
+  <div class="total_time">
+    <div class="total_time_description">
+      <a>合計所要時間</a>
+    </div>
+    <div class="total_time_sum">
+      <a><%= @total_time.to_s + "時間" %></a>
+    </div>
+  </div>
+
+  <div class="itinerary">
+    <div class="itinerary_start_station vertical_write itinerary_frame">
+      <%= @walkcourse.start_station + "駅" %>
+    </div>
+    <div class="itinerary_arrow_frame">
+      <i class="fa fa-arrow-right"></i>
+      <div class="itinerary_transit_time">
+        <%= @walkcourse.time_to_first_spot.to_s + "分" %>
+      </div>
+    </div>
+
+    <% @spots.order('id').each do |spot| %>
+      <div class="itinerary_name_time itinerary_frame">
+        <div class="itinerary_spot_name vertical_write">
+          <%= spot.name %>
+        </div>
+        <div class="show_time_required">
+          <%= spot.time_required.to_s + "分" %>
+        </div>
+      </div>
+      <div class="itinerary_arrow_frame">
+        <i class="fa fa-arrow-right"></i>
+        <div class="itinerary_transit_time">
+          <%= spot.transit_time.to_s + "分" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="itinerary_goal_station vertical_write itinerary_frame">
+      <%= @walkcourse.goal_station.to_s + "駅"  %>
+    </div>
+  </div>
+</div>
+
 <div class="spot_fields">
   <% @spots.order('id').each do |spot| %>
     <div class="spots_contents">
@@ -20,6 +64,9 @@
           <%= spot.name %>
         </div>
         <div class="courseshow_requiretime">
+          <div class="courseshow_requiretime_description">
+            <a>所要時間</a>
+          </div>
           <%= spot.time_required %>
           <div class="station_name">
             <a>分</a>
