@@ -294,7 +294,7 @@
 .usershow_title {
   border: 1px solid #808080;
   height: 50px;
-  font-size: 30px;
+  font-size: 20px;
 }
 .usershow_description {
   border: 1px solid #808080;
@@ -314,4 +314,207 @@
 .paginate_button {
   float: right;
   margin-right: 10px;
+}
+
+// walkcourse_show_page
+.walkcourse_show {
+  margin-top: 50px;
+  font-size: 20px;
+}
+.course_title {
+  font-size: 22px;
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 550px;
+  height: 50px;
+  text-align: center;
+  line-height: 250%;
+  border-bottom: none;
+}
+.walkcourse_show_contents {
+  border: 1px solid #808080;
+  height: 400px;
+  width: 100%;
+  position: relative;
+}
+.walkcourse_show_image {
+  display: inline-block;
+  width: 50%;
+  margin: 25px 0 25px 25px;
+}
+.walkcourse_show_description {
+  display: inline-block;
+  border: 1px solid #808080;
+  height: 350px;
+  width: 47%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 25px;
+  margin-right: 25px;
+  padding-left: 20px;
+  padding-top: 15px;
+}
+
+
+
+.overall_view {
+  margin: 100px 0 50px 0;
+}
+.total_time {
+  font-size: 20px;
+}
+.total_time_description {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 350px;
+  height: 50px;
+  text-align: center;
+  line-height: 250%;
+  border-bottom: none;
+}
+.total_time_sum {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 250px;
+  height: 50px;
+  text-align: center;
+  line-height: 250%;
+  margin-left: -7px;
+  padding-left: 15px;
+  border-bottom: none;
+}
+
+
+.itinerary {
+  border: 1px solid #808080;
+  height: 400px;
+  padding: 40px 70px;
+  text-align: center;
+}
+
+
+.vertical_write {
+  -ms-writing-mode: tb-lr;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  white-space: nowrap;
+}
+.itinerary_name_time {
+  position: relative;
+}
+.itinerary_frame {
+  border: 1px solid #808080;
+  padding: 100px 20px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 17px;
+  height: 300px;
+  width: 70px;
+}
+.itinerary_arrow_frame {
+  display: inline-block;
+  margin-top: 140px;
+}
+.fa-arrow-right {
+  vertical-align: middle;
+}
+.show_time_required {
+  border: 1px solid #808080;
+  border-radius: 10px;
+  position: absolute;
+  background-color: #EEEEEE;
+  bottom: -3px;
+  right: -5px;
+  width: 80px;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+.itinerary_spot_name{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+
+
+// spot表示部分
+.spot_fields {
+  margin-top: 150px;
+  font-size: 20px;
+}
+.spots_contents {
+  margin-bottom: 100px;
+}
+.show_nametime {
+  position: relative;
+  height: 50px;
+}
+.courseshow_spotname {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 30%;
+  height: 50px;
+  text-align: center;
+  line-height: 250%;
+  border-bottom: none;
+}
+.courseshow_requiretime {
+  display: inline-block;
+  border: 1px solid #808080;
+  width: 25%;
+  height: 50px;
+  text-align: center;
+  line-height: 250%;
+  margin-left: -7px;
+  padding-left: 15px;
+  border-bottom: none;
+}
+.courseshow_requiretime_description {
+  display: inline-block;
+  float: left;
+  padding-left: 20px;
+}
+.station_name {
+  display: inline-block;
+  float: right;
+  line-height: 250%;
+  margin-right: 25px;
+}
+
+.spot_images {
+  height: 400px;
+  width: 100%;
+  border: 1px solid #808080;
+  position: relative;
+  border-bottom: none;
+}
+.spot_spotpic_image {
+  display: inline-block;
+  width: 45%;
+  margin: 25px 25px 25px 25px;
+  height: 350px;
+}
+.spot_map_info {
+  height: 350px;
+  width: 45%;
+  border: 1px solid #808080;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 25px 25px 25px 25px;
+}
+.spot_map_address {
+  padding: 8px 0 8px 8px;
+}
+.show_description {
+  border: 1px solid #808080;
+  padding: 10px 25px 10px 25px;
+  height: 80px;
+}
+
+.back_button {
+  width: 30%;
+  margin: 0 auto;
 }

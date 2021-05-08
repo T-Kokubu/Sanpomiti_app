@@ -1,2 +1,117 @@
-<h1>Walkcourses#show</h1>
-<p>Find me in app/views/walkcourses/show.html.erb</p>
+<div class="walkcourse_show">
+  <div class="course_title">
+    <a><%= @walkcourse.title %></a>
+  </div>
+  <div class="walkcourse_show_contents">
+    <div class="walkcourse_show_image">
+      <%= image_tag @walkcourse.coursepic.url , size: '500x350' %>
+    </div>
+    <div class="walkcourse_show_description">
+      <a><コースの概要><br>　<%= @walkcourse.description %></a>
+    </div>
+  </div>
+</div>
+
+<div class="overall_view">
+  <div class="total_time">
+    <div class="total_time_description">
+      <a>合計所要時間</a>
+    </div>
+    <div class="total_time_sum">
+      <a><%= @total_time.to_s + "時間" %></a>
+    </div>
+  </div>
+
+  <div class="itinerary">
+    <div class="itinerary_start_station vertical_write itinerary_frame">
+      <%= @walkcourse.start_station + "駅" %>
+    </div>
+    <div class="itinerary_arrow_frame">
+      <i class="fa fa-arrow-right"></i>
+      <div class="itinerary_transit_time">
+        <%= @walkcourse.time_to_first_spot.to_s + "分" %>
+      </div>
+    </div>
+
+    <% @spots.order('id').each do |spot| %>
+      <div class="itinerary_name_time itinerary_frame">
+        <div class="itinerary_spot_name vertical_write">
+          <%= spot.name %>
+        </div>
+        <div class="show_time_required">
+          <%= spot.time_required.to_s + "分" %>
+        </div>
+      </div>
+      <div class="itinerary_arrow_frame">
+        <i class="fa fa-arrow-right"></i>
+        <div class="itinerary_transit_time">
+          <%= spot.transit_time.to_s + "分" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="itinerary_goal_station vertical_write itinerary_frame">
+      <%= @walkcourse.goal_station.to_s + "駅"  %>
+    </div>
+  </div>
+</div>
+
+<div class="spot_fields">
+  <% @spots.order('id').each do |spot| %>
+    <div class="spots_contents">
+      <div class="show_nametime">
+        <div class="courseshow_spotname">
+          <%= spot.name %>
+        </div>
+        <div class="courseshow_requiretime">
+          <div class="courseshow_requiretime_description">
+            <a>所要時間</a>
+          </div>
+          <%= spot.time_required %>
+          <div class="station_name">
+            <a>分</a>
+          </div>
+        </div>
+      </div>
+      <div class="spot_images">
+        <div class="spot_spotpic_image">
+          <% if spot.spotpic.url %>
+            <%= image_tag spot.spotpic.url, size: '500x350' %>
+          <% end %>
+        </div>
+        <div class="spot_map_info">
+          <div class="spot_map_image">
+            <div id="map-<%= spot.id %>" style='width: 100%; height: 300px;'></div>
+            <script type="text/javascript">
+              handler<%= spot.id %> = Gmaps.build('Google');
+              handler<%= spot.id %>.buildMap({
+                provider: { scrollwheel: false },
+                internal: { id: "map-<%= spot.id %>" }
+              }, function() {
+                markers = handler<%= spot.id %>.addMarkers([
+                  {
+                    "lat": <%= spot.latitude %>,
+                    "lng": <%= spot.longitude %>,
+                  }
+                ]);
+                handler<%= spot.id %>.bounds.extendWith(markers);
+                handler<%= spot.id %>.fitMapToBounds();
+                handler<%= spot.id %>.getMap().setZoom(17);
+              });
+            </script>
+          </div>
+          <div class="spot_map_address">
+            <%= spot.address %>
+          </div>
+        </div>
+      </div>
+      <div class="show_description">
+        <%= spot.description %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "前に戻る", :back, class: "btn btn-primary btn-block btn-lg back_button" %>
+</div>
