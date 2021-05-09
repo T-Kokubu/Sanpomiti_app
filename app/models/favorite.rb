@@ -1,4 +1,4 @@
 class Favorite < ApplicationRecord
   belongs_to :user
-  belongs_to :like
+  belongs_to :like, class_name: "Walkcourse"
 end
