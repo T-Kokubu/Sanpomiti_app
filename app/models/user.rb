@@ -6,12 +6,11 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6, maximum: 16 }
-  # prefectureに属する
   belongs_to :prefecture
   has_many :walkcourses, dependent: :destroy
 
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :likes, through: :favorites, source: :like
   has_many :reverses_of_favorite, class_name: "Favorite", foreign_key: "like_id"
   has_many :subjects, through: :reverses_of_favorite, source: :user

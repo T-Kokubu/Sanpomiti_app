@@ -39,6 +39,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def likes
+    @user = User.find(params[:id])
+    @walkcourses = @user.feed_favorites.order(id: :desc).page(params[:page]).per(3)
+    counts(@user)
+  end
+
   private
 
   def user_params
