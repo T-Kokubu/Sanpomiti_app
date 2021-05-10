@@ -2,6 +2,9 @@
   <div class="course_title">
     <a><%= @walkcourse.title %></a>
   </div>
+  <div class="favorite_button">
+    <%= render 'favorites/favorite_button', walkcourse: @walkcourse %>
+  </div>
   <div class="walkcourse_show_contents">
     <div class="walkcourse_show_image">
       <%= image_tag @walkcourse.coursepic.url , size: '500x350' %>

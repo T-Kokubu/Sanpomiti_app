@@ -6,7 +6,7 @@ class FavoritesController < ApplicationController
     user = walkcourse.user
     current_user.like(walkcourse)
     flash[:success] = "お気に入りに追加しました"
-    redirect_to user_path(user)
+    redirect_to walkcourse_path(walkcourse)
   end
 
   def destroy
@@ -14,6 +14,6 @@ class FavoritesController < ApplicationController
     user = walkcourse.user
     current_user.unlike(walkcourse)
     flash[:success] = "お気に入りから削除しました"
-    redirect_to user_path(user)
+    redirect_to walkcourse_path(walkcourse)
   end
 end
