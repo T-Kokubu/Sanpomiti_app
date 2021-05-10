@@ -9,7 +9,6 @@ class User < ApplicationRecord
   belongs_to :prefecture
   has_many :walkcourses, dependent: :destroy
 
-
   has_many :favorites, dependent: :destroy
   has_many :likes, through: :favorites, source: :like
   has_many :reverses_of_favorite, class_name: "Favorite", foreign_key: "like_id"
