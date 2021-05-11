@@ -11,23 +11,23 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :likes, through: :favorites, source: :like
-  has_many :reverses_of_favorite, class_name: "Favorite", foreign_key: "like_id"
+  has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'like_id'
   has_many :subjects, through: :reverses_of_favorite, source: :user
 
   def like(like_walkcourse)
-      self.favorites.find_or_create_by(like_id: like_walkcourse.id)
+    favorites.find_or_create_by(like_id: like_walkcourse.id)
   end
 
   def unlike(like_walkcourse)
-    favorite = self.favorites.find_by(like_id: like_walkcourse.id)
-    favorite.destroy if favorite
+    favorite = favorites.find_by(like_id: like_walkcourse.id)
+    favorite&.destroy
   end
 
   def liking?(like_walkcourse)
-    self.likes.include?(like_walkcourse)
+    likes.include?(like_walkcourse)
   end
 
   def feed_favorites
-    Walkcourse.where(id: self.like_ids)
+    Walkcourse.where(id: like_ids)
   end
 end
