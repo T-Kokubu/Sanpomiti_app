@@ -21,7 +21,7 @@
       <a>合計所要時間</a>
     </div>
     <div class="total_time_sum">
-      <a><%= @total_time.to_s + "時間" %></a>
+      <a><%= @total_time %>時間</a>
     </div>
   </div>
 
@@ -32,7 +32,7 @@
     <div class="itinerary_arrow_frame">
       <i class="fa fa-arrow-right"></i>
       <div class="itinerary_transit_time">
-        <%= @walkcourse.time_to_first_spot.to_s + "分" %>
+        <a><%= @walkcourse.time_to_first_spot %>分</a>
       </div>
     </div>
 
@@ -42,19 +42,21 @@
           <%= spot.name %>
         </div>
         <div class="show_time_required">
-          <%= spot.time_required.to_s + "分" %>
+          <a><%= spot.time_required %>分</a>
         </div>
       </div>
       <div class="itinerary_arrow_frame">
         <i class="fa fa-arrow-right"></i>
         <div class="itinerary_transit_time">
-          <%= spot.transit_time.to_s + "分" %>
+          <% if spot.transit_time %>
+            <a><%= spot.transit_time.to_i %>分</a>
+          <% end %>
         </div>
       </div>
     <% end %>
 
     <div class="itinerary_goal_station vertical_write itinerary_frame">
-      <%= @walkcourse.goal_station.to_s + "駅"  %>
+      <%= @walkcourse.goal_station + "駅"  %>
     </div>
   </div>
 </div>
