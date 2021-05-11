@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_421_045_301) do
+ActiveRecord::Schema.define(version: 20_210_509_140_101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'favorites', force: :cascade do |t|
+    t.bigint 'user_id'
+    t.bigint 'like_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['like_id'], name: 'index_favorites_on_like_id'
+    t.index %w[user_id like_id], name: 'index_favorites_on_user_id_and_like_id', unique: true
+    t.index ['user_id'], name: 'index_favorites_on_user_id'
+  end
 
   create_table 'prefectures', force: :cascade do |t|
     t.string 'name'
@@ -58,6 +68,8 @@ ActiveRecord::Schema.define(version: 20_210_421_045_301) do
     t.index ['user_id'], name: 'index_walkcourses_on_user_id'
   end
 
+  add_foreign_key 'favorites', 'users'
+  add_foreign_key 'favorites', 'walkcourses', column: 'like_id'
   add_foreign_key 'spots', 'walkcourses'
   add_foreign_key 'walkcourses', 'users'
 end
