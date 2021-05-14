@@ -14,7 +14,7 @@
         <a>一覧表示で使用される<br>メイン画像を選択する</a>
       </div>
       <div class="submitted_courseimage">
-        <%= image_tag @walkcourse.coursepic.thumb.url %>
+        <%= link_to image_tag(@walkcourse.coursepic.thumb.url), walkcourse_path(@walkcourse) %>
       </div>
       <div class="course_image_button">
         <button type="button" class="btn btn-outline-secondary rounded-pill">

@@ -5,7 +5,7 @@
         <li class="media">
           <div class="media-body">
             <div class="usershow_course_image">
-              <%= image_tag walkcourse.coursepic.url, size: '340x250' %>
+              <%= link_to image_tag(walkcourse.coursepic.url, size: '340x250'), walkcourse_path(walkcourse) %>
             </div>
             <div class="usershow_course_part">
               <div class="usershow_title">
