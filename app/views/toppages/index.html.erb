@@ -25,13 +25,17 @@
 
         <div class="parent-table">
             <div class="recommend-course">
-              <% @favorite_walkcourses.each do |favorite_walkcourse| %>
-                <div class="recommend-course">
-                    <h3><%= image_tag favorite_walkcourse.coursepic.url, size: '300x200' %></h3>
-                    <p><%= favorite_walkcourse.title %></p>
-                    <p><%= favorite_walkcourse.description %></p>
-                </div>
-              <% end %>
+              <div class="row">
+                <% @favorite_walkcourses.each do |favorite_walkcourse| %>
+                  <div class="col-4">
+                    <div class="recommend-course">
+                        <h3><%= image_tag favorite_walkcourse.coursepic.url, size: '300x200' %></h3>
+                        <p><%= favorite_walkcourse.title %></p>
+                        <p><%= favorite_walkcourse.description %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
             </div>
         </div>
         <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
@@ -41,29 +45,18 @@
         <i class="fas fa-bell"></i>
         <h2>新着コース</h2>
         <div class="parent-table">
-          <% @created_walkcourses.each do |created_walkcourse| %>
-            <div class="recommend-course">
-                <h3><%= image_tag created_walkcourse.coursepic.url, size: '300x200' %></h3>
-                <p><%= created_walkcourse.title %></p>
-                <p><%= created_walkcourse.description %></p>
-            </div>
-          <% end %>
+          <div class="row">
+            <% @created_walkcourses.each do |created_walkcourse| %>
+              <div class="col-4">
+                <div class="recommend-course">
+                    <h3><%= image_tag created_walkcourse.coursepic.url, size: '300x200' %></h3>
+                    <p><%= created_walkcourse.title %></p>
+                    <p><%= created_walkcourse.description %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
-        <!-- <div class="parent-table">
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-        </div> -->
         <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
     </div>
-
 </div>
