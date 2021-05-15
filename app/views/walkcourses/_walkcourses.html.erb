@@ -15,10 +15,12 @@
                 <%= walkcourse.description %>
               </div>
             </div>
-            <div class="user_show_button">
-              <%= link_to "編集する", edit_walkcourse_path(walkcourse), class: 'btn btn-primary user_edit_button' %>
-              <%= link_to "削除する", walkcourse_path(walkcourse), method: :delete, class: 'btn btn-primary user_destroy_button' %>
-            </div>
+            <% if current_user.id == walkcourse.user_id %>
+              <div class="user_show_button">
+                <%= link_to "編集する", edit_walkcourse_path(walkcourse), class: 'btn btn-primary user_edit_button' %>
+                <%= link_to "削除する", walkcourse_path(walkcourse), method: :delete, class: 'btn btn-primary user_destroy_button' %>
+              </div>
+            <% end %>
           </div>
         </li>
       <% end %>
