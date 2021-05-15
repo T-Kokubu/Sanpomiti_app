@@ -14,9 +14,15 @@
 
         <div class="header-right-down">
             <form action="#" method="GET">
-               <input class="form-text" type="seach" placeholder="検索ワードを入力してください">
+               <input class="form-text" type="search" placeholder="検索ワードを入力してください">
                <i class="fas fa-search"></i>
             </form>
+            <%= search_form_for @q do |f| %>
+              <%= f.label :name, "Keyword" %>
+              <%= f.search_field :name_cont %>
+
+              <%= f.submit "検索" %>
+            <% end %>
         </div>
     </div>
 </header>
