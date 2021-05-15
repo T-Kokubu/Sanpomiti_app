@@ -1,5 +1,5 @@
-<div class="walkcourse_partial">
-  <% if walkcourses.any? %>
+<% if walkcourses.any? %>
+  <div class="walkcourse_partial">
     <ul class="list-unstyled">
       <% walkcourses.each do |walkcourse| %>
         <li class="media">
@@ -26,5 +26,5 @@
     <div class="paginate_button">
       <%= paginate walkcourses %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

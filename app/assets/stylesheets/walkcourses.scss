@@ -272,6 +272,7 @@
   border: 1px solid #808080;
   margin-top: -18px;
   padding-bottom: 50px;
+  
 }
 .media-body {
   position: relative;
@@ -300,8 +301,9 @@
   border: 1px solid #808080;
   height: 200px;
   font-size: 20px;
-}
-.user_show_button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .user_edit_button {
   padding: 5px 70px;
