@@ -24,31 +24,16 @@
         </div>
 
         <div class="parent-table">
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-        </div>
-        <div class="parent-table">
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
+            <div class="row">
+              <% @favorite_walkcourses.each do |favorite_walkcourse| %>
+                <div class="col-4">
+                  <div class="recommend-course">
+                      <h3><%= link_to image_tag(favorite_walkcourse.coursepic.url, size: '325x200'), walkcourse_path(favorite_walkcourse) %></h3>
+                      <p><%= favorite_walkcourse.title.truncate(20) %></p>
+                      <p class="recommend-description"><%= favorite_walkcourse.description.truncate(40) %></p>
+                  </div>
+                </div>
+              <% end %>
             </div>
         </div>
         <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
@@ -58,34 +43,18 @@
         <i class="fas fa-bell"></i>
         <h2>新着コース</h2>
         <div class="parent-table">
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-        </div>
-        <div class="parent-table">
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
-            <div class="recommend-course">
-                <h3>画像</h3>
-                <p>記事説明</p>
-            </div>
+          <div class="row">
+            <% @created_walkcourses.each do |created_walkcourse| %>
+              <div class="col-4">
+                <div class="recommend-course">
+                    <h3><%= link_to image_tag(created_walkcourse.coursepic.url, size: '325x200'), walkcourse_path(created_walkcourse) %></h3>
+                    <p><%= created_walkcourse.title.truncate(20) %></p>
+                    <p class="recommend-description"><%= created_walkcourse.description.truncate(40) %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
         <a class="btn btn-default btn-block btn-show" href="">もっと見る</a>
     </div>
-
 </div>

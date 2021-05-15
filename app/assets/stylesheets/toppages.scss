@@ -84,8 +84,9 @@ ul {
 }
 .recommend-course {
   display: table-cell;
-  width: 33%;
+  width: 20%;
   border: 1px solid #CCCCCC;
+  height: 315px;
 }
 .btn-show {
   text-align: center;
@@ -161,7 +162,7 @@ ul {
 .newpost {
   display: block;
   margin-top: 60px;
-  height: 800px;
+  height: 1000px;
 }
 .fa-bell {
   font-size: 55px;

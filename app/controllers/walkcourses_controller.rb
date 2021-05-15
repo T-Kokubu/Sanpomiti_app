@@ -1,4 +1,6 @@
 class WalkcoursesController < ApplicationController
+  before_action :require_user_logged_in, only: [:edit, :destroy]
+
   def index; end
 
   def new
@@ -22,7 +24,7 @@ class WalkcoursesController < ApplicationController
   def show
     @walkcourse = Walkcourse.find(params[:id])
     @spots = @walkcourse.spots
-    @total_time = @walkcourse.spots.sum(:transit_time) + @walkcourse.spots.sum(:time_required) + @walkcourse.time_to_first_spot
+    @total_time = @walkcourse.spots.sum(:transit_time) + @walkcourse.spots.sum(:time_required) + @walkcourse.time_to_first_spot.to_i
   end
 
   def edit

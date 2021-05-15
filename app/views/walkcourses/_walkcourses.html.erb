@@ -1,11 +1,11 @@
-<div class="walkcourse_partial">
-  <% if walkcourses.any? %>
+<% if walkcourses.any? %>
+  <div class="walkcourse_partial">
     <ul class="list-unstyled">
       <% walkcourses.each do |walkcourse| %>
         <li class="media">
           <div class="media-body">
             <div class="usershow_course_image">
-              <%= image_tag walkcourse.coursepic.url, size: '340x250' %>
+              <%= link_to image_tag(walkcourse.coursepic.url, size: '340x250'), walkcourse_path(walkcourse) %>
             </div>
             <div class="usershow_course_part">
               <div class="usershow_title">
@@ -15,10 +15,12 @@
                 <%= walkcourse.description %>
               </div>
             </div>
-            <div class="user_show_button">
-              <%= link_to "編集する", edit_walkcourse_path(walkcourse), class: 'btn btn-primary user_edit_button' %>
-              <%= link_to "削除する", walkcourse_path(walkcourse), method: :delete, class: 'btn btn-primary user_destroy_button' %>
-            </div>
+            <% if current_user.id == walkcourse.user_id %>
+              <div class="user_show_button">
+                <%= link_to "編集する", edit_walkcourse_path(walkcourse), class: 'btn btn-primary user_edit_button' %>
+                <%= link_to "削除する", walkcourse_path(walkcourse), method: :delete, class: 'btn btn-primary user_destroy_button' %>
+              </div>
+            <% end %>
           </div>
         </li>
       <% end %>
@@ -26,5 +28,5 @@
     <div class="paginate_button">
       <%= paginate walkcourses %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
