@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @search = Walkcourse.ransack(params[:q])
-    @walkcourses = @search.result
+    @walkcourses = @search.result.distinct
   end
 end
