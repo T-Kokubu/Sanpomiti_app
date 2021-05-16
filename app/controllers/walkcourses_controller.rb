@@ -1,5 +1,6 @@
 class WalkcoursesController < ApplicationController
   before_action :require_user_logged_in, only: [:edit, :destroy]
+  before_action :set_search
 
   def index; end
 

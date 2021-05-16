@@ -1,0 +1,18 @@
+<div class="parent-table">
+    <div>
+      <% if params[:q].present? && params[:q][:title_or_description_cont].present? %>
+        ”<%= params[:q][:title_or_description_cont] %>”についての検索結果
+      <% end %>
+    </div>
+    <div class="row">
+      <% @walkcourses.each do |walkcourse| %>
+        <div class="col-4">
+          <div class="recommend-course">
+              <h3><%= link_to image_tag(walkcourse.coursepic.url, size: '325x200'), walkcourse_path(walkcourse) %></h3>
+              <p><%= walkcourse.title.truncate(20) %></p>
+              <p class="recommend-description"><%= walkcourse.description.truncate(40) %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>

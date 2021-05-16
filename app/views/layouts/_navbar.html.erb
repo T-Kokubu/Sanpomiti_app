@@ -17,10 +17,8 @@
                <input class="form-text" type="search" placeholder="検索ワードを入力してください">
                <i class="fas fa-search"></i>
             </form>
-            <%= search_form_for @q do |f| %>
-              <%= f.label :name, "Keyword" %>
-              <%= f.search_field :name_cont %>
-
+            <%= search_form_for @search, url: walkcourses_path do |f| %>
+              <%= f.search_field :title_or_description_cont %>
               <%= f.submit "検索" %>
             <% end %>
         </div>
