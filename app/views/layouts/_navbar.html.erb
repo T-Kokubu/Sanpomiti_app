@@ -18,7 +18,7 @@
                <i class="fas fa-search"></i>
             </form>
             <%= search_form_for @search, url: walkcourses_path do |f| %>
-              <%= f.search_field :title_or_description_cont %>
+              <%= f.search_field :start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont %>
               <%= f.submit "検索" %>
             <% end %>
         </div>

@@ -1,7 +1,7 @@
 <div class="parent-table">
     <div>
-      <% if params[:q].present? && params[:q][:title_or_description_cont].present? %>
-        ”<%= params[:q][:title_or_description_cont] %>”についての検索結果
+      <% if params[:q].present? && params[:q][:start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont].present? %>
+        ”<%= params[:q][:start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont] %>”についての検索結果
       <% end %>
     </div>
     <div class="row">
