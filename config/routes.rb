@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :walkcourses do
     resources :spots, only: [:new, :create, :edit, :update, :destroy]
   end
+
   resources :users, only: [:show, :create, :edit] do
     member do
       get :likes

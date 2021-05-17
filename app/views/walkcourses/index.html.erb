@@ -1,5 +1,5 @@
 <div class="parent-table">
-    <div>
+    <div class="search_result">
       <% if params[:q].present? && params[:q][:start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont].present? %>
         ”<%= params[:q][:start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont] %>”についての検索結果
       <% end %>
@@ -14,5 +14,8 @@
           </div>
         </div>
       <% end %>
+    </div>
+    <div class="paginate_button">
+      <%= paginate @walkcourses %>
     </div>
 </div>

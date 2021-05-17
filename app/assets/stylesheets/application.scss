@@ -25,7 +25,7 @@ a {
 header {
   margin: 5px 75px;
   height: 76px;
-  margin-bottom: 200px;
+
 }
 
 header img {
@@ -119,6 +119,7 @@ header img {
   height: 40px;
   float: right;
   margin-top: -16px;
+
 }
 .form-text {
   display: inline-block;
@@ -131,6 +132,16 @@ header img {
   padding-left: 15px;
   padding-top: 15px;
   font-size: 30px;
+  background-color: white;
+  box-shadow: none;
+  outline: none;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.search_result {
+  margin: 20px 0;
+  margin-left: 10px;
+  font-size: 16px;
 }
 
 footer {
