@@ -4,6 +4,8 @@ class WalkcoursesController < ApplicationController
 
   def index; end
 
+  def search; end
+
   def new
     @walkcourse = Walkcourse.new
     5.times do

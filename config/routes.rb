@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   get 'signup', to: 'users#new'
+  get 'search_result', to: 'walkcourse#search'
 
   resources :walkcourses do
     resources :spots, only: [:new, :create, :edit, :update, :destroy]
@@ -19,4 +20,10 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only: [:create, :destroy]
+
+  resources :walkcourses do
+    collection do
+      get 'search'
+    end
+  end
 end

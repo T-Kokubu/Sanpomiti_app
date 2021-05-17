@@ -13,7 +13,7 @@
         </ul>
 
         <div class="header-right-down">
-          <%= search_form_for @search, url: walkcourses_path do |f| %>
+          <%= search_form_for @search, url: search_walkcourses_path do |f| %>
             <%= f.search_field :start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont,class: "search_form", placeholder: "検索ワードを入力してください", size: "34x10" %>
             <%= button_tag type: 'submit', style: 'border-style: none;' do %>
               <i class="fas fa-search"></i>
