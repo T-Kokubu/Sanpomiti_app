@@ -1,6 +1,5 @@
 FactoryBot.define do
-  factory :favorite do
-    user { nil }
-    like { nil }
+  factory :favorite, class: Favorite do
+    like_id { like.id }
   end
 end

@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let!(:user) { create(:user) }
+  let!(:walkcourse) { create(:walkcourse, user: user) }
+  let!(:otherwalkcourse) { create(:otherwalkcourse, user: user) }
+  let(:favorite) { user.favorites.build(like_id: walkcourse.id) }
+  let(:favorite) { user.favorites.build(like_id: otherwalkcourse.id) }
 
   describe 'signup,login画面における　user.name user.emailの検証' do
     it '規定文字数のnameとemailがあれば有効' do
@@ -91,6 +95,26 @@ RSpec.describe User, type: :model do
         user = create(:user, email: 'Test@samplE.coM')
         expect(user.reload.email).to eq 'test@sample.com'
       end
+    end
+  end
+
+    it "テストデータが有効であること" do
+      expect(favorite).to be_valid
+    end
+
+  describe "メソッドの確認" do
+    before { user.like(walkcourse) }
+    before { user.like(otherwalkcourse) }
+
+    it "likeメソッドが正常に機能している" do
+      expect(user.liking?(walkcourse)).to be_truthy
+    end
+    it "unlikeメソッドが正常に機能している" do
+      user.unlike(walkcourse)
+      expect(user.liking?(walkcourse)).to be_falsy
+    end
+    it "feed_favoritesメソッドによって、likeしたwalkcourseが正常に表示される" do
+      expect(user.feed_favorites).to include walkcourse, otherwalkcourse
     end
   end
 end

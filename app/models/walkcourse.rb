@@ -1,6 +1,5 @@
 class Walkcourse < ApplicationRecord
   belongs_to :user
-
   has_many :favorites, dependent: :destroy, foreign_key: :like_id
 
   has_many :spots, dependent: :destroy

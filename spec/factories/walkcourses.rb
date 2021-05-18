@@ -1,7 +1,10 @@
 FactoryBot.define do
   factory :walkcourse do
-    user { nil }
-    title { 'MyString' }
-    description { 'MyText' }
+    title { "rspectest" }
+    description { "rspectest" }
+  end
+  factory :otherwalkcourse do
+    title { "otherrspectest" }
+    description { "otherrspectest" }
   end
 end
