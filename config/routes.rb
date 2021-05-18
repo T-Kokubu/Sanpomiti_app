@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :create, :edit] do
+  resources :users, only: [:show, :create, :edit, :update] do
     member do
       get :likes
       get :subjects
