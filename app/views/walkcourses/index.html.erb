@@ -1,11 +1,6 @@
 <div class="parent-table">
-  <div class="search_result">
-    <% if params[:q].present? && params[:q][:start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont].present? %>
-      ”<%= params[:q][:start_station_or_goal_station_or_title_or_description_or_spots_name_or_spots_address_or_spots_description_cont] %>”についての検索結果
-    <% end %>
-  </div>
   <div class="row">
-    <% @walkcourses.each do |walkcourse| %>
+    <% @created_walkcourses.each do |walkcourse| %>
       <div class="col-4">
         <div class="recommend-course">
             <h3><%= link_to image_tag(walkcourse.coursepic.url, size: '325x200'), walkcourse_path(walkcourse) %></h3>
@@ -16,6 +11,6 @@
     <% end %>
   </div>
   <div class="paginate_button">
-    <%= paginate @walkcourses %>
+    <%= paginate @created_walkcourses %>
   </div>
 </div>

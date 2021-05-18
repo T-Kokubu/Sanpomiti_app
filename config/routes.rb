@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   resources :walkcourses do
     resources :spots, only: [:new, :create, :edit, :update, :destroy]
+    collection do
+      get 'search'
+    end
   end
 
   resources :users, only: [:show, :create, :edit] do
@@ -19,11 +22,6 @@ Rails.application.routes.draw do
       get :subjects
     end
   end
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:index, :create, :destroy]
 
-  resources :walkcourses do
-    collection do
-      get 'search'
-    end
-  end
 end
