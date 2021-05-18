@@ -1,5 +1,10 @@
 class FavoritesController < ApplicationController
   before_action :require_user_logged_in
+  before_action :set_search
+
+  def index
+    @favorite_walkcourses = Walkcourse.joins(:favorites).group('walkcourses.id', :like_id).order('count(favorites.user_id) desc').page(params[:page]).per(12)
+  end
 
   def create
     walkcourse = Walkcourse.find(params[:like_id])

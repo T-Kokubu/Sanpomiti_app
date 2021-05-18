@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show, :edit]
+  before_action :set_search
 
   def show
     @user = User.find(params[:id])
@@ -26,7 +27,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      # 更新に成功したときの処理
       flash[:success] = 'ユーザー情報の更新に成功しました。'
       redirect_to @user
     else

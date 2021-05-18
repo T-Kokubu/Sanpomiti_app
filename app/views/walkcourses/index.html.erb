@@ -1,0 +1,16 @@
+<div class="parent-table">
+  <div class="row">
+    <% @created_walkcourses.each do |walkcourse| %>
+      <div class="col-4">
+        <div class="recommend-course">
+            <h3><%= link_to image_tag(walkcourse.coursepic.url, size: '325x200'), walkcourse_path(walkcourse) %></h3>
+            <p><%= walkcourse.title.truncate(20) %></p>
+            <p class="recommend-description"><%= walkcourse.description.truncate(40) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="paginate_button">
+    <%= paginate @created_walkcourses %>
+  </div>
+</div>

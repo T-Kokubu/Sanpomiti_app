@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
     @count_walkcourses = user.walkcourses.count
     @count_favorites = user.likes.count
   end
+
+  def set_search
+    @search = Walkcourse.ransack(params[:q])
+    @walkcourses = @search.result.distinct.page(params[:page]).per(6)
+  end
 end
