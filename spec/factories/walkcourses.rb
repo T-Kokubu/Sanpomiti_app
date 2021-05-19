@@ -3,7 +3,7 @@ FactoryBot.define do
     title { "rspectest" }
     description { "rspectest" }
   end
-  factory :otherwalkcourse do
+  factory :otherwalkcourse, class:  Walkcourse do
     title { "otherrspectest" }
     description { "otherrspectest" }
   end
