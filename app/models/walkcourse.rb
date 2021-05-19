@@ -8,5 +8,7 @@ class Walkcourse < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true, length: { maximum: 255 }
   validates :time_to_first_spot, numericality: { only_integer: true }, allow_blank: true
+  validates :start_station, length: { maximum: 20 }
+  validates :goal_station, length: { maximum: 20 }
   mount_uploader :coursepic, CoursepicUploader
 end
