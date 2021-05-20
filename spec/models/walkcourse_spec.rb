@@ -36,7 +36,7 @@ RSpec.describe Walkcourse, type: :model do
       expect(walkcourse).to be_valid
     end
     it '整数以外の入力はエラー表示する' do
-      walkcourse = build(:walkcourse, time_to_first_spot: 'あ', user: user)
+      walkcourse = build(:walkcourse, time_to_first_spot: '/[^0-9]/', user: user)
       walkcourse.valid?
       expect(walkcourse.errors[:time_to_first_spot]).to include('は数値で入力してください')
     end
