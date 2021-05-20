@@ -98,21 +98,21 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "メソッドの確認" do
+  describe 'メソッドの確認' do
     before { user.like(walkcourse) }
     before { user.like(otherwalkcourse) }
 
-    it "テストデータが有効であること" do
+    it 'テストデータが有効であること' do
       expect(favorite).to be_valid
     end
-    it "likeメソッドが正常に機能している" do
+    it 'likeメソッドが正常に機能している' do
       expect(user.liking?(walkcourse)).to be_truthy
     end
-    it "unlikeメソッドが正常に機能している" do
+    it 'unlikeメソッドが正常に機能している' do
       user.unlike(walkcourse)
       expect(user.liking?(walkcourse)).to be_falsy
     end
-    it "feed_favoritesメソッドによって、likeしたwalkcourseが正常に表示される" do
+    it 'feed_favoritesメソッドによって、likeしたwalkcourseが正常に表示される' do
       expect(user.feed_favorites).to include walkcourse, otherwalkcourse
     end
   end
