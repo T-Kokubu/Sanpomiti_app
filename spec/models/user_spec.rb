@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
   let!(:walkcourse) { create(:walkcourse, user: user) }
   let!(:otherwalkcourse) { create(:otherwalkcourse, user: user) }
   let(:favorite) { user.favorites.build(like_id: walkcourse.id) }
-  let(:favorite) { user.favorites.build(like_id: otherwalkcourse.id) }
+  let(:otherfavorite) { user.otherfavorites.build(like_id: otherwalkcourse.id) }
 
   describe 'signup,login画面における　user.name user.emailの検証' do
     it '規定文字数のnameとemailがあれば有効' do
@@ -99,8 +99,10 @@ RSpec.describe User, type: :model do
   end
 
   describe 'メソッドの確認' do
-    before { user.like(walkcourse) }
-    before { user.like(otherwalkcourse) }
+    before do
+      user.like(walkcourse)
+      user.like(otherwalkcourse)
+    end
 
     it 'テストデータが有効であること' do
       expect(favorite).to be_valid
