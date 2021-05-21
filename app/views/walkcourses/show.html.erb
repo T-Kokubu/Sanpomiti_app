@@ -2,7 +2,7 @@
   <div class="course_title">
     <a><%= @walkcourse.title %></a>
   </div>
-  <div class="favorite_button">
+  <div class="favorite_button" id="likes_buttons_<%= @walkcourse.id %>">
     <%= render 'favorites/favorite_button', walkcourse: @walkcourse %>
   </div>
   <div class="walkcourse_show_contents">
