@@ -6,8 +6,6 @@ class WalkcoursesController < ApplicationController
     @created_walkcourses = Walkcourse.all.order(created_at: :asc).page(params[:page]).per(12)
   end
 
-  def search; end
-
   def new
     @walkcourse = Walkcourse.new
     5.times do

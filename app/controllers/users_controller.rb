@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:show, :edit]
+  before_action :require_user_logged_in, only: [:show, :edit, :likes]
   before_action :set_search
 
   def show
