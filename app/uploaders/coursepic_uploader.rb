@@ -50,7 +50,7 @@ class CoursepicUploader < CarrierWave::Uploader::Base
 
   # 画像をリサイズ
   version :thumb do
-    process resize_to_fit: [400, 400]
+    process resize_to_fit: [300, 300]
   end
   version :thumb50 do
     process resize_to_fit: [200, 200]
