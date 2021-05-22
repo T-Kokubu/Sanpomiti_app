@@ -81,7 +81,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
       it '不正なWalkcourseを作成しようとすると、再度作成ページへリダイレクトされること' do
         post :create, params: { walkcourse: attributes_for(:walkcourse, title: nil) }
-        expect(response).to redirect_to new_walkcourse_path
+        expect(response).to render_template :new
       end
     end
 
@@ -114,22 +114,36 @@ RSpec.describe WalkcoursesController, type: :controller do
 
   describe '#edit' do
     context 'loginuserの場合' do
+      before :each do
+        @user = create(:user)
+        sign_in @user
+      end
       it '正常なレスポンスであること' do
+        get :edit, params: {id: walkcourse.id}
+        expect(response).to be_success
       end
       it '200レスポンスを返すこと' do
+        get :edit, params: {id: walkcourse.id}
+        expect(response).to have_http_status "200"
       end
     end
 
     context 'loginしていない場合' do
       it '正常なレスポンスではないこと' do
+        get :edit, params: {id: walkcourse.id}
+        expect(response).to_not be_success
       end
       it '302レスポンスを返すこと' do
+        get :edit, params: {id: walkcourse.id}
+        expect(response).to have_http_status "302"
       end
       it 'ログイン画面にリダイレクトされること' do
+        get :edit, params: {id: walkcourse.id}
+        expect(response).to redirect_to "/login"
       end
     end
 
-    context '他のユーザーがあるユーザーのWalkcourseを編集しようとした時' do
+    context '他のユーザーのWalkcourseを編集しようとした時' do
       it '正常なレスポンスが返らないこと' do
       end
       it '他のユーザーのWalkcourseを編集しようとするとルートページにリダイレクトすること' do
