@@ -5,7 +5,6 @@ RSpec.describe WalkcoursesController, type: :controller do
   let!(:user) { create(:user) }
   let!(:anotheruser) { create(:anotheruser) }
   let!(:walkcourse) { create(:walkcourse, user: user) }
-  let!(:headers) { { HTTP_REFEREE: 'http://localhost:3000/' } }
 
   describe '#index' do
     it '正常なレスポンスであること' do
@@ -216,13 +215,14 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'loginuserの場合' do
       before :each do
         sign_in user
+        request.env["HTTP_REFERER"] = "where_i_came_from"
       end
       it '正常に削除できること' do
         expect{walkcourse.destroy}.to change(Walkcourse, :count).by(-1)
       end
-      it '更新した後ルートページにリダイレクトすること' do
+      it '削除した後、リファラーページもしくはルートページにリダイレクトすること' do
         delete :destroy, params: {id: walkcourse.id}
-        expect(response).to redirect_to root_url
+        expect(response).to redirect_to "where_i_came_from" || root_url
       end
     end
 
@@ -245,9 +245,9 @@ RSpec.describe WalkcoursesController, type: :controller do
         delete :destroy, params: {id: walkcourse.id}
         expect{walkcourse}.to_not change(Walkcourse, :count)
       end
-      it '他のユーザーのWalkcourseを削除するとrefererページにリダイレクトされること' do
+      it '他のユーザーのWalkcourseを削除するとrootページにリダイレクトされること' do
         delete :destroy, params: {id: walkcourse.id}
-        expect(response).to redirect_to ("http://localhost:3000/") || root_url
+        expect(response).to redirect_to root_url
       end
     end
   end
