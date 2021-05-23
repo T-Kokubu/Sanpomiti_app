@@ -5,6 +5,7 @@ RSpec.describe WalkcoursesController, type: :controller do
   let!(:user) { create(:user) }
   let!(:anotheruser) { create(:anotheruser) }
   let!(:walkcourse) { create(:walkcourse, user: user) }
+  let!(:headers) { { HTTP_REFEREE: 'http://localhost:3000/' } }
 
   describe '#index' do
     it '正常なレスポンスであること' do
@@ -73,7 +74,6 @@ RSpec.describe WalkcoursesController, type: :controller do
 
       end
       it '不正なデータを含むWalkcourseは作成できなくなっていること' do
-        #####################################
         expect do
           post :create, params: { walkcourse: attributes_for(:walkcourse, title: nil) }
         end.not_to change(Walkcourse, :count)
@@ -114,10 +114,8 @@ RSpec.describe WalkcoursesController, type: :controller do
   describe '#edit' do
     context 'loginuserの場合' do
       before :each do
-        @user = create(:user)
-        sign_in @user
+        sign_in user
       end
-      let!(:walkcourse) { create(:walkcourse, user: @user)}
       it '正常なレスポンスであること' do
         get :edit, params: {id: walkcourse.id}
         expect(response).to be_success
@@ -128,7 +126,6 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
     end
 
-    #############################################
     context 'loginしていない場合' do
       it '正常なレスポンスではないこと' do
         get :edit, params: {id: walkcourse.id}
@@ -146,14 +143,13 @@ RSpec.describe WalkcoursesController, type: :controller do
 
     context '他のユーザーのWalkcourseを編集しようとした時' do
       before :each do
-        sign_in user
+        sign_in anotheruser
       end
       it '正常なレスポンスが返らないこと' do
         get :edit, params: {id: walkcourse.id}
         expect(response).to_not be_success
       end
       it '他のユーザーのWalkcourseを編集しようとするとルートページにリダイレクトすること' do
-        sign_in anotheruser
         get :edit, params: {id: walkcourse.id}
         expect(response).to redirect_to root_url
       end
@@ -220,13 +216,12 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'loginuserの場合' do
       before :each do
         sign_in user
-        delete :destroy, params: {id: walkcourse.id}
       end
       it '正常に削除できること' do
-        ###############################
-        expect(response).to change(user.walkcourses, :count).by(-1)
+        expect{walkcourse.destroy}.to change(Walkcourse, :count).by(-1)
       end
       it '更新した後ルートページにリダイレクトすること' do
+        delete :destroy, params: {id: walkcourse.id}
         expect(response).to redirect_to root_url
       end
     end
@@ -247,14 +242,12 @@ RSpec.describe WalkcoursesController, type: :controller do
         sign_in anotheruser
       end
       it '他のユーザーのWalkcourseを削除しようとしても削除できないこと' do
-        #############################################
         delete :destroy, params: {id: walkcourse.id}
-        expect(response).to_not change(user.walkcourses, :count)
+        expect{walkcourse}.to_not change(Walkcourse, :count)
       end
-      it '他のユーザーのWalkcourseを削除しようとするとrefererルートページにリダイレクトされること' do
-        #############################################
+      it '他のユーザーのWalkcourseを削除するとrefererページにリダイレクトされること' do
         delete :destroy, params: {id: walkcourse.id}
-        expect(response).to redirect_to root_url
+        expect(response).to redirect_to ("http://localhost:3000/") || root_url
       end
     end
   end
