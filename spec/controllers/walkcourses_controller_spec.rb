@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe WalkcoursesController, type: :controller do
-
   let!(:user) { create(:user) }
   let!(:anotheruser) { create(:anotheruser) }
   let!(:walkcourse) { create(:walkcourse, user: user) }
@@ -13,7 +12,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     end
     it '200レスポンスを返すこと' do
       get :index
-      expect(response).to have_http_status "200"
+      expect(response).to have_http_status '200'
     end
   end
 
@@ -30,7 +29,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
       it '200レスポンスを返すこと' do
         get :new
-        expect(response).to have_http_status "200"
+        expect(response).to have_http_status '200'
       end
     end
 
@@ -41,11 +40,11 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
       it '302レスポンスを返すこと' do
         get :new
-        expect(response).to have_http_status "302"
+        expect(response).to have_http_status '302'
       end
       it 'ログイン画面にリダイレクトされること' do
         get :new
-        expect(response).to redirect_to "/login"
+        expect(response).to redirect_to '/login'
       end
     end
   end
@@ -70,7 +69,6 @@ RSpec.describe WalkcoursesController, type: :controller do
     context '不正なデータを含むWalkcourseの場合' do
       before :each do
         sign_in user
-
       end
       it '不正なデータを含むWalkcourseは作成できなくなっていること' do
         expect do
@@ -90,23 +88,23 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
       it '302レスポンスを返すこと' do
         post :create, params: { walkcourse: attributes_for(:walkcourse) }
-        expect(response).to have_http_status "302"
+        expect(response).to have_http_status '302'
       end
       it 'ログイン画面にリダイレクトされること' do
         post :create, params: { walkcourse: attributes_for(:walkcourse) }
-        expect(response).to redirect_to "/login"
+        expect(response).to redirect_to '/login'
       end
     end
   end
 
   describe '#show' do
     it '正常なレスポンスであること' do
-      get :show, params: {id: walkcourse.id}
+      get :show, params: { id: walkcourse.id }
       expect(response).to be_success
     end
     it '200レスポンスを返すこと' do
-      get :show, params: {id: walkcourse.id}
-      expect(response).to have_http_status "200"
+      get :show, params: { id: walkcourse.id }
+      expect(response).to have_http_status '200'
     end
   end
 
@@ -116,27 +114,27 @@ RSpec.describe WalkcoursesController, type: :controller do
         sign_in user
       end
       it '正常なレスポンスであること' do
-        get :edit, params: {id: walkcourse.id}
+        get :edit, params: { id: walkcourse.id }
         expect(response).to be_success
       end
       it '200レスポンスを返すこと' do
-        get :edit, params: {id: walkcourse.id}
-        expect(response).to have_http_status "200"
+        get :edit, params: { id: walkcourse.id }
+        expect(response).to have_http_status '200'
       end
     end
 
     context 'loginしていない場合' do
       it '正常なレスポンスではないこと' do
-        get :edit, params: {id: walkcourse.id}
+        get :edit, params: { id: walkcourse.id }
         expect(response).to_not be_success
       end
       it '302レスポンスを返すこと' do
-        get :edit, params: {id: walkcourse.id}
-        expect(response).to have_http_status "302"
+        get :edit, params: { id: walkcourse.id }
+        expect(response).to have_http_status '302'
       end
       it 'ログイン画面にリダイレクトされること' do
-        get :edit, params: {id: walkcourse.id}
-        expect(response).to redirect_to "/login"
+        get :edit, params: { id: walkcourse.id }
+        expect(response).to redirect_to '/login'
       end
     end
 
@@ -145,11 +143,11 @@ RSpec.describe WalkcoursesController, type: :controller do
         sign_in anotheruser
       end
       it '正常なレスポンスが返らないこと' do
-        get :edit, params: {id: walkcourse.id}
+        get :edit, params: { id: walkcourse.id }
         expect(response).to_not be_success
       end
       it '他のユーザーのWalkcourseを編集しようとするとルートページにリダイレクトすること' do
-        get :edit, params: {id: walkcourse.id}
+        get :edit, params: { id: walkcourse.id }
         expect(response).to redirect_to root_url
       end
     end
@@ -159,7 +157,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'loginuserの場合' do
       before :each do
         sign_in user
-        patch :update, params: { id:walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
+        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
       end
       it '正常に更新できること' do
         expect(walkcourse.reload.title).to eq 'hogehoge'
@@ -171,23 +169,23 @@ RSpec.describe WalkcoursesController, type: :controller do
 
     context 'loginしていない場合' do
       before :each do
-        patch :update, params: { id:walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
+        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
       end
       it '正常なレスポンスではないこと' do
         expect(response).to_not be_success
       end
       it '302レスポンスを返すこと' do
-        expect(response).to have_http_status "302"
+        expect(response).to have_http_status '302'
       end
       it 'ログイン画面にリダイレクトされること' do
-        expect(response).to redirect_to "/login"
+        expect(response).to redirect_to '/login'
       end
     end
 
     context '不正なデータを含むWalkcourseの場合' do
       before :each do
         sign_in user
-        patch :update, params: { id:walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'a' * 51) }
+        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'a' * 51) }
       end
       it '不正なデータを含むWalkcourseを更新できなくなっていること' do
         expect(walkcourse.reload.title).not_to eq 'a' * 51
@@ -200,7 +198,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     context '他のユーザーのWalkcourseを更新しようとした時' do
       before :each do
         sign_in anotheruser
-        patch :update, params: { id:walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
+        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
       end
       it '正常なレスポンスが返らないこと' do
         expect(response).not_to be_success
@@ -215,25 +213,25 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'loginuserの場合' do
       before :each do
         sign_in user
-        request.env["HTTP_REFERER"] = "where_i_came_from"
+        request.env['HTTP_REFERER'] = 'where_i_came_from'
       end
       it '正常に削除できること' do
-        expect{walkcourse.destroy}.to change(Walkcourse, :count).by(-1)
+        expect { walkcourse.destroy }.to change(Walkcourse, :count).by(-1)
       end
       it '削除した後、リファラーページもしくはルートページにリダイレクトすること' do
-        delete :destroy, params: {id: walkcourse.id}
-        expect(response).to redirect_to "where_i_came_from" || root_url
+        delete :destroy, params: { id: walkcourse.id }
+        expect(response).to redirect_to 'where_i_came_from' || root_url
       end
     end
 
     context 'loginしていない場合' do
       it '302レスポンスを返すこと' do
-        delete :destroy, params: {id: walkcourse.id}
-        expect(response).to have_http_status "302"
+        delete :destroy, params: { id: walkcourse.id }
+        expect(response).to have_http_status '302'
       end
       it 'ログイン画面にリダイレクトされること' do
-        delete :destroy, params: {id: walkcourse.id}
-        expect(response).to redirect_to "/login"
+        delete :destroy, params: { id: walkcourse.id }
+        expect(response).to redirect_to '/login'
       end
     end
 
@@ -242,11 +240,11 @@ RSpec.describe WalkcoursesController, type: :controller do
         sign_in anotheruser
       end
       it '他のユーザーのWalkcourseを削除しようとしても削除できないこと' do
-        delete :destroy, params: {id: walkcourse.id}
-        expect{walkcourse}.to_not change(Walkcourse, :count)
+        delete :destroy, params: { id: walkcourse.id }
+        expect { walkcourse }.to_not change(Walkcourse, :count)
       end
       it '他のユーザーのWalkcourseを削除するとrootページにリダイレクトされること' do
-        delete :destroy, params: {id: walkcourse.id}
+        delete :destroy, params: { id: walkcourse.id }
         expect(response).to redirect_to root_url
       end
     end
