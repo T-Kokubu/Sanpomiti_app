@@ -17,8 +17,6 @@ class SpotsController < ApplicationController
     end
   end
 
-  def show; end
-
   def edit
     @walkcourse = Walkcourse.find(params[:walkcourse_id])
     @spot = @walkcourse.spots.find(params[:id])
@@ -31,7 +29,6 @@ class SpotsController < ApplicationController
     if @spot.update_attributes(spot_params)
       # 更新に成功したときの処理
       flash[:success] = 'スポットの更新に成功しました。'
-
       redirect_to edit_walkcourse_spot_path(@walkcourse, @spot)
     else
       flash.now[:danger] = 'スポットの更新に失敗しました。'
