@@ -4,6 +4,8 @@ RSpec.describe WalkcoursesController, type: :controller do
   let!(:user) { create(:user) }
   let!(:anotheruser) { create(:anotheruser) }
   let!(:walkcourse) { create(:walkcourse, user: user) }
+  let!(:spot) { create(:spot, walkcourse: walkcourse, user: user) }
+
 
   describe '#index' do
     it '正常なレスポンスであること' do
@@ -93,6 +95,32 @@ RSpec.describe WalkcoursesController, type: :controller do
       it 'ログイン画面にリダイレクトされること' do
         post :create, params: { walkcourse: attributes_for(:walkcourse) }
         expect(response).to redirect_to '/login'
+      end
+    end
+
+    ######################
+    context "依存関係のあるspotテーブルのparamsが送信される時" do
+　　　 before :each do
+        sign_in user
+        @spot_params = {
+          spots_attributes: {
+            "0": FactoryBot.attributes_for(:spot)
+          }
+        }
+        @params_nested = {
+          walkcourse: FactoryBot.attributes_for(:walkcourse).merge( @spot_params )
+        }
+      end
+
+      it 'リクエストが成功すること' do
+        post cretae, params: @params_nested
+        expect(response.status).to success
+      end
+
+      it "ショップ情報とコメントが新規作成されること" do
+        expect do
+          post create, params: @params_nested
+        end.to change(Walkcourse, :count).by(1) and change(Spot, :count).by(1)
       end
     end
   end
