@@ -95,6 +95,29 @@ RSpec.describe WalkcoursesController, type: :controller do
         expect(response).to redirect_to '/login'
       end
     end
+
+    context 'nestしているspotの挙動' do
+      before do
+        @spot_params = {
+          spots_attributes: {
+            "0": FactoryBot.attributes_for(:spot)
+          }
+        }
+        @params_nested = {
+          walkcourse: FactoryBot.attributes_for(:walkcourse).merge( @spot_params )
+        }
+        sign_in user
+      end
+      it '正常にWalkcourseとSpotが作成できること' do
+        expect do
+          post :create, params: @params_nested
+        end.to change(Walkcourse, :count).by(1) and change(Spot, :count).by(5)
+      end
+      it 'WalkcourseとSpot作成後、editページに遷移すること' do
+        post :create, params: @params_nested
+        expect(response).to redirect_to edit_walkcourse_path(Walkcourse.last)
+      end
+    end
   end
 
   describe '#show' do
