@@ -242,7 +242,7 @@ RSpec.describe WalkcoursesController, type: :controller do
         it '不正なデータを含むWalkcourseを更新できなくなっていること' do
           expect(walkcourse.reload.title).not_to eq 'a' * 51
         end
-        it '不正なWalkcourseを作成しようとすると、ルートページへリダイレクトすること' do
+        it '不正なWalkcourseを作成しようとすると、編集ページへリダイレクトすること' do
           expect(response).to render_template :edit
         end
       end
@@ -273,32 +273,6 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
       it 'ログイン画面にリダイレクトされること' do
         expect(response).to redirect_to '/login'
-      end
-    end
-
-    context '不正なデータを含むWalkcourseの場合' do
-      before :each do
-        sign_in user
-        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'a' * 51) }
-      end
-      it '不正なデータを含むWalkcourseを更新できなくなっていること' do
-        expect(walkcourse.reload.title).not_to eq 'a' * 51
-      end
-      it '不正なWalkcourseを作成しようとすると、ルートページへリダイレクトすること' do
-        expect(response).to render_template :edit
-      end
-    end
-
-    context '他のユーザーのWalkcourseを更新しようとした時' do
-      before :each do
-        sign_in anotheruser
-        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
-      end
-      it '正常なレスポンスが返らないこと' do
-        expect(response).not_to be_success
-      end
-      it '他のユーザーのWalkcourseを編集しようとするとルートページにリダイレクトされること' do
-        expect(response).to redirect_to root_url
       end
     end
 
