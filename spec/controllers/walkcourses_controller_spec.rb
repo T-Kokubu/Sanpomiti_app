@@ -271,6 +271,29 @@ RSpec.describe WalkcoursesController, type: :controller do
         expect(response).to redirect_to root_url
       end
     end
+
+    context 'nestしているspotの挙動' do
+      before :each do
+        sign_in user
+        @spot_params = {
+          spots_attributes: {
+            "0": FactoryBot.attributes_for(:spot)
+          }
+        }
+        @params_nested = {
+          walkcourse: FactoryBot.attributes_for(:walkcourse).merge(@spot_params)
+        }
+        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse).merge(spots_attributes: {
+          "0": FactoryBot.attributes_for(:spot, name: 'hugahuga')
+        })  }
+      end
+      it '正常に更新できること' do
+        expect(spot.reload.name).to eq 'hogehoge'
+      end
+      it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
+        expect(response).to redirect_to walkcourse_path(walkcourse)
+      end
+    end
   end
 
   describe '#destroy' do
