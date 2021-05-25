@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :walkcourse do
+    user
     title { 'rspectest' }
     description { 'rspectest' }
     time_to_first_spot { 1 }

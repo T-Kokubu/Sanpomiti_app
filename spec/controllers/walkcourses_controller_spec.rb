@@ -218,16 +218,46 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#update' do
-    context 'loginuserの場合' do
+    context 'ログインしている場合' do
       before :each do
         sign_in user
-        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
       end
-      it '正常に更新できること' do
-        expect(walkcourse.reload.title).to eq 'hogehoge'
+
+      context '正常なデータの場合' do
+        before :each do
+          patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
+        end
+        it '正常に更新できること' do
+          expect(walkcourse.reload.title).to eq 'hogehoge'
+        end
+        it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
+          expect(response).to redirect_to walkcourse_path(walkcourse)
+        end
       end
-      it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
-        expect(response).to redirect_to walkcourse_path(walkcourse)
+
+      context '不正なデータを含むWalkcourseの場合' do
+        before :each do
+          patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'a' * 51) }
+        end
+        it '不正なデータを含むWalkcourseを更新できなくなっていること' do
+          expect(walkcourse.reload.title).not_to eq 'a' * 51
+        end
+        it '不正なWalkcourseを作成しようとすると、ルートページへリダイレクトすること' do
+          expect(response).to render_template :edit
+        end
+      end
+
+      context '他のユーザーのWalkcourseを更新しようとした時' do
+        before :each do
+          another_walkcourse = create(:walkcourse)
+          patch :update, params: { id: another_walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
+        end
+        it '正常なレスポンスが返らないこと' do
+          expect(response).not_to be_success
+        end
+        it '他のユーザーのWalkcourseを編集しようとするとルートページにリダイレクトされること' do
+          expect(response).to redirect_to root_url
+        end
       end
     end
 
