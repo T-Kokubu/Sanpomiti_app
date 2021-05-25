@@ -18,9 +18,8 @@ RSpec.describe WalkcoursesController, type: :controller do
 
   describe '#new' do
     context 'loginuserの場合' do
-      before :each do
-        @user = create(:user)
-        sign_in @user
+      before do
+        sign_in user
       end
 
       it '正常なレスポンスであること' do
@@ -104,30 +103,72 @@ RSpec.describe WalkcoursesController, type: :controller do
           }
         }
         @params_nested = {
-          walkcourse: FactoryBot.attributes_for(:walkcourse).merge( @spot_params )
+          walkcourse: FactoryBot.attributes_for(:walkcourse).merge(@spot_params)
         }
-        sign_in user
       end
-      it '正常にWalkcourseとSpotが作成できること' do
-        expect do
+
+      context 'loginuserの場合' do
+        before do
+          sign_in user
+        end
+        it '正常にWalkcourseとSpotが作成できること' do
+          expect do
+            post :create, params: @params_nested
+          end.to change(Walkcourse, :count).by(1) and change(Spot, :count).by(5)
+        end
+        it 'WalkcourseとSpot作成後、editページに遷移すること' do
           post :create, params: @params_nested
-        end.to change(Walkcourse, :count).by(1) and change(Spot, :count).by(5)
+          expect(response).to redirect_to edit_walkcourse_path(Walkcourse.last)
+        end
       end
-      it 'WalkcourseとSpot作成後、editページに遷移すること' do
-        post :create, params: @params_nested
-        expect(response).to redirect_to edit_walkcourse_path(Walkcourse.last)
+
+      context '不正なデータを含むSpotの場合' do
+        before :each do
+          @spot_params = {
+            spots_attributes: {
+              "0": FactoryBot.attributes_for(:spot, transit_time: 'あ')
+            }
+          }
+          sign_in user
+        end
+        it '不正なデータを含むSpotでもWalkcourseとSpotは作成されること' do
+          expect do
+            post :create, params: @params_nested
+          end.to change(Walkcourse, :count).by(1) and change(Spot, :count).by(5)
+        end
+        it '不正なデータを含むSpotでもWalkcourse作成後、editページへ遷移すること' do
+          post :create, params: @params_nested
+          expect(response).to redirect_to edit_walkcourse_path(Walkcourse.last)
+        end
+      end
+
+      context 'loginしていない場合' do
+        it '正常なレスポンスではないこと' do
+          post :create, params: @params_nested
+          expect(response).to_not be_success
+        end
+        it '302レスポンスを返すこと' do
+          post :create, params: @params_nested
+          expect(response).to have_http_status '302'
+        end
+        it 'ログイン画面にリダイレクトされること' do
+          post :create, params: @params_nested
+          expect(response).to redirect_to '/login'
+        end
       end
     end
   end
 
   describe '#show' do
-    it '正常なレスポンスであること' do
-      get :show, params: { id: walkcourse.id }
-      expect(response).to be_success
-    end
-    it '200レスポンスを返すこと' do
-      get :show, params: { id: walkcourse.id }
-      expect(response).to have_http_status '200'
+    context 'Walkcourseの挙動' do
+      it '正常なレスポンスであること' do
+        get :show, params: { id: walkcourse.id }
+        expect(response).to be_success
+      end
+      it '200レスポンスを返すこと' do
+        get :show, params: { id: walkcourse.id }
+        expect(response).to have_http_status '200'
+      end
     end
   end
 
@@ -269,6 +310,24 @@ RSpec.describe WalkcoursesController, type: :controller do
       it '他のユーザーのWalkcourseを削除するとrootページにリダイレクトされること' do
         delete :destroy, params: { id: walkcourse.id }
         expect(response).to redirect_to root_url
+      end
+    end
+
+    context 'nestしているspotの挙動' do
+      before :each do
+        @spot_params = {
+          spots_attributes: {
+            "0": FactoryBot.attributes_for(:spot)
+          }
+        }
+        @params_nested = {
+          walkcourse: FactoryBot.attributes_for(:walkcourse).merge(@spot_params)
+        }
+        sign_in user
+        request.env['HTTP_REFERER'] = 'where_i_came_from'
+      end
+      it '正常に削除できること' do
+        expect { walkcourse.destroy }.to change(Walkcourse, :count).by(-1) and change(Spot, :count).by(-5)
       end
     end
   end

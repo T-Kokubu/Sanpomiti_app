@@ -18,7 +18,7 @@ FactoryBot.define do
     time_to_first_spot { 5 }
 
     trait :with_nested_instances do
-      after( :create ) do |walkcourse|
+      after(:create) do |walkcourse|
         create :spot, id: walkcourse.id
       end
     end
