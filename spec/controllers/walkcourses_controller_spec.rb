@@ -277,22 +277,19 @@ RSpec.describe WalkcoursesController, type: :controller do
     end
 
     context 'nestしているspotの挙動' do
+      # 更新対象のデータ
+      let!(:spot) { create(:spot, walkcourse: walkcourse, name: 'スポット1') }
+
+      # 更新内容
+      let(:walkcourse_params) { { walkcourse: FactoryBot.attributes_for(:walkcourse) } }
+      let(:spots_attributes) { { spots_attributes: { "0": FactoryBot.attributes_for(:spot, id: spot, name: 'スポット2') } } }
+
       before :each do
         sign_in user
-        @spot_params = {
-          spots_attributes: {
-            "0": FactoryBot.attributes_for(:spot)
-          }
-        }
-        @params_nested = {
-          walkcourse: FactoryBot.attributes_for(:walkcourse).merge(@spot_params)
-        }
-        patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse).merge(spots_attributes: {
-          "0": FactoryBot.attributes_for(:spot, name: 'hugahuga')
-        })  }
+        patch :update, params: { id: walkcourse, walkcourse: walkcourse_params.merge(spots_attributes) }
       end
       it '正常に更新できること' do
-        expect(spot.reload.name).to eq 'hogehoge'
+        expect(spot.reload.name).to eq 'スポット2'
       end
       it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
         expect(response).to redirect_to walkcourse_path(walkcourse)
