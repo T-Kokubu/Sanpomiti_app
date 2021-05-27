@@ -218,8 +218,6 @@ RSpec.describe WalkcoursesController, type: :controller do
         end
       end
     end
-
-
   end
 
   describe '#update' do
@@ -311,8 +309,6 @@ RSpec.describe WalkcoursesController, type: :controller do
           end
         end
       end
-
-
     end
 
     context 'loginしていない場合' do
