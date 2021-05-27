@@ -20,7 +20,7 @@ RSpec.describe WalkcoursesController, type: :controller do
   describe '#index' do
     it '正常なレスポンスであること' do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
     it '200レスポンスを返すこと' do
       get :index
@@ -36,7 +36,7 @@ RSpec.describe WalkcoursesController, type: :controller do
 
       it '正常なレスポンスであること' do
         get :new
-        expect(response).to be_success
+        expect(response).to be_successful
       end
       it '200レスポンスを返すこと' do
         get :new
@@ -47,7 +47,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'loginしていない場合' do
       it '正常なレスポンスではないこと' do
         get :new
-        expect(response).to_not be_success
+        expect(response).to_not be_successful
       end
       it '302レスポンスを返すこと' do
         get :new
@@ -130,7 +130,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'loginしていない場合' do
       it '正常なレスポンスではないこと' do
         post :create, params: { walkcourse: attributes_for(:walkcourse) }
-        expect(response).to_not be_success
+        expect(response).to_not be_successful
       end
       it '302レスポンスを返すこと' do
         post :create, params: { walkcourse: attributes_for(:walkcourse) }
@@ -146,7 +146,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       context 'loginしていない場合' do
         it '正常なレスポンスではないこと' do
           post :create, params: @params_nested
-          expect(response).to_not be_success
+          expect(response).to_not be_successful
         end
         it '302レスポンスを返すこと' do
           post :create, params: @params_nested
@@ -164,7 +164,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'Walkcourseの挙動' do
       it '正常なレスポンスであること' do
         get :show, params: { id: walkcourse.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
       it '200レスポンスを返すこと' do
         get :show, params: { id: walkcourse.id }
@@ -180,7 +180,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
       it '正常なレスポンスであること' do
         get :edit, params: { id: walkcourse.id }
-        expect(response).to be_success
+        expect(response).to be_successful
       end
       it '200レスポンスを返すこと' do
         get :edit, params: { id: walkcourse.id }
@@ -192,7 +192,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       context 'loginuserの挙動' do
         it '正常なレスポンスではないこと' do
           get :edit, params: { id: walkcourse.id }
-          expect(response).to_not be_success
+          expect(response).to_not be_successful
         end
         it '302レスポンスを返すこと' do
           get :edit, params: { id: walkcourse.id }
@@ -210,7 +210,7 @@ RSpec.describe WalkcoursesController, type: :controller do
         end
         it '正常なレスポンスが返らないこと' do
           get :edit, params: { id: walkcourse.id }
-          expect(response).to_not be_success
+          expect(response).to_not be_successful
         end
         it '他のユーザーのWalkcourseを編集しようとするとルートページにリダイレクトすること' do
           get :edit, params: { id: walkcourse.id }
@@ -258,7 +258,7 @@ RSpec.describe WalkcoursesController, type: :controller do
           patch :update, params: { id: another_walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
         end
         it '正常なレスポンスが返らないこと' do
-          expect(response).not_to be_success
+          expect(response).not_to be_successful
         end
         it '他のユーザーのWalkcourseを編集しようとするとルートページにリダイレクトされること' do
           expect(response).to redirect_to root_url
@@ -304,7 +304,7 @@ RSpec.describe WalkcoursesController, type: :controller do
             patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
           end
           it '正常なレスポンスが返らないこと' do
-            expect(response).not_to be_success
+            expect(response).not_to be_successful
           end
           it '他のユーザーのSpotを編集しようとするとルートページにリダイレクトされること' do
             expect(response).to redirect_to root_url
@@ -321,7 +321,7 @@ RSpec.describe WalkcoursesController, type: :controller do
           patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
         end
         it '正常なレスポンスではないこと' do
-          expect(response).to_not be_success
+          expect(response).to_not be_successful
         end
         it '302レスポンスを返すこと' do
           expect(response).to have_http_status '302'
