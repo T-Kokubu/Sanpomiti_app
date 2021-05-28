@@ -5,17 +5,8 @@ RSpec.describe WalkcoursesController, type: :controller do
   let!(:anotheruser) { create(:anotheruser) }
   let!(:walkcourse) { create(:walkcourse, user: user) }
   let!(:spot) { create(:spot, walkcourse: walkcourse, name: 'スポット1') }
-
-  before :each do
-    @spot_params = {
-      spots_attributes: {
-        "0": FactoryBot.attributes_for(:spot)
-      }
-    }
-    @params_nested = {
-      walkcourse: FactoryBot.attributes_for(:walkcourse).merge(@spot_params)
-    }
-  end
+  let(:spot_params) { spots_attributes{ { "0": FactoryBot.attributes_for(:spot) } } }
+  let(:params_nested) { walkcourse{ FactoryBot.attributes_for(:walkcourse).merge(:spot_params) } }
 
   describe '#index' do
     it '正常なレスポンスであること' do
@@ -93,34 +84,25 @@ RSpec.describe WalkcoursesController, type: :controller do
         context '正常なデータのSpotの場合' do
           it '正常にWalkcourseとSpotが作成できること' do
             expect do
-              post :create, params: @params_nested
+              post :create, params: params_nested 
             end.to change(Walkcourse, :count).by(1) and change(Spot, :count).by(5)
           end
           it 'WalkcourseとSpot作成後、editページに遷移すること' do
-            post :create, params: @params_nested
+            post :create, params: params_nested
             expect(response).to redirect_to edit_walkcourse_path(Walkcourse.last)
           end
         end
 
         context '不正なデータを含むSpotの場合' do
           let!(:spot) { create(:spot, walkcourse: walkcourse) }
-          before :each do
-            @spot_params = {
-              spots_attributes: {
-                "0": FactoryBot.attributes_for(:spot, name: 'a' * 21)
-              }
-            }
-            @params_nested = {
-              walkcourse: FactoryBot.attributes_for(:walkcourse).merge(@spot_params)
-            }
-          end
+
           it '不正なデータを含むSpotは作成できなくなっていること' do
             expect do
-              post :create, params: @params_nested
+              post :create, params: params_nested
             end.not_to change(Walkcourse, :count)
           end
           it '不正なWalkcourseを作成しようとすると、再度作成ページへレンダリングされること' do
-            post :create, params: @params_nested
+            post :create, params: params_nested
             expect(response).to render_template :new
           end
         end
@@ -145,15 +127,15 @@ RSpec.describe WalkcoursesController, type: :controller do
     context 'nestしているspotの挙動' do
       context 'loginしていない場合' do
         it '正常なレスポンスではないこと' do
-          post :create, params: @params_nested
+          post :create, params: params_nested
           expect(response).to_not be_successful
         end
         it '302レスポンスを返すこと' do
-          post :create, params: @params_nested
+          post :create, params: params_nested
           expect(response).to have_http_status '302'
         end
         it 'ログイン画面にリダイレクトされること' do
-          post :create, params: @params_nested
+          post :create, params: params_nested
           expect(response).to redirect_to '/login'
         end
       end
