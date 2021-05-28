@@ -20,7 +20,7 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#new' do
-    context 'loginuserの場合' do
+    context 'loginしている場合' do
       before do
         sign_in user
       end
@@ -52,8 +52,8 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#create' do
-    context 'loginuserの場合' do
-      before :each do
+    context 'loginしている場合' do
+      before do
         sign_in user
       end
       context '正常なデータのWalkcourseの場合' do
@@ -84,7 +84,7 @@ RSpec.describe WalkcoursesController, type: :controller do
         context '正常なデータのSpotの場合' do
           it '正常にWalkcourseとSpotが作成できること' do
             expect do
-              post :create, params: params_nested 
+              post :create, params: params_nested
             end.to change(Walkcourse, :count).by(1) and change(Spot, :count).by(5)
           end
           it 'WalkcourseとSpot作成後、editページに遷移すること' do
@@ -110,22 +110,22 @@ RSpec.describe WalkcoursesController, type: :controller do
     end
 
     context 'loginしていない場合' do
-      it '正常なレスポンスではないこと' do
-        post :create, params: { walkcourse: attributes_for(:walkcourse) }
-        expect(response).to_not be_successful
+      context 'Walkcourseの挙動を確認する' do
+        it '正常なレスポンスではないこと' do
+          post :create, params: { walkcourse: attributes_for(:walkcourse) }
+          expect(response).to_not be_successful
+        end
+        it '302レスポンスを返すこと' do
+          post :create, params: { walkcourse: attributes_for(:walkcourse) }
+          expect(response).to have_http_status '302'
+        end
+        it 'ログイン画面にリダイレクトされること' do
+          post :create, params: { walkcourse: attributes_for(:walkcourse) }
+          expect(response).to redirect_to '/login'
+        end
       end
-      it '302レスポンスを返すこと' do
-        post :create, params: { walkcourse: attributes_for(:walkcourse) }
-        expect(response).to have_http_status '302'
-      end
-      it 'ログイン画面にリダイレクトされること' do
-        post :create, params: { walkcourse: attributes_for(:walkcourse) }
-        expect(response).to redirect_to '/login'
-      end
-    end
 
-    context 'nestしているspotの挙動' do
-      context 'loginしていない場合' do
+      context 'nestしているspotの挙動' do
         it '正常なレスポンスではないこと' do
           post :create, params: params_nested
           expect(response).to_not be_successful
@@ -156,8 +156,8 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#edit' do
-    context 'loginuserの場合' do
-      before :each do
+    context 'loginしている場合' do
+      before do
         sign_in user
       end
       it '正常なレスポンスであること' do
@@ -171,7 +171,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     end
 
     context 'loginしていない場合' do
-      context 'loginuserの挙動' do
+      context 'クライアントの挙動' do
         it '正常なレスポンスではないこと' do
           get :edit, params: { id: walkcourse.id }
           expect(response).to_not be_successful
@@ -187,7 +187,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
 
       context '他のユーザーのWalkcourseを編集しようとした時' do
-        before :each do
+        before do
           sign_in anotheruser
         end
         it '正常なレスポンスが返らないこと' do
@@ -204,7 +204,7 @@ RSpec.describe WalkcoursesController, type: :controller do
 
   describe '#update' do
     context 'ログインしている場合' do
-      before :each do
+      before do
         sign_in user
       end
 
@@ -221,7 +221,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
 
       context '不正なデータを含むWalkcourseの場合' do
-        before :each do
+        before do
           patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'a' * 51) }
         end
         it '不正なデータを含むWalkcourseを更新できなくなっていること' do
@@ -233,7 +233,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
 
       context '他のユーザーのWalkcourseを更新しようとした時' do
-        before :each do
+        before do
           another_walkcourse = create(:walkcourse)
           patch :update, params: { id: another_walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
         end
@@ -251,7 +251,7 @@ RSpec.describe WalkcoursesController, type: :controller do
           let(:walkcourse_params) { { walkcourse: FactoryBot.attributes_for(:walkcourse) } }
           let(:spots_attributes) { { spots_attributes: { "0": FactoryBot.attributes_for(:spot, id: spot.id, name: 'スポット2') } } }
 
-          before :each do
+          before do
             patch :update, params: { id: walkcourse.id, walkcourse: walkcourse_params.merge(spots_attributes) }
           end
           it '正常に更新できること' do
@@ -265,7 +265,7 @@ RSpec.describe WalkcoursesController, type: :controller do
         context '不正なデータを含むSpotの場合' do
           let(:walkcourse_params) { { walkcourse: FactoryBot.attributes_for(:walkcourse) } }
           let(:spots_attributes) { { spots_attributes: { "0": FactoryBot.attributes_for(:spot, id: spot.id, name: 'a' * 21) } } }
-          before :each do
+          before do
             patch :update, params: { id: walkcourse.id, walkcourse: walkcourse_params.merge(spots_attributes) }
           end
           it '不正なデータを含むWalkcourseを更新できなくなっていること' do
@@ -279,7 +279,7 @@ RSpec.describe WalkcoursesController, type: :controller do
         context '他のユーザーのSpotを更新しようとした時' do
           let(:walkcourse_params) { { walkcourse: FactoryBot.attributes_for(:walkcourse) } }
           let(:spots_attributes) { { spots_attributes: { "0": FactoryBot.attributes_for(:spot, id: spot.id, name: 'スポット2') } } }
-          before :each do
+          before do
             sign_in anotheruser
             patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
           end
@@ -295,8 +295,26 @@ RSpec.describe WalkcoursesController, type: :controller do
 
     context 'loginしていない場合' do
       context 'Walkcourseに関する挙動の確認' do
-        before :each do
+        before do
           patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
+        end
+        it '正常なレスポンスではないこと' do
+          expect(response).to_not be_successful
+        end
+        it '302レスポンスを返すこと' do
+          expect(response).to have_http_status '302'
+        end
+        it 'ログイン画面にリダイレクトされること' do
+          expect(response).to redirect_to '/login'
+        end
+      end
+
+      context 'nestしているspotの挙動' do
+        let(:walkcourse_params) { { walkcourse: FactoryBot.attributes_for(:walkcourse) } }
+        let(:spots_attributes) { { spots_attributes: { "0": FactoryBot.attributes_for(:spot, id: spot.id, name: 'スポット2') } } }
+
+        before do
+          patch :update, params: { id: walkcourse.id, walkcourse: walkcourse_params.merge(spots_attributes) }
         end
         it '正常なレスポンスではないこと' do
           expect(response).to_not be_successful
@@ -312,9 +330,9 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#destroy' do
-    context 'loginuserの場合' do
+    context 'loginしている場合' do
       context 'Walkcourseのみの挙動を確認' do
-        before :each do
+        before do
           sign_in user
           request.env['HTTP_REFERER'] = 'where_i_came_from'
         end
@@ -345,7 +363,7 @@ RSpec.describe WalkcoursesController, type: :controller do
     end
 
     context '他のユーザーのWalkcourseを削除しようとした時' do
-      before :each do
+      before do
         sign_in anotheruser
         delete :destroy, params: { id: walkcourse.id }
       end
