@@ -5,12 +5,18 @@ RSpec.describe WalkcoursesController, type: :controller do
   let!(:anotheruser) { create(:anotheruser) }
   let!(:walkcourse) { create(:walkcourse, user: user) }
   let!(:spot) { create(:spot, walkcourse: walkcourse, name: 'スポット1') }
-  let(:spot_params) { spots_attributes{ { "0": FactoryBot.attributes_for(:spot) } } }
-  let(:params_nested) { walkcourse{ FactoryBot.attributes_for(:walkcourse).merge(spot_params) } }
+  let(:spot_params) do
+    { spots_attributes: { "0": FactoryBot.attributes_for(:spot) } }
+  end
+  let(:params_nested) do
+    { walkcourse: FactoryBot.attributes_for(:walkcourse).merge(spot_params) }
+  end
 
   describe '#index' do
+    subject { get '/hogehoge', params: params; response }
     it '正常なレスポンスであること' do
       get :index
+
       expect(response).to be_successful
     end
     it '200レスポンスを返すこと' do
@@ -95,7 +101,7 @@ RSpec.describe WalkcoursesController, type: :controller do
 
         context '不正なデータを含むSpotの場合' do
           let!(:spot) { create(:spot, walkcourse: walkcourse) }
-
+          ##################################################
           it '不正なデータを含むSpotは作成できなくなっていること' do
             expect do
               post :create, params: params_nested
@@ -143,15 +149,12 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#show' do
-    context 'Walkcourseの挙動' do
-      it '正常なレスポンスであること' do
-        get :show, params: { id: walkcourse.id }
-        expect(response).to be_successful
-      end
-      it '200レスポンスを返すこと' do
-        get :show, params: { id: walkcourse.id }
-        expect(response).to have_http_status '200'
-      end
+    subject { get :show, params: { id: walkcourse.id }; response  }
+    context '正常なレスポンスであること' do
+      it { is_expected.to be_successful }
+    end
+    context '200レスポンスを返すこと' do
+      it { is_expected.to have_http_status '200'}
     end
   end
 
