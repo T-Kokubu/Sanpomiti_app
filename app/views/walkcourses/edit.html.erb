@@ -13,13 +13,9 @@
       <div class="course_image_explanation">
         <a>一覧表示で使用される<br>メイン画像を選択する</a>
       </div>
-
-      <% if @walkcourse.coursepic %>
-        <div class="submitted_courseimage">
-          <%= link_to image_tag(@walkcourse.coursepic.url, size: '380x250'), walkcourse_path(@walkcourse) %>
-        </div>
-      <% end %>
-
+      <div class="submitted_courseimage">
+        <%= link_to image_tag(@walkcourse.coursepic.url, size: '380x250'), walkcourse_path(@walkcourse) %>
+      </div>
       <div class="course_image_button">
         <button type="button" class="btn btn-outline-secondary rounded-pill">
           <%= f.file_field :coursepic %>

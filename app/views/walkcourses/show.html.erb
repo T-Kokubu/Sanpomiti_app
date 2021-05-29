@@ -6,11 +6,9 @@
     <%= render 'favorites/favorite_button', walkcourse: @walkcourse %>
   </div>
   <div class="walkcourse_show_contents">
-    <% if @walkcourse.coursepic %>
-      <div class="walkcourse_show_image">
-        <%= image_tag @walkcourse.coursepic.url , size: '500x350' %>
-      </div>
-    <% end %>
+    <div class="walkcourse_show_image">
+      <%= image_tag @walkcourse.coursepic.url , size: '500x350' %>
+    </div>
     <div class="walkcourse_show_description">
       <a><コースの概要><br>　<%= @walkcourse.description %></a>
     </div>
