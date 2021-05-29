@@ -149,7 +149,7 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#show' do
-    subject { get :show, params: { id: walkcourse.id }; response  }
+    subject { get :show, params: { id: walkcourse.id }; response }
     context '正常なレスポンスであること' do
       it { is_expected.to be_successful }
     end
