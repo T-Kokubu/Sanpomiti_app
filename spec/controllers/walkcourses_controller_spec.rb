@@ -6,7 +6,7 @@ RSpec.describe WalkcoursesController, type: :controller do
   let!(:walkcourse) { create(:walkcourse, user: user) }
   let!(:spot) { create(:spot, walkcourse: walkcourse, name: 'スポット1') }
   let(:spot_params) { spots_attributes{ { "0": FactoryBot.attributes_for(:spot) } } }
-  let(:params_nested) { walkcourse{ FactoryBot.attributes_for(:walkcourse).merge(:spot_params) } }
+  let(:params_nested) { walkcourse{ FactoryBot.attributes_for(:walkcourse).merge(spot_params) } }
 
   describe '#index' do
     it '正常なレスポンスであること' do
