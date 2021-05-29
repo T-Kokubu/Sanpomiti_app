@@ -13,14 +13,13 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#index' do
-    subject { get '/hogehoge', params: params; response }
-    it '正常なレスポンスであること' do
+    before do
       get :index
-
+    end
+    it '正常なレスポンスであること' do
       expect(response).to be_successful
     end
     it '200レスポンスを返すこと' do
-      get :index
       expect(response).to have_http_status '200'
     end
   end
@@ -212,14 +211,12 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
 
       context '正常なWalkcourseデータの場合' do
-        before do
-          patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }
+        subject { patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') } }
+        context '正常に更新できること' do
+          it { is_expected(walkcourse.reload.title).to eq 'hogehoge' }
         end
-        it '正常に更新できること' do
-          expect(walkcourse.reload.title).to eq 'hogehoge'
-        end
-        it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
-          expect(response).to redirect_to walkcourse_path(walkcourse)
+        context '更新した後Walkcourseの詳細ページにリダイレクトすること' do
+          it { is_expected(response).to redirect_to walkcourse_path(walkcourse) }
         end
       end
 
