@@ -13,45 +13,38 @@ RSpec.describe WalkcoursesController, type: :controller do
   end
 
   describe '#index' do
-    before do
-      get :index
+    subject { get :index; response }
+    context '正常なレスポンスであること' do
+      it { is_expected.to be_successful }
     end
-    it '正常なレスポンスであること' do
-      expect(response).to be_successful
-    end
-    it '200レスポンスを返すこと' do
-      expect(response).to have_http_status '200'
+    context '200レスポンスを返すこと' do
+      it { is_expected.to have_http_status '200' }
     end
   end
 
   describe '#new' do
+    subject { get :new; response }
     context 'loginしている場合' do
       before do
         sign_in user
       end
-
-      it '正常なレスポンスであること' do
-        get :new
-        expect(response).to be_successful
+      context '正常なレスポンスであること' do
+        it { is_expected.to be_successful }
       end
-      it '200レスポンスを返すこと' do
-        get :new
-        expect(response).to have_http_status '200'
+      context '200レスポンスを返すこと' do
+        it { is_expected.to have_http_status '200' }
       end
     end
 
     context 'loginしていない場合' do
-      it '正常なレスポンスではないこと' do
-        get :new
-        expect(response).to_not be_successful
+      context '正常なレスポンスではないこと' do
+        it { is_expected.not_to be_successful }
       end
-      it '302レスポンスを返すこと' do
-        get :new
-        expect(response).to have_http_status '302'
+      context '302レスポンスを返すこと' do
+        it { is_expected.to have_http_status '302' }
       end
-      it 'ログイン画面にリダイレクトされること' do
-        get :new
-        expect(response).to redirect_to '/login'
+      context 'ログイン画面にリダイレクトされること' do
+        it { is_expected.to redirect_to '/login' }
       end
     end
   end

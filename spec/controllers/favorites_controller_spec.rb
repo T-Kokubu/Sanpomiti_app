@@ -32,15 +32,15 @@ RSpec.describe FavoritesController, type: :controller do
 
     context 'loginしていない場合' do
       it '正常なレスポンスではないこと' do
-        post :create, params: { walkcourse: attributes_for(:walkcourse) }
+        post :create, params: { like_id: walkcourse.id }
         expect(response).to_not be_successful
       end
       it '302レスポンスを返すこと' do
-        post :create, params: { walkcourse: attributes_for(:walkcourse) }
+        post :create, params: { like_id: walkcourse.id }
         expect(response).to have_http_status '302'
       end
       it 'ログイン画面にリダイレクトされること' do
-        post :create, params: { walkcourse: attributes_for(:walkcourse) }
+        post :create, params: { like_id: walkcourse.id }
         expect(response).to redirect_to '/login'
       end
     end
