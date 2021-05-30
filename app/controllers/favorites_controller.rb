@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:create, :destroy]
   before_action :set_search
 
   def index
