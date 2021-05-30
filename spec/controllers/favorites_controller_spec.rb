@@ -47,11 +47,11 @@ RSpec.describe FavoritesController, type: :controller do
   end
 
   describe '#destroy' do
-    before do
-      sign_in user
-      post :create, params: { like_id: walkcourse.id }
-    end
     context 'loginuserの場合' do
+      before do
+        sign_in user
+        post :create, params: { like_id: walkcourse.id }
+      end
       it 'current_userが正常にlikeできること' do
         expect do
           delete :destroy, params: { like_id: walkcourse.id }
