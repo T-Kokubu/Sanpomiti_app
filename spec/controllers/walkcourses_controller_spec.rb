@@ -150,7 +150,7 @@ RSpec.describe WalkcoursesController, type: :controller do
       it { is_expected.to be_successful }
     end
     context '200レスポンスを返すこと' do
-      it { is_expected.to have_http_status '200'}
+      it { is_expected.to have_http_status '200' }
     end
   end
 
@@ -208,9 +208,9 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
 
       context '正常なWalkcourseデータの場合' do
-        subject { patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') };response }
+        subject { patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') }; response }
         it '正常に更新できること' do
-          expect { subject }.to change {walkcourse.reload.title}.to 'hogehoge'
+          expect { subject }.to change { walkcourse.reload.title }.to 'hogehoge'
         end
         it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
           expect(subject).to redirect_to walkcourse_path(walkcourse)
