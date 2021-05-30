@@ -99,8 +99,12 @@ RSpec.describe WalkcoursesController, type: :controller do
         end
 
         context '不正なデータを含むSpotの場合' do
-          let!(:spot) { create(:spot, walkcourse: walkcourse) }
-          ##################################################
+          let(:spot_params) do
+            { spots_attributes: { "0": FactoryBot.attributes_for(:spot, name: 'a' * 21) } }
+          end
+          let(:params_nested) do
+            { walkcourse: FactoryBot.attributes_for(:walkcourse).merge(spot_params) }
+          end
           it '不正なデータを含むSpotは作成できなくなっていること' do
             expect do
               post :create, params: params_nested
