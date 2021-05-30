@@ -24,11 +24,9 @@ class SessionsController < ApplicationController
   def login(email, password)
     @user = User.find_by(email: email)
     if @user&.authenticate(password)
-      # ログイン成功
       session[:user_id] = @user.id
       true
     else
-      # ログイン失敗
       false
     end
   end
