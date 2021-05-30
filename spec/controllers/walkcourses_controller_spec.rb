@@ -211,12 +211,12 @@ RSpec.describe WalkcoursesController, type: :controller do
       end
 
       context '正常なWalkcourseデータの場合' do
-        subject { patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') } }
-        context '正常に更新できること' do
-          it { is_expected(walkcourse.reload.title).to eq 'hogehoge' }
+        subject { patch :update, params: { id: walkcourse.id, walkcourse: attributes_for(:walkcourse, title: 'hogehoge') };response }
+        it '正常に更新できること' do
+          expect { subject }.to change {walkcourse.reload.title}.to 'hogehoge'
         end
-        context '更新した後Walkcourseの詳細ページにリダイレクトすること' do
-          it { is_expected(response).to redirect_to walkcourse_path(walkcourse) }
+        it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
+          expect(subject).to redirect_to walkcourse_path(walkcourse)
         end
       end
 
