@@ -25,7 +25,12 @@ RSpec.describe FavoritesController, type: :controller do
         sign_in user
       end
       it 'current_userが正常にlikeできること' do
-        expect { user.like(wallkcourse) }.to change(Favorite, :count).by(1)
+        # post favorites_path, params: { like_id: walkcourse.id }
+        # expect { user.like(wallkcourse) }.to change(User.favorites, :count).by(1)
+
+        expect do
+          post favorites_path, params: { like_id: walkcourse.id }
+        end.to change(Favorite, :count).by(1)
       end
     end
 

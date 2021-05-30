@@ -11,6 +11,7 @@ FactoryBot.define do
   factory :otherwalkcourse, class: Walkcourse do
     title { 'otherrspectest' }
     description { 'otherrspectest' }
+    coursepic { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/image/monster11.png')) }
   end
 
   factory :nest_walkcourse, class: Walkcourse do
