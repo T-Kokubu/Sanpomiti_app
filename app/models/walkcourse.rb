@@ -11,4 +11,5 @@ class Walkcourse < ApplicationRecord
   validates :start_station, length: { maximum: 20 }
   validates :goal_station, length: { maximum: 20 }
   mount_uploader :coursepic, CoursepicUploader
+  validates :coursepic, presence: true
 end

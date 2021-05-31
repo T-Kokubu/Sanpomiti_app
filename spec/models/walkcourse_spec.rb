@@ -30,6 +30,14 @@ RSpec.describe Walkcourse, type: :model do
     end
   end
 
+  describe 'coursepicについて' do
+    it '入力がなければエラー表示する' do
+      walkcourse = build(:walkcourse, coursepic: '')
+      walkcourse.valid?
+      expect(walkcourse.errors[:coursepic]).to include('を入力してください')
+    end
+  end
+
   describe 'time_to_first_spot' do
     it '入力がない場合でも有効' do
       walkcourse = build(:walkcourse, time_to_first_spot: '', user: user)
