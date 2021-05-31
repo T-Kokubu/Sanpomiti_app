@@ -37,6 +37,9 @@ RSpec.describe SessionsController, type: :controller do
       } }
     end
     context 'Sessionの削除' do
+      it 'sessionにnilが入力されていること' do
+        expect(user[:session]).to eq nil
+      end
       it '削除した後、ルートページにリダイレクトすること' do
         expect(response).to redirect_to root_path
       end
