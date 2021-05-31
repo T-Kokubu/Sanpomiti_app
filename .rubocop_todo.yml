@@ -104,3 +104,6 @@ Layout/LineLength:
 # 空ファイル不可
 Lint/EmptyFile:
   Enabled: false
+
+Style/Semicolon:
+  Enabled: false

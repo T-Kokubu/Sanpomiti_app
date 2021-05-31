@@ -1,5 +1,6 @@
 class WalkcoursesController < ApplicationController
-  before_action :require_user_logged_in, only: [:edit, :destroy]
+  before_action :require_user_logged_in, only: [:new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :set_search
 
   def index
@@ -58,5 +59,10 @@ class WalkcoursesController < ApplicationController
   def course_params
     params.require(:walkcourse).permit(:title, :description, :coursepic, :start_station, :time_to_first_spot,
                                        :goal_station, spots_attributes: [:id, :name, :transit_time, :time_required, :address, :description, :spotpic, :longitude, :latitude])
+  end
+
+  def correct_user
+    @walkcourse = current_user.walkcourses.find_by(id: params[:id])
+    redirect_to root_url unless @walkcourse
   end
 end

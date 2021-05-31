@@ -8,5 +8,6 @@ FactoryBot.define do
     latitude { 35.6896936 }
     longitude { 139.750396 }
     spotpic { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/image/monster11.png')) }
+    walkcourse nil
   end
 end
