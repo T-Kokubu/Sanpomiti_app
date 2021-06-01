@@ -25,7 +25,6 @@ a {
 header {
   margin: 5px 75px;
   height: 76px;
-
 }
 
 header img {
@@ -167,4 +166,14 @@ footer {
 }
 .field_with_errors {
   display: contents;
+}
+.course_form {
+  display: relative;
+}
+.flash-message {
+  display: absolute;
+  top: -30px;
+}
+.error_messages {
+  margin-top: 20px;
 }

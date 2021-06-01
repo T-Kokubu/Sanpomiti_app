@@ -25,7 +25,7 @@ RSpec.describe FavoritesController, type: :controller do
       end
       it 'current_userが正常にlikeできること' do
         expect do
-          post :create, params: { like_id: walkcourse.id }
+          post :create, params: { like_id: walkcourse.id }, xhr: true
         end.to change(Favorite, :count).by(1)
       end
     end
@@ -50,11 +50,11 @@ RSpec.describe FavoritesController, type: :controller do
     context 'loginuserの場合' do
       before do
         sign_in user
-        post :create, params: { like_id: walkcourse.id }
+        post :create, params: { like_id: walkcourse.id }, xhr: true
       end
-      it 'current_userが正常にlikeできること' do
+      it 'current_userが正常にlikeを外せること' do
         expect do
-          delete :destroy, params: { like_id: walkcourse.id }
+          delete :destroy, params: { like_id: walkcourse.id }, xhr: true
         end.to change(Favorite, :count).by(-1)
       end
     end
