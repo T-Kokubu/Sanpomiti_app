@@ -25,7 +25,6 @@ a {
 header {
   margin: 5px 75px;
   height: 76px;
-
 }
 
 header img {
@@ -146,7 +145,7 @@ header img {
 
 .alert {
   margin-top: 20px;
-  margin-bottom: -50px;
+  margin-bottom: -80px;
 }
 #error_explanation {
   margin-bottom: 10px;
@@ -164,4 +163,17 @@ footer {
 
   position: absolute;/*←絶対位置*/
   bottom: 0; /*下に固定*/
+}
+.field_with_errors {
+  display: contents;
+}
+.course_form {
+  display: relative;
+}
+.flash-message {
+  display: absolute;
+  top: -30px;
+}
+.error_messages {
+  margin-top: 20px;
 }
