@@ -61,9 +61,6 @@ jobs:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
       - run: bundle exec rake db:create
-        env:
-          RAILS_ENV: test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - run: bundle exec rake db:migrate
       - run: bundle exec rake db:schema:load
 
