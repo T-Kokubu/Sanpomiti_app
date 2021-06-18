@@ -1,5 +1,6 @@
 FROM ruby:2.5.8
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /sanpomiti_app
 WORKDIR /sanpomiti_app
 COPY Gemfile /sanpomiti_app/Gemfile
