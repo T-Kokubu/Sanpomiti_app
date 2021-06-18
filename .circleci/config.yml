@@ -37,6 +37,7 @@ jobs:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
           PGUSER: root
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - image: circleci/postgres:9.4
         environment:
           POSTGRES_USER: postgres
