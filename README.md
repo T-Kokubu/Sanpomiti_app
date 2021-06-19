@@ -25,8 +25,8 @@
 
 # 使用技術
 ・Ruby 2.5.8
-・Ruby on Rails 5.2.4
-・PostgreSQL
+・Ruby on Rails 5.2.6
+・PostgreSQL 13.1
 ・Docker/Docker-compose
 ・CircleCI CI/CD
 ・Rubocop
@@ -38,6 +38,6 @@
   ●RDS
   ●Route53
   ●ALB
+  ●AWS ACM
   ●Code Deploy
   ●Code Pipline
-  ●AWS ACM
