@@ -69,6 +69,15 @@ jobs:
           name: Rspec
           command: bundle exec rspec
 
+  deploy: #デプロイするジョブ
+    working_directory: ~/my-app
+    docker:
+    - image: circleci/ruby:2.5.8-node-browsers-legacy
+    steps:
+      - checkout
+      - run: bundle install --path vendor/bundle
+      - run: bundle exec rake deploy
+
 workflows:
   version: 2.1
   rubocop_rspec:
@@ -77,3 +86,9 @@ workflows:
       - rspec:
           requires:
             - rubocop
+      - deploy: # deployはbuildのあとに実行
+          requires:
+            - build
+          filters: # masterの場合のみデプロイする
+            branches:
+              only: master
