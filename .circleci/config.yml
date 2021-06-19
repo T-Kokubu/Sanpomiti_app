@@ -88,7 +88,4 @@ workflows:
             - rubocop
       - deploy: # deployはbuildのあとに実行
           requires:
-            - build
-          filters: # masterの場合のみデプロイする
-            branches:
-              only: master
+            - rspec
