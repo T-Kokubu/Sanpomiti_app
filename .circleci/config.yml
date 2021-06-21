@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
+
 jobs:
   rubocop:
     docker:
@@ -70,13 +74,15 @@ jobs:
           command: bundle exec rspec
 
   deploy: #デプロイするジョブ
-    working_directory: ~/my-app
+    working_directory: ~/repo
     docker:
     - image: circleci/ruby:2.5.8-node-browsers-legacy
     steps:
       - checkout
-      - run: bundle install --path vendor/bundle
-      - run: bundle exec rake deploy
+      - aws-s3/sync:
+          from: dist
+          to: s3://sanpomiti-app
+          overwrite: true
 
 workflows:
   version: 2.1
