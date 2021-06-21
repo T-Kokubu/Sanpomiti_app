@@ -80,7 +80,7 @@ jobs:
     steps:
       - checkout
       - aws-s3/sync:
-          from: ~/repo/
+          from: ~/repo
           to: s3://sanpomiti-app/
           overwrite: true
 
