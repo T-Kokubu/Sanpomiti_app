@@ -80,9 +80,11 @@ jobs:
     steps:
       - checkout
       - aws-s3/sync:
-          from: ~/repo
+          from: ~/repo/
           to: s3://sanpomiti-app/
           overwrite: true
+      - store_artifacts:
+          path: tmp/capybara/
 
 workflows:
   version: 2.1
@@ -92,6 +94,6 @@ workflows:
       - rspec:
           requires:
             - rubocop
-      - deploy: # deployはbuildのあとに実行
+      - deploy: # deployはrspecのあとに実行
           requires:
             - rspec
