@@ -80,8 +80,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: test
-        command: 'env'
+          name: test
+          command: |
+            echo 'AWS_REGION: '${AWS_REGION}
+            echo 'AWS_ACCESS_KEY_ID: '${AWS_ACCESS_KEY_ID}
+            echo 'AWS_SECRET_ACCESS_KEY: '${AWS_SECRET_ACCESS_KEY}
       - aws-s3/sync:
           from: ~/repo/
           to: s3://sanpomiti-app/
