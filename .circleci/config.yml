@@ -83,8 +83,6 @@ jobs:
           from: ~/repo/
           to: s3://sanpomiti-app/
           overwrite: true
-      - store_artifacts:
-          path: tmp/capybara/
 
 workflows:
   version: 2.1
