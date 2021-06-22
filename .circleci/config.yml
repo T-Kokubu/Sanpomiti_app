@@ -81,7 +81,7 @@ jobs:
       - checkout
       - aws-s3/sync:
           from: ~/repo/
-          to: arn:aws:s3:::sanpomiti-app
+          to: s3://sanpomiti-app/
           overwrite: true
 
 workflows:
@@ -95,3 +95,6 @@ workflows:
       - deploy: # deployはrspecのあとに実行
           requires:
             - rspec
+            # filters:
+            #   branches:
+            #     only: master
