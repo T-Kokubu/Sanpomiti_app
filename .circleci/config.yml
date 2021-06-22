@@ -79,6 +79,9 @@ jobs:
     - image: circleci/ruby:2.5.8-node-browsers-legacy
     steps:
       - checkout
+      - run:
+        name: test
+        command: 'env | grep AWS'
       - aws-s3/sync:
           from: ~/repo/
           to: s3://sanpomiti-app/
