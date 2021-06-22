@@ -81,7 +81,7 @@ jobs:
       - checkout
       - aws-s3/sync:
           from: ~/repo/
-          to: s3://sanpomiti-app/
+          to: arn:aws:s3:::sanpomiti-app
           overwrite: true
 
 workflows:
