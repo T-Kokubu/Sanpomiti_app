@@ -81,7 +81,7 @@ jobs:
       - checkout
       - run:
         name: test
-        command: puts 'env \| grep AWS'
+        command: 'env'
       - aws-s3/sync:
           from: ~/repo/
           to: s3://sanpomiti-app/
