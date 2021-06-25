@@ -86,18 +86,6 @@ group :development do
   gem 'binding_of_caller' # better_errorsの画面上にirb/pry(PERL)を表示する
 end
 
-group :development, :test do
-  #capistrano
- gem 'capistrano'
- gem 'capistrano-bundler'
- gem 'capistrano-rails'
- gem 'capistrano-rbenv'
-end
-
-group :production, :staging do
-  gem 'unicorn'
-end
-
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
