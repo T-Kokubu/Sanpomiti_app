@@ -50,9 +50,6 @@ gem 'nokogiri', '~> 1.8'
 gem 'dotenv-rails'
 # ransack
 gem 'ransack'
-
-gem 'rubocop-rails'
-
 gem 'net-ssh', '~> 6.1.0'
 
 group :development, :test do
@@ -60,7 +57,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop'
   gem 'rubocop-performance'
-
+  gem 'rubocop-rails'
   gem 'rubocop-rspec'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
