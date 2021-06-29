@@ -39,5 +39,5 @@
   ●Route53
   ●ALB
   ●AWS ACM
-  ●Code Deploy
-  ●Code Pipline
+  ●CodeDeploy
+  ●CodePipline
