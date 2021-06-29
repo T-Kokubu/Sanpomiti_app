@@ -23,7 +23,7 @@ a {
 }
 
 header {
-  margin: 5px 75px;
+  margin: 10px 75px;
   height: 76px;
 }
 
@@ -176,4 +176,17 @@ footer {
 }
 .error_messages {
   margin-top: 20px;
+}
+.test_user_form {
+  margin-top: 30px;
+}
+.easylogin {
+  display: inline-block;
+  margin-right: 50px;
+}
+.easy-btn {
+  padding: 22px 20px;
+  position: absolute;
+  right: 448px;
+  top: 20px;
 }

@@ -1,4 +1,8 @@
 version: 2.1
+
+orbs:
+  aws-s3: circleci/aws-s3@1.0.11
+
 jobs:
   rubocop:
     docker:
@@ -59,6 +63,7 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run: cp config/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
       - run: bundle exec rake db:migrate
       - run: bundle exec rake db:schema:load
@@ -68,6 +73,23 @@ jobs:
           name: Rspec
           command: bundle exec rspec
 
+  deploy: #デプロイするジョブ
+    working_directory: ~/repo
+    docker:
+    - image: circleci/ruby:2.5.8-node-browsers-legacy
+    steps:
+      - checkout
+      - run:
+          name: test
+          command: |
+            echo 'AWS_REGION: '${AWS_REGION}
+            echo 'AWS_ACCESS_KEY_ID: '${AWS_ACCESS_KEY_ID}
+            echo 'AWS_SECRET_ACCESS_KEY: '${AWS_SECRET_ACCESS_KEY}
+      - aws-s3/sync:
+          from: ~/repo/
+          to: s3://sanpomiti-app/
+          overwrite: true
+
 workflows:
   version: 2.1
   rubocop_rspec:
@@ -76,3 +98,9 @@ workflows:
       - rspec:
           requires:
             - rubocop
+      - deploy: # deployはrspecのあとに実行
+          requires:
+            - rspec
+            # filters:
+            #   branches:
+            #     only: master
