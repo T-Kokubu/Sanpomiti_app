@@ -1,7 +1,6 @@
 @import './toppages.scss' ;
 @import './users.scss' ;
 @import './walkcourses.scss' ;
-@import './sessions.scss' ;
 
 body {
     font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
@@ -24,7 +23,7 @@ a {
 }
 
 header {
-  margin: 5px 75px;
+  margin: 10px 75px;
   height: 76px;
 }
 
@@ -180,4 +179,14 @@ footer {
 }
 .test_user_form {
   margin-top: 30px;
+}
+.easylogin {
+  display: inline-block;
+  margin-right: 50px;
+}
+.easy-btn {
+  padding: 22px 20px;
+  position: absolute;
+  right: 448px;
+  top: 20px;
 }
