@@ -1,16 +1,23 @@
 version: 0.0
 os: linux
 files:
+    #リビジョンを指定
   - source: /
+    #コピーするファイルの絶対パス
     destination: /home/ec2-user/Sanpomiti_app
+#処理を追加
 hooks:
+  #AWS CodeDeployがfilesセクションで指定された場所にファイルをコピーする前
   BeforeInstall:
+      #実行したいシェルスクリプトファイルの場所
     - location: scripts/install_dependencies
       timeout: 300
+      #シェルスクリプトの実行ユーザーを指定
       runas: root
     - location: scripts/start_server
       timeout: 300
       runas: root
+  #前回のリビジョンのシャットダウンが開始したとき
   ApplicationStop:
     - location: scripts/stop_server
       timeout: 300
