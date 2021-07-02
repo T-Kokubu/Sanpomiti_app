@@ -8,5 +8,5 @@ ja:
         password: パスワード
         password_confirmation: パスワード(再確認)
         email: メールアドレス
-      prefecture:
-        name: 都道府県名
+        prefecture: 都道府県名
+        
