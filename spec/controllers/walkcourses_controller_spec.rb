@@ -212,8 +212,8 @@ RSpec.describe WalkcoursesController, type: :controller do
         it '正常に更新できること' do
           expect { subject }.to change { walkcourse.reload.title }.to 'hogehoge'
         end
-        it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
-          expect(subject).to redirect_to walkcourse_path(walkcourse)
+        it '更新した後Walkcourseの編集ページにリダイレクトすること' do
+          expect(subject).to redirect_to edit_walkcourse_path(walkcourse)
         end
       end
 
@@ -254,8 +254,8 @@ RSpec.describe WalkcoursesController, type: :controller do
           it '正常に更新できること' do
             expect(spot.reload.name).to eq 'スポット2'
           end
-          it '更新した後Walkcourseの詳細ページにリダイレクトすること' do
-            expect(response).to redirect_to walkcourse_path(walkcourse)
+          it '更新した後Walkcourseの編集ページにリダイレクトすること' do
+            expect(response).to redirect_to edit_walkcourse_path(walkcourse)
           end
         end
 

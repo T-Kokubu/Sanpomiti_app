@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
       it 'password_confirmationの入力がないとエラー表示' do
         user = build(:user, password_confirmation: '')
         user.valid?
-        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
+        expect(user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')
       end
 
       it 'prefectureの入力がないとエラー表示' do
@@ -68,7 +68,7 @@ RSpec.describe User, type: :model do
       it 'password_confirmationが規定文字数を超えた場合はエラー表示' do
         user = build(:user, password_confirmation: 'a' * 17)
         user.valid?
-        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
+        expect(user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')
       end
 
       it 'passwordが規定文字数以下の場合はエラー表示' do
@@ -80,7 +80,7 @@ RSpec.describe User, type: :model do
       it 'password_confirmationが規定文字数以下の場合はエラー表示' do
         user = build(:user, password_confirmation: 'a' * 5)
         user.valid?
-        expect(user.errors[:password_confirmation]).to include('とPasswordの入力が一致しません')
+        expect(user.errors[:password_confirmation]).to include('とパスワードの入力が一致しません')
       end
     end
 
