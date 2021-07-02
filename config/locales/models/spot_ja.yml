@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      spot: スポット
+    attributes:
+      spot:
+        name: スポットの名前
+        description: スポットの説明
+        transit_time: スポット間の移動時間
+        time_required: スポットでの所要時間
+        spotpic: スポット画像
+        address: スポットの住所

@@ -7,3 +7,6 @@ ja:
         title: コースタイトル
         description: コース説明文
         coursepic: コース画像
+        time_to_first_spot: 移動時間
+        start_station: スタートの駅
+        goal_station: ゴールの駅
