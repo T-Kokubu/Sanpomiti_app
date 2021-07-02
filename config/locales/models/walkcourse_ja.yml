@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      walkcourse: コース
+    attributes:
+      walkcourse:
+        title: コースタイトル
+        description: コース説明文
+        coursepic: コース画像
