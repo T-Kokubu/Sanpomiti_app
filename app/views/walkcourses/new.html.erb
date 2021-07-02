@@ -3,7 +3,7 @@
   <%= render 'layouts/error_messages', model: f.object %>
   <div class="course_title_form">
     <div class="course_explanation">
-      <a>コースタイトル</a>
+      <a>コースタイトル<span class="input_required">必須</span></a>
     </div>
     <div class="title_transmit_form">
       <%= f.text_field :title, size: "62", class: 'form-control' %>
@@ -11,7 +11,7 @@
   </div>
   <div class="course_image">
     <div class="course_image_explanation">
-      <a>一覧表示で使用される<br>メイン画像を選択する</a>
+      <a>メイン画像<span class="input_required">必須</span></a>
     </div>
     <div class="course_image_button">
       <button type="button" class="btn btn-outline-secondary rounded-pill">
@@ -22,7 +22,7 @@
 
   <div class="course_description">
     <div class="course_description_explanation">
-      <a>コースの説明を入力する</a>
+      <a>コースの説明<span class="input_required">必須</span></a>
     </div>
     <div class="description_transmit_form">
       <%= f.text_area :description, size: "5x10", class: 'form-control' %>
@@ -46,10 +46,6 @@
     <div class="start_station">
       <%= f.text_field :time_to_first_spot, size: "40" %>　分
     </div>
-  </div>
-  <!-- saveボタン -->
-  <div class="first_save_button">
-    <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
   </div>
 
   <!-- spotの登録 -->
@@ -134,15 +130,12 @@
           <%= spot_form.text_field :transit_time, size: "40" %>　分
         </div>
       </div>
-      <div class="save_button">
-        <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
-      </div>
     </div>
   <% end %>
 
     <div class="zero_spot">
       <div class="start_station_explanation">
-        <a> ゴール地点の駅名を<br>入力する</a>
+        <a> ゴール地点の駅名を<br>入力する</a>
       </div>
       <div class="start_station">
         <%= f.text_field :goal_station, size: "40" %>　駅
