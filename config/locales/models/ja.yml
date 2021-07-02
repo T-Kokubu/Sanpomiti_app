@@ -1,0 +1,16 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        name: ユーザー名
+        password: パスワード
+        password_confirmation: パスワード(再確認)
+        email: メールアドレス
+
+    models:
+      prefecture: 都道府県
+    attributes:
+      prefecture:
+        name: 都道府県名

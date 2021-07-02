@@ -51,6 +51,8 @@ gem 'dotenv-rails'
 # ransack
 gem 'ransack'
 gem 'net-ssh', '~> 6.1.0'
+# エラーメッセージの日本語化
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
