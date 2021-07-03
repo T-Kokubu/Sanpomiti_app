@@ -1,10 +1,13 @@
-@media (max-width:1050px) {
-  .first-phrase {
-
-  }
+@media (max-width:1000px) {
+  // toppage
   .second-phrase {
     width: 410px;
     padding-right: -50px;
   }
-
+  .user_setting {
+    width: 100%;
+  }
+  .user_show_contents {
+    width: 100%;
+  }
 }
