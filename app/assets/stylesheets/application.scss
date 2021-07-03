@@ -61,7 +61,7 @@ header img {
   border-radius: 4px;
   text-align: center;
 }
-.mypage {
+.mypage-login {
   display: inline-block;
   padding: 3px 12px;
   width: 126px;
@@ -109,6 +109,19 @@ header img {
   border-radius: 4px;
   text-align: center;
   float: right;
+}
+.test-login {
+  display: inline-block;
+  padding: 4.5px 12px;
+  width: 120px;
+  font-size: 12px;
+  text-align: center;
+  float: right;
+  border: 1px solid #053ace;
+  border-radius: 4px;
+  text-align: center;
+  float: right;
+  text-decoration: none;
 }
 
 /* header右下 　検索フォーム */
