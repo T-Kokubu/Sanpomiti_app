@@ -46,6 +46,10 @@
   .courseshow_requiretime  {
     width: 30%;
   }
+  // walkcourse_edit_page
+  .course_image {
+    height: 380px;
+  }
 }
 
 // Large devices (desktops, less than 1200px)
@@ -68,4 +72,32 @@
   .user_edit_button {
     margin: 0;
   }
+  // walkcourse_edit_page
+  .course_image {
+    height: 340px;
+  }
+  .course_form {
+    font-size: 15px;
+  }
+  .course_explanation {
+    width: initial;
+    font-size: initial;
+  }
+  .course_image_explanation {
+    font-size: initial;
+  }
+  .course_description_explanation {
+    font-size: initial;
+    margin-bottom: -4px;
+  }
+  .start_station_explanation,.spot_name,.spot_time_required_explanation,.description_title,.spot_transittime_explanation {
+    width: 285px;
+  }
+  .start_station,.start_place,.spot_time_required,.next_to_transittime {
+    padding: 13px 1px;
+  }
+  .sp_content {
+    width:60%;
+  }
+
 }

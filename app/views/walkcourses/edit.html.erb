@@ -38,7 +38,7 @@
       <a>スタート地点の駅名を<br>入力する</a>
     </div>
     <div class="start_station">
-      <%= f.text_field :start_station, size: "40" %>　駅
+      <%= f.text_field :start_station, size: "40", class: 'sp_content' %>　駅
     </div>
   </div>
   <!-- 移動時間 -->
@@ -47,7 +47,7 @@
       <a>次のスポットまでの<br>移動時間を入力する</a>
     </div>
     <div class="start_station">
-      <%= f.text_field :time_to_first_spot, size: "40" %>　分
+      <%= f.text_field :time_to_first_spot, size: "40", class: 'sp_content' %>　分
     </div>
   </div>
 
@@ -59,7 +59,7 @@
           <a>スポットの名称を入力する</a>
         </div>
         <div class="start_place">
-          <%= spot_form.text_field :name, size: "40" %>　　
+          <%= spot_form.text_field :name, size: "40", class: 'sp_content' %>　　
         </div>
       </div>
       <!-- 所要時間の入力 -->
@@ -68,7 +68,7 @@
           <a>この場所で所要する時間</a>
         </div>
         <div class="spot_time_required">
-          <%= spot_form.text_field :time_required, size: "40" %>　分
+          <%= spot_form.text_field :time_required, size: "40", class: 'sp_content' %>　分
         </div>
       </div>
       <!-- spotイメージ -->
@@ -135,7 +135,7 @@
           <a>次のスポットまでの<br>移動時間を入力する</a>
         </div>
         <div class="next_to_transittime">
-          <%= spot_form.text_field :transit_time, size: "40" %>　分
+          <%= spot_form.text_field :transit_time, size: "40", class: 'sp_content' %>　分
         </div>
       </div>
     </div>
@@ -146,7 +146,7 @@
         <a> ゴール地点の駅名を<br>入力する</a>
       </div>
       <div class="start_station">
-        <%= f.text_field :goal_station, size: "40" %>　駅
+        <%= f.text_field :goal_station, size: "40", class: 'sp_content' %>　駅
       </div>
     </div>
 
