@@ -101,10 +101,12 @@
 
 
   .first_spot {
-
+    position: static;
+    height: initial;
   }
   .start_station_explanation {
     font-size: initial;
+    position: static;
     width: 100%;
   }
   .start_station_explanation a {
@@ -112,11 +114,13 @@
   }
   .start_station {
     display: block;
+    position: static;
   }
 
 
   .first_time_required {
     display: block;
+    position: static;
   }
   .start_station_explanation {
     display: block;
@@ -125,9 +129,19 @@
     display: block;
     width: 100%;
   }
-
   .first_time_required{
     display: block;
+  }
+
+  .spot_name {
+    display: block;
+    width: 100%;
+    position: static;
+  }
+  .start_place {
+    display: block;
+    width: 100%;
+    position: static;
   }
 
   // walkcourse_new_page
