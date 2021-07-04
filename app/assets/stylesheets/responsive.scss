@@ -16,7 +16,18 @@
   .users_info {
     font-size: 12px;
   }
-
+  .image_top {
+    
+  }
+  .parent-table {
+    margin-top: 20px;
+    border-spacing: 0 0;
+    display: static;
+    width: auto;
+  }
+  .recommend-course {
+    display: static;
+  }
   // user_show
   .user_edit_button {
     display: inline-block;
@@ -31,7 +42,10 @@
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {
   // top_page
-  
+  .image_top {
+    width: 300px;
+    height: 200px;
+  }
 
   // user_show
   .usershow_course_part {
