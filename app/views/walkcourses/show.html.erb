@@ -7,7 +7,7 @@
   </div>
   <div class="walkcourse_show_contents">
     <div class="walkcourse_show_image">
-      <%= image_tag @walkcourse.coursepic.url , size: '500x350' %>
+      <%= image_tag @walkcourse.coursepic.url,class:"show_wkimage" %>
     </div>
     <div class="walkcourse_show_description">
       <a><コースの概要><br>　<%= @walkcourse.description %></a>
@@ -81,7 +81,7 @@
       <div class="spot_images">
         <div class="spot_spotpic_image">
           <% if spot.spotpic.url %>
-            <%= image_tag spot.spotpic.url, size: '500x350' %>
+            <%= image_tag spot.spotpic.url,class:"sp_show_image" %>
           <% end %>
         </div>
         <div class="spot_map_info">
