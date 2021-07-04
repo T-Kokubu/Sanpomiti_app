@@ -9,11 +9,31 @@
 
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
+  // top_page
+  .second-phrase {
+    width: 60%;
+  }
+  .users_info {
+    font-size: 12px;
+  }
 
+  // user_show
+  .user_edit_button {
+    display: inline-block;
+    padding: 5px 30px;
+  }
+  .user_destroy_button {
+    display: inline-block;
+    padding: 5px 30px;
+  }
 }
 
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {
+  // top_page
+  
+
+  // user_show
   .usershow_course_part {
     display: block;
     width: 100%;
@@ -26,5 +46,4 @@
   .user_edit_button {
     margin: 0;
   }
-  
 }
