@@ -16,9 +16,6 @@
   .users_info {
     font-size: 12px;
   }
-  .image_top {
-
-  }
   .parent-table {
     margin-top: 20px;
     border-spacing: 0 0;
@@ -38,6 +35,17 @@
     display: inline-block;
     padding: 5px 30px;
   }
+  // walkcourse_show_page
+  .course_title {
+    width: 65%;
+  }
+  .itinerary {
+    padding: initial;
+    padding-top: 40px;
+  }
+  .courseshow_requiretime  {
+    width: 30%;
+  }
 }
 
 // Large devices (desktops, less than 1200px)
@@ -47,7 +55,6 @@
     width: 100%;
     height: 150px;
   }
-
   // user_show
   .usershow_course_part {
     display: block;
