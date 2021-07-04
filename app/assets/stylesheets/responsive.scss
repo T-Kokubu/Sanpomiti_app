@@ -7,64 +7,6 @@
 
 }
 
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) {
-  // top_page
-  .second-phrase {
-    width: 60%;
-  }
-  .users_info {
-    font-size: 12px;
-  }
-  .parent-table {
-    margin-top: 20px;
-    border-spacing: 0 0;
-    display: static;
-    width: auto;
-  }
-  .recommend-course {
-    display: static;
-    width: 30%;
-  }
-  // user_show
-  .user_edit_button {
-    display: inline-block;
-    padding: 5px 30px;
-  }
-  .user_destroy_button {
-    display: inline-block;
-    padding: 5px 30px;
-  }
-  // walkcourse_show_page
-  .course_title {
-    width: 65%;
-  }
-  .itinerary {
-    padding: initial;
-    padding-top: 40px;
-  }
-  .courseshow_requiretime  {
-    width: 30%;
-  }
-  // walkcourse_edit_page
-  .course_image {
-    height: 380px;
-  }
-  .start_station_explanation {
-    font-size: initial;
-    display: block;
-    width: 100%;
-  }
-  .start_station {
-    display: block;
-    width: 100%;
-  }
-  // walkcourse_new_page
-  #walkcourse_title {
-    padding: 13px 1px;
-  }
-}
-
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {
   // top_page
@@ -111,6 +53,86 @@
   }
   .sp_content {
     width:60%;
+  }
+}
+  // Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  // top_page
+  .second-phrase {
+    width: 60%;
+  }
+  .users_info {
+    font-size: 12px;
+  }
+  .parent-table {
+    margin-top: 20px;
+    border-spacing: 0 0;
+    display: static;
+    width: auto;
+  }
+  .recommend-course {
+    display: static;
+    width: 30%;
+  }
+  // user_show
+  .user_edit_button {
+    display: inline-block;
+    padding: 5px 30px;
+  }
+  .user_destroy_button {
+    display: inline-block;
+    padding: 5px 30px;
+  }
+  // walkcourse_show_page
+  .course_title {
+    width: 65%;
+  }
+  .itinerary {
+    padding: initial;
+    padding-top: 40px;
+  }
+  .courseshow_requiretime  {
+    width: 30%;
+  }
+  // walkcourse_edit_page
+  .course_image {
+    height: 380px;
+  }
+
+
+  .first_spot {
+
+  }
+  .start_station_explanation {
+    font-size: initial;
+    width: 100%;
+  }
+  .start_station_explanation a {
+    display: block;
+  }
+  .start_station {
+    display: block;
+  }
+
+
+  .first_time_required {
+    display: block;
+  }
+  .start_station_explanation {
+    display: block;
+  }
+  .start_station {
+    display: block;
+    width: 100%;
+  }
+
+  .first_time_required{
+    display: block;
+  }
+
+  // walkcourse_new_page
+  #walkcourse_title {
+    padding: 13px 1px;
   }
 
 }
