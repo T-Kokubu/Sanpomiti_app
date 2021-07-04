@@ -28,7 +28,7 @@
               <% @favorite_walkcourses.each do |favorite_walkcourse| %>
                 <div class="col-4">
                   <div class="recommend-course">
-                      <h3><%= link_to image_tag(favorite_walkcourse.coursepic.url, size: '325x200'), walkcourse_path(favorite_walkcourse) %></h3>
+                      <h3><%= link_to image_tag(favorite_walkcourse.coursepic.url, class: "image_top"), walkcourse_path(favorite_walkcourse) %></h3>
                       <p><%= favorite_walkcourse.title.truncate(20) %></p>
                       <p class="recommend-description"><%= favorite_walkcourse.description.truncate(40) %></p>
                   </div>
@@ -47,7 +47,7 @@
             <% @created_walkcourses.each do |created_walkcourse| %>
               <div class="col-4">
                 <div class="recommend-course">
-                    <h3><%= link_to image_tag(created_walkcourse.coursepic.url, size: '325x200'), walkcourse_path(created_walkcourse) %></h3>
+                    <h3><%= link_to image_tag(created_walkcourse.coursepic.url, class: "image_top"), walkcourse_path(created_walkcourse) %></h3>
                     <p><%= created_walkcourse.title.truncate(20) %></p>
                     <p class="recommend-description"><%= created_walkcourse.description.truncate(40) %></p>
                 </div>
