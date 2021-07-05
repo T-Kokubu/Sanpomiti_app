@@ -84,13 +84,13 @@
           </div>
           <div class="spot_image_button">
             <button type="button" class="btn btn-outline-secondary rounded-pill">
-              <%= spot_form.file_field :spotpic %>
+              <%= spot_form.file_field :spotpic, id: "map_fileinput" %>
             </button>
           </div>
         </div>
         <!-- 地図入力フォーム -->
         <div class="map_visual">
-          <div id="map-<%= spot_form.object.id %>" style='width: 109%; height: 330px;'></div>
+          <div class="map_size" id="map-<%= spot_form.object.id %>"></div>
           <script type="text/javascript">
             handler<%= spot_form.object.id %> = Gmaps.build('Google');
             handler<%= spot_form.object.id %>.buildMap({
@@ -112,7 +112,7 @@
           <div class="map_button">
             <div class="map_address">
               <%= spot_form.label :"住所" %>
-              <%= spot_form.text_field :address %>
+              <%= spot_form.text_field :address, id: "map_add_inputbutton" %>
             </div>
             <div class="map_submit_button">
               <%= f.submit %>
