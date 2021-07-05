@@ -76,7 +76,7 @@
         <div class="spot_image_visual">
           <div class="submitted_spotimage">
             <% if spot_form.object.spotpic.url %>
-              <%= image_tag spot_form.object.spotpic.thumb.url %>
+              <%= image_tag spot_form.object.spotpic.thumb.url, id:"spot_image_url" %>
             <% end %>
           </div>
           <div class="spot_image_explanation">

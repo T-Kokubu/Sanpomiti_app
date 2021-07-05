@@ -167,10 +167,15 @@
   #map_add_inputbutton {
     width: 70%;
   }
-
+  #spot_image_url {
+    width: 100%;
+  }
+  .submitted_spotimage {
+    left: 0;
+    top: 20px;
+  }
   // walkcourse_new_page
   #walkcourse_title {
     padding: 13px 1px;
   }
-
 }
