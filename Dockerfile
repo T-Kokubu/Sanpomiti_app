@@ -1,7 +1,7 @@
 FROM ruby:2.5.8
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
 RUN apt update; apt -y upgrade
-RUN apt-get install vim
+RUN apt install vim apt-utils
 
 RUN mkdir /sanpomiti_app
 WORKDIR /sanpomiti_app
