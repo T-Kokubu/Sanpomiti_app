@@ -219,7 +219,7 @@
   }
   .test-login {
     padding: 1px 10px;
-    width: 33%;
+    width: 33.5%;
     font-size: 14px;
   }
   // top_image
@@ -240,7 +240,17 @@
   .recommend h2 {
     font-size: 20px;
   }
+  .newpost h2 {
+    font-size: 20px;
+  }
   .fa-shoe-prints {
+    padding-right: 20px;
+    padding-left: 7px;
+  }
+  .newpost_title {
+    margin-bottom: -25px;
+  }
+  .fa-bell {
     padding-right: 20px;
     padding-left: 7px;
   }
@@ -250,6 +260,35 @@
   .recommend-course  {
     height: 200px;
     font-size: 10px;
+  }
+  .btn-show {
+    font-size: 10px;
+    width: 150px;
+  }
+  // user_login_page
+  .text-center h1 {
+    font-size: 20px;
+  }
+  //user_show_page
+  .users_showpage {
+    margin-top: 0;
+  }
+  .user_setting {
+    display: block;
+    margin-left: 0;
+  }
+  .cog_button {
+    margin: 10px 80px 0 80px;
+  }
+  .users_info li {
+    font-size: 15px;
+  }
+  .wk_image_show {
+    width: 300px;
+    height: 200px;
+  }
+  .user_destroy_button {
+    margin-left: 0;
   }
   // footer
   footer {
