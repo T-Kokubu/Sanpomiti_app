@@ -177,6 +177,12 @@
   #walkcourse_title {
     padding: 13px 1px;
   }
+  .fixed-bottom {
+    left: auto;
+  }
+  .container {
+    margin-bottom: 100px;
+  }
 }
 
 // Small devices (landscape phones, less than 768px)
@@ -380,6 +386,55 @@
   }
   .back_button {
     width: 40%;
+  }
+  //new_walkcourse_page
+  .course_explanation {
+    width: 100%;
+    border-right: none;
+  }
+  .course_form {
+    margin: 0;
+  }
+  .course_image_explanation {
+    width: 100%;
+    border-right: none;
+  }
+  .course_image_button {
+    padding-right: 0;
+  }
+  .ci_button {
+    font-size: 14.2px;
+  }
+  .course_description_explanation {
+    width: 100%;
+  }
+  .spot_image_visual {
+    width: 100%;
+    border-top: none;
+  }
+  .image_map {
+    height: 775px;
+    border-top: none;
+    border-bottom: none;
+  }
+  .map_visual {
+    display: block;
+    width: 100%;
+    margin-top: 51px;
+  }
+  .description_title {
+    width: 100%;
+    border-top: none;
+  }
+  .description_form {
+    padding: 30px;
+    margin-top: 60px;
+  }
+  .spot_transittime_explanation {
+    margin-top: 122px;
+  }
+  .fixed_save_button {
+    font-size: initial;
   }
   // footer
   footer {

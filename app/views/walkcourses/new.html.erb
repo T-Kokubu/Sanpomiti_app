@@ -15,7 +15,7 @@
     </div>
     <div class="course_image_button">
       <button type="button" class="btn btn-outline-secondary rounded-pill">
-        <%= f.file_field :coursepic %>
+        <%= f.file_field :coursepic, class:"ci_button" %>
       </button>
     </div>
   </div>
@@ -144,7 +144,7 @@
 
     <!-- 保存ボタン -->
     <div class="first_save_button fixed-bottom">
-      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg' %>
+      <%= f.submit '保存する', class: 'btn btn-primary btn-block btn-lg　fixed_save_button' %>
     </div>
   </div>
 <% end %>
