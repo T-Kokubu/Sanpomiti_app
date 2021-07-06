@@ -1,7 +1,7 @@
 @import './toppages.scss' ;
 @import './users.scss' ;
 @import './walkcourses.scss' ;
-@import './responsive.scss' ;
+
 
 body {
     font-family: "游ゴシック", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
@@ -59,7 +59,6 @@ header img {
   text-align: center;
   border: 1px solid #053ace;
   border-radius: 4px;
-  text-align: center;
 }
 .mypage-login {
   display: inline-block;
@@ -69,7 +68,6 @@ header img {
   text-align: center;
   border: 1px solid #053ace;
   border-radius: 4px;
-  text-align: center;
 }
 .logout {
   display: inline-block;
@@ -80,7 +78,6 @@ header img {
   float: right;
   border: 1px solid #053ace;
   border-radius: 4px;
-  text-align: center;
   float: right;
   text-decoration: none;
 }
@@ -95,7 +92,6 @@ header img {
   text-align: center;
   border: 1px solid #053ace;
   border-radius: 4px;
-  text-align: center;
 }
 
 .login {
@@ -204,3 +200,4 @@ footer {
   right: 448px;
   top: 20px;
 }
+@import './responsive.scss' ;
