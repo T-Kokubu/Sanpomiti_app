@@ -181,5 +181,86 @@
 }
 
 @media (max-width: 575.98px) {
+  //toppage
+  header {
+    margin: 0px 0px!important;
+  }
+  .header-right a {
+    font-size: 10px;
+  }
+  // login後header-right
+  .post_course {
+    display: inline-block;
+    margin-right: -5px;
+    margin-top: 7px;
+    padding: 1px 8px;
+    width: 86px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #053ace;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .mypage-login {
+    display: inline-block;
+    padding: 1px 8px;
+    width: 86px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #053ace;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .logout {
+    display: inline-block;
+    padding: 1px 8px;
+    width: 80px;
+    font-size: 14px;
+    text-align: center;
+    float: right;
+    border: 1px solid #053ace;
+    border-radius: 4px;
+    text-align: center;
+    float: right;
+    text-decoration: none;
+  }
 
+  // login前navbar
+  .signup {
+    margin-top: 8px;
+    display: inline-block;
+    padding: 1px 8px;
+    width: 186px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #053ace;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .login {
+    display: inline-block;
+    padding: 1px 12px;
+    width: 186px;
+    font-size: 14px;
+    text-align: center;
+    float: right;
+    border: 1px solid #053ace;
+    border-radius: 4px;
+    text-align: center;
+    float: right;
+  }
+  .test-login {
+    display: inline-block;
+    padding: 2px 8px;
+    width: 120px;
+    font-size: 12px;
+    text-align: center;
+    float: right;
+    border: 1px solid #053ace;
+    border-radius: 4px;
+    text-align: center;
+    float: right;
+    text-decoration: none;
+  }
 }
