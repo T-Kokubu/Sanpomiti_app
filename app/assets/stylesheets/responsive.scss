@@ -49,6 +49,10 @@
   .sp_content {
     width:60%;
   }
+  #spot_image_url {
+    width: 90%;
+    height: 250px;
+  }
 }
   // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
@@ -289,6 +293,93 @@
   }
   .user_destroy_button {
     margin-left: 0;
+  }
+  //walkcourse_show_page
+  .course_title {
+    padding-top: 10px;
+    font-size: 14px;
+  }
+  .favorite_button {
+    font-size: initial;
+    width: 120px;
+    font-size: 10px;
+    height: 45px;
+  }
+  .walkcourse_show_contents {
+    height: 705px;
+  }
+  .walkcourse_show_description {
+    position: static;
+    width: 100%;
+  }
+  .show_wkimage {
+    width: 290px;
+    height: 280px;
+  }
+  .total_time_description {
+    width: 200px;
+  }
+  .total_time_description a {
+    font-size: 10px;
+  }
+  .total_time_sum {
+    width: 145px;
+  }
+  .total_time_sum a {
+    font-size: 10px;
+  }
+  .itinerary {
+    font-size: 10px;
+    height: 680px;
+  }
+  .itinerary_frame {
+    width: 65px;
+    right: -3px;
+    padding: 60px 20px;
+  }
+  .itinerary_arrow_frame {
+    margin-top: 130px;
+  }
+  .show_time_required {
+    width: 75px;
+  }
+
+  .courseshow_spotname {
+    width: 200px;
+  }
+  .courseshow_spotname a {
+    font-size: 10px;
+  }
+  .courseshow_requiretime {
+    width: 145px;
+  }
+  .courseshow_requiretime a {
+    font-size: 10px;
+  }
+
+  .sp_show_image {
+    width: 85%;
+    height: 300px;
+  }
+  .spot_spotpic_image {
+    width: 100%;
+  }
+  .spot_images {
+    height: 800px;
+  }
+  .spot_map_info {
+    display: block;
+    width: 85%;
+    height: 300px;
+  }
+  .spmap_image {
+    margin-top: 400px;
+  }
+  .show_description {
+    font-size: 10px;
+  }
+  .back_button {
+    width: 40%;
   }
   // footer
   footer {

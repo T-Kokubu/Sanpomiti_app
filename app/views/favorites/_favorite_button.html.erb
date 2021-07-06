@@ -1,11 +1,11 @@
 <% if current_user.liking?(walkcourse) %>
   <%= form_with(model: current_user.favorites.find_by(like_id: @walkcourse.id), method: :delete) do |f| %>
     <%= hidden_field_tag :like_id, @walkcourse.id %>
-    <%= f.submit 'お気に入り登録を外す', class: 'btn btn-danger btn-lg' %>
+    <%= f.submit 'お気に入り登録を外す', class: 'btn btn-danger btn-lg favorite_button' %>
   <% end %>
 <% else %>
   <%= form_with(model: current_user.favorites.build) do |f| %>
     <%= hidden_field_tag :like_id, @walkcourse.id %>
-    <%= f.submit 'お気に入り登録する', class: 'btn btn-primary btn-lg' %>
+    <%= f.submit 'お気に入り登録する', class: 'btn btn-primary btn-lg favorite_button' %>
   <% end %>
 <% end %>
