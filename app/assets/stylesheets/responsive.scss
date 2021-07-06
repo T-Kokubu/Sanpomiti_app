@@ -49,6 +49,10 @@
   .sp_content {
     width:60%;
   }
+  #spot_image_url {
+    width: 90%;
+    height: 250px;
+  }
 }
   // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
@@ -173,6 +177,12 @@
   #walkcourse_title {
     padding: 13px 1px;
   }
+  .fixed-bottom {
+    left: auto;
+  }
+  .container {
+    margin-bottom: 100px;
+  }
 }
 
 // Small devices (landscape phones, less than 768px)
@@ -181,5 +191,256 @@
 }
 
 @media (max-width: 575.98px) {
+  //toppage
+  header {
+    margin: 0px 0px;
+    margin-bottom: 160px;
+  }
+  .header-right a {
+    font-size: 10px;
+  }
+  // login後header-right
+  .post_course {
+    padding: 1px 10px;
+    width: 33%;
+    font-size: 14px;
+  }
+  .mypage-login {
+    padding: 1px 10px;
+    width: 33.4%;
+    font-size: 14px;
+  }
+  .logout {
+    padding: 1px 10px;
+    width: 33.5%;
+    font-size: 14px;
+  }
 
+  // login前navbar
+  .signup {
+    padding: 1px 10px;
+    width: 33%;
+    font-size: 14px;
+  }
+  .login {
+    padding: 1px 10px;
+    width: 33.4%;
+    font-size: 14px;
+  }
+  .test-login {
+    padding: 1px 10px;
+    width: 33.5%;
+    font-size: 14px;
+  }
+  // top_image
+  .top-wrapper {
+    height: 200px;
+  }
+  .top-wrapper span{
+    font-size: 20px;
+    margin-left: 80px;
+  }
+  .second-phrase {
+    width: 53%;
+  }
+  // toppage_content
+  .recommend {
+    margin-top: 0;
+  }
+  .recommend h2 {
+    font-size: 20px;
+  }
+  .newpost h2 {
+    font-size: 20px;
+  }
+  .fa-shoe-prints {
+    padding-right: 20px;
+    padding-left: 7px;
+  }
+  .newpost_title {
+    margin-bottom: -25px;
+  }
+  .fa-bell {
+    padding-right: 20px;
+    padding-left: 7px;
+  }
+  .image_top {
+    height: 100px;
+  }
+  .recommend-course  {
+    height: 200px;
+    font-size: 10px;
+  }
+  .btn-show {
+    font-size: 10px;
+    width: 150px;
+  }
+  // user_login_page
+  .text-center h1 {
+    font-size: 20px;
+  }
+  //user_show_page
+  .users_showpage {
+    margin-top: 0;
+  }
+  .user_setting {
+    display: block;
+    margin-left: 0;
+  }
+  .cog_button {
+    margin: 10px 80px 0 80px;
+  }
+  .users_info li {
+    font-size: 15px;
+  }
+  .wk_image_show {
+    width: 300px;
+    height: 200px;
+  }
+  .user_destroy_button {
+    margin-left: 0;
+  }
+  //walkcourse_show_page
+  .course_title {
+    padding-top: 10px;
+    font-size: 14px;
+  }
+  .favorite_button {
+    font-size: initial;
+    width: 120px;
+    font-size: 10px;
+    height: 45px;
+  }
+  .walkcourse_show_contents {
+    height: 705px;
+  }
+  .walkcourse_show_description {
+    position: static;
+    width: 100%;
+  }
+  .show_wkimage {
+    width: 290px;
+    height: 280px;
+  }
+  .total_time_description {
+    width: 200px;
+  }
+  .total_time_description a {
+    font-size: 10px;
+  }
+  .total_time_sum {
+    width: 145px;
+  }
+  .total_time_sum a {
+    font-size: 10px;
+  }
+  .itinerary {
+    font-size: 10px;
+    height: 680px;
+  }
+  .itinerary_frame {
+    width: 65px;
+    right: -3px;
+    padding: 60px 20px;
+  }
+  .itinerary_arrow_frame {
+    margin-top: 130px;
+  }
+  .show_time_required {
+    width: 75px;
+  }
+
+  .courseshow_spotname {
+    width: 200px;
+  }
+  .courseshow_spotname a {
+    font-size: 10px;
+  }
+  .courseshow_requiretime {
+    width: 145px;
+  }
+  .courseshow_requiretime a {
+    font-size: 10px;
+  }
+
+  .sp_show_image {
+    width: 85%;
+    height: 300px;
+  }
+  .spot_spotpic_image {
+    width: 100%;
+  }
+  .spot_images {
+    height: 800px;
+  }
+  .spot_map_info {
+    display: block;
+    width: 85%;
+    height: 300px;
+  }
+  .spmap_image {
+    margin-top: 400px;
+  }
+  .show_description {
+    font-size: 10px;
+  }
+  .back_button {
+    width: 40%;
+  }
+  //new_walkcourse_page
+  .course_explanation {
+    width: 100%;
+    border-right: none;
+  }
+  .course_form {
+    margin: 0;
+  }
+  .course_image_explanation {
+    width: 100%;
+    border-right: none;
+  }
+  .course_image_button {
+    padding-right: 0;
+  }
+  .ci_button {
+    font-size: 14.2px;
+  }
+  .course_description_explanation {
+    width: 100%;
+  }
+  .spot_image_visual {
+    width: 100%;
+    border-top: none;
+  }
+  .image_map {
+    height: 775px;
+    border-top: none;
+    border-bottom: none;
+  }
+  .map_visual {
+    display: block;
+    width: 100%;
+    margin-top: 51px;
+  }
+  .description_title {
+    width: 100%;
+    border-top: none;
+  }
+  .description_form {
+    padding: 30px;
+    margin-top: 60px;
+  }
+  .spot_transittime_explanation {
+    margin-top: 122px;
+  }
+  .fixed_save_button {
+    font-size: initial;
+  }
+  // footer
+  footer {
+    paddding-right: 100px;
+  }
+  footer small {
+    font-size: 60%;
+  }
 }
