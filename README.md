@@ -1,5 +1,6 @@
 # アプリケーションの概要
-お気に入りの散歩コースを登録して共有できる、散歩コース投稿のSNSサービス。https://www.sanpomiti.net/
+・散歩コースやサイクリングコースについて総合的な情報サイトがないと思い、作成しました。  
+・お気に入りの散歩コースを登録して共有できる、散歩コース投稿のSNSサービス。https://www.sanpomiti.net/  
 
 # 技術的ポイント
 ・AWS　EC2/RDSを用いたRails本番環境構築  
@@ -16,12 +17,14 @@
 
 # アプリケーションの機能
 ・作成した散歩コースを投稿  
-・ユーザー登録、ログイン  
+・ユーザー登録、編集機能  
+・ログイン、ログアウト、テストログイン機能  
+・散歩コースの投稿, 編集, 削除機能  
 ・画像を正方形に整形して投稿（CarrierWaveを使用）    
 ・散歩コースのスポットに住所入力すると Google Map表示（gmaps4rails,geocorder)  
 ・検索（Ransackを使用）  
-・お気に入り登録  
-・モデルに対するバリデーション    
+・お気に入り登録(Ajaxで非同期化)  
+・ページネーション機能   
 
 # 使用技術
 ・Ruby 2.5.8  
@@ -33,11 +36,14 @@
 ・RSpec  
 ・Google Maps API  
 ・AWS  
-  ●VPC  
-  ●EC2  
-  ●RDS  
-  ●Route53  
-  ●ALB  
-  ●AWS ACM  
-  ●CodeDeploy  
-  ●CodePipline  
+   ●VPC  
+   ●EC2  
+   ●RDS  
+   ●Route53  
+   ●ALB  
+   ●AWS ACM  
+   ●CodeDeploy  
+   ●CodePipline  
+
+# AWSインフラ構成図
+<img width="791" alt="インフラ構成図" src="https://user-images.githubusercontent.com/48621700/124880796-9f7c8f00-e009-11eb-8589-8be5f9537955.png">
