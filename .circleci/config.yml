@@ -101,6 +101,6 @@ workflows:
       - deploy: # deployはrspecのあとに実行
           requires:
             - rspec
-            # filters:
-            #   branches:
-            #     only: master
+            filters:
+              branches:
+                only: master
