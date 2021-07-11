@@ -73,19 +73,6 @@ jobs:
           name: Rspec
           command: bundle exec rspec
 
-  deploy: #デプロイするジョブ
-    working_directory: ~/repo
-    docker:
-    - image: circleci/ruby:2.5.8-node-browsers-legacy
-    steps:
-      - checkout
-      - run:
-          name: test
-          command: |
-            echo 'AWS_REGION: '${AWS_REGION}
-            echo 'AWS_ACCESS_KEY_ID: '${AWS_ACCESS_KEY_ID}
-            echo 'AWS_SECRET_ACCESS_KEY: '${AWS_SECRET_ACCESS_KEY}
-
 workflows:
   version: 2.1
   rubocop_rspec:
