@@ -323,10 +323,9 @@
 .usershow_description {
   border: 1px solid #808080;
   height: 200px;
-  font-size: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 15px;
 }
 .user_edit_button {
   padding: 5px 70px;
