@@ -15,4 +15,5 @@ ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
 # Start the main process.
+# イメージを実行時、自動的に実行
 CMD ["rails", "server", "-b", "0.0.0.0"]

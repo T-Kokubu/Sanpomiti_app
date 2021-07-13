@@ -1,4 +1,3 @@
-
 version: '3'
 services:
   db:
@@ -12,7 +11,11 @@ services:
 
   web:
     build: .
+    # 擬似端末(キーボードによる入力)をコンテナに結びつける
+    # docker run時の-tオプションに相当 これがないと起動が止まってしまう
     tty: true
+    # コンテナの標準入力をオープンしたままの状態にする
+    # docker run時の-iオプションに相当
     stdin_open: true
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:

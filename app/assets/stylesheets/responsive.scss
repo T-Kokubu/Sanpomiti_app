@@ -1,4 +1,4 @@
-// Large devices (desktops, less than 1200px)
+// Large devices (desktops, less than 1200px) iPadpro
 @media (max-width: 1199.98px) {
   // top_page
   .image_top {
@@ -50,7 +50,7 @@
     height: 250px;
   }
 }
-  // Medium devices (tablets, less than 992px)
+  // Medium devices (tablets, less than 992px) iPad
 @media (max-width: 991.98px) {
   // top_page
   .second-phrase {
@@ -89,6 +89,17 @@
   .courseshow_requiretime  {
     width: 30%;
   }
+  .itinerary_frame {
+    width: 60px;
+    height: 350px;
+  }
+  .show_time_required {
+    right: -12px;
+  }
+  .spot_map_address  {
+    font-size: 15px;
+  }
+
   // walkcourse_edit_page
   .course_image {
     height: 380px;
