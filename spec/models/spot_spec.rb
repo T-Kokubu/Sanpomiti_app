@@ -35,6 +35,11 @@ RSpec.describe Spot, type: :model do
       spot = build(:spot, transit_time: '', walkcourse: walkcourse)
       expect(spot).to be_valid
     end
+    it '規定文字数を超える入力はエラー' do
+      spot = build(:spot, transit_time: '1' * 4)
+      spot.valid?
+      expect(spot.errors[:transit_time]).to include('は3文字以内で入力してください')
+    end
     it '整数以外の入力はエラー表示する' do
       spot = build(:spot, transit_time: '/[^0-9]/', walkcourse: walkcourse)
       spot.valid?
@@ -45,6 +50,11 @@ RSpec.describe Spot, type: :model do
     it '入力がない場合でも有効' do
       spot = build(:spot, time_required: '', walkcourse: walkcourse)
       expect(spot).to be_valid
+    end
+    it '規定文字数を超える入力はエラー' do
+      spot = build(:spot, time_required: '1' * 4)
+      spot.valid?
+      expect(spot.errors[:time_required]).to include('は3文字以内で入力してください')
     end
     it '整数以外の入力はエラー表示する' do
       spot = build(:spot, time_required: '/[^0-9]/', walkcourse: walkcourse)
