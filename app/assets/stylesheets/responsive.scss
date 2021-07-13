@@ -355,7 +355,7 @@
   }
   .itinerary {
     font-size: 10px;
-    height: 680px;
+    height: 780px;
   }
   .itinerary_frame {
     width: 65px;
@@ -367,23 +367,30 @@
   }
   .show_time_required {
     width: 75px;
+    right: -5px;
   }
 
+  .show_nametime {
+    height: 100px;
+  }
   .courseshow_spotname {
-    width: 200px;
+    width: 100%;
+    display: inline-block;
   }
   .courseshow_spotname a {
     font-size: 10px;
   }
   .courseshow_requiretime {
-    width: 145px;
+    width: 100%;
+    display: inline-block;
+    margin-left: 0px;
   }
   .courseshow_requiretime a {
     font-size: 10px;
   }
 
   .sp_show_image {
-    width: 85%;
+    width: 87%;
     height: 300px;
   }
   .spot_spotpic_image {
@@ -396,6 +403,7 @@
     display: block;
     width: 85%;
     height: 300px;
+    border: none;
   }
   .spmap_image {
     margin-top: 400px;
@@ -454,6 +462,10 @@
   }
   .fixed_save_button {
     font-size: initial;
+  }
+  // edit_walkcourse_page
+  .submitted_courseimage {
+    padding-right: 0px;
   }
   // footer
   footer {
