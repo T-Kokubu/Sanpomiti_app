@@ -8,12 +8,13 @@ COPY Gemfile /sanpomiti_app/Gemfile
 RUN gem install bundler && bundle install
 COPY . /sanpomiti_app
 
-# Add a script to be executed every time the container starts.
+# ローカルのファイルをコンテナへコピー
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
+# 一番最初に実行するコマンド
 ENTRYPOINT ["entrypoint.sh"]
+# コンテナがリッスンするport番号
 EXPOSE 3000
 
-# Start the main process.
-# イメージを実行時、自動的に実行
+# イメージ内部のソフトウェア実行
 CMD ["rails", "server", "-b", "0.0.0.0"]
