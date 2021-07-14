@@ -10,8 +10,11 @@ jobs:
 
     working_directory: ~/repo
     steps:
+      #設定済みの pathにソースコードをチェックアウト
       - checkout
+      #以前に保存したキャッシュをkeyに基づいて復元
       - restore_cache:
+          #復元するキャッシュキーを指定
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
             # fallback to using the latest cache if no exact match is found
@@ -21,6 +24,7 @@ jobs:
       - run: gem install bundler -v '2.2.15'
       - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
       - run: yarn install
+      #ソースコードをキャッシュ
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -63,6 +67,7 @@ jobs:
       - run: cp config/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
       - run: bundle exec rake db:migrate
+      #schema.rbからテーブルを作成
       - run: bundle exec rake db:schema:load
 
       # Rspec
@@ -78,6 +83,3 @@ workflows:
       - rspec:
           requires:
             - rubocop
-      - deploy: # deployはrspecのあとに実行
-          requires:
-            - rspec

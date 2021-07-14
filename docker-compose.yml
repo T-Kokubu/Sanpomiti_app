@@ -10,6 +10,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
 
   web:
+    # Dockerfile のあるディレクトリのパスを指定
     build: .
     # 擬似端末(キーボードによる入力)をコンテナに結びつける
     # docker run時の-tオプションに相当 これがないと起動が止まってしまう
@@ -17,6 +18,7 @@ services:
     # コンテナの標準入力をオープンしたままの状態にする
     # docker run時の-iオプションに相当
     stdin_open: true
+    #デフォルトのコマンドを上書き
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/sanpomiti_app
@@ -26,4 +28,5 @@ services:
       - db
 volumes:
   postgresql-data:
+    #ホストのローカルのファイルシステムにボリュームを作成する
     driver: local
